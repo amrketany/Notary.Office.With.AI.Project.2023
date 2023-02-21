@@ -61,9 +61,6 @@ const Services = () => {
      </div>
     {/* first_service */}
 
-             
-             
-             
     <div className={styles.service}>
      <img src={service_0} alt="img" className={styles.service_0}/>
       <h3>Service_Name</h3>
