@@ -1,0 +1,19 @@
+/*  start footer  */
+.Footer {
+ background-color: #2c4755;
+ padding-top: 30px;
+ padding-bottom: 30px;
+ text-align: center;
+}
+
+.Footer p {
+ color: white;
+ font-size: 30px;
+ letter-spacing: 2px;
+}
+
+.Footer p span {
+ color: var(--main-color);
+}
+
+/*  end footer */
