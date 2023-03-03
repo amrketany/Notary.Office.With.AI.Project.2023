@@ -1,15 +1,51 @@
 /* start header  */
 .header {
-  padding: 20px;
+  /* padding: 20px; */
+    position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+}
+
+.header {
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Small */
+@media (min-width: 768px) {
+  .header {
+    width: 747px;
+  }
+}
+
+/* Medium */
+@media (min-width: 992px) {
+  .header {
+    width: 967px;
+  }
+}
+
+/* Large */
+@media (min-width: 1200px) {
+  .header {
+    width: 1167px;
+  }
 }
 
 .header .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  /* background-color: rgba(0, 0, 0, 0.4); */
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 .header .logo {
+  margin-top: 4px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -25,17 +61,8 @@
 .header .container .navegation .nav a:hover {
   border-bottom: 2px  solid #2c4755;
   box-shadow: 2px 2px 2px #2c4755;
-
 }
 
-.header .container .navegation .nav .active {
-}
-
-.header .container .navegation .nav a:link {
-}
-
-.header .container .navegation .nav .a:checked {
-}
 
 .header .container .links {
   display: none;
@@ -58,43 +85,53 @@
   position: relative;
 }
 
-.header .links {
+.header  .links {
   position: relative;
-
+  cursor: pointer;
 }
 
-.header .links .icons {
+.header  .links .icons {
   width: 30px;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
 }
 
-.header .links .icons span {
+.header  .links .icons span {
   background-color: #222;
   height: 2px;
   margin-bottom: 5px;
 }
 
-.header .links:hover ul {
+.header  .links:hover ul {
+  display: block;
+}
+.header  .links:focus:not(:focus-visible) ul {
   display: block;
 }
 
+
+.header .links .icons:hover {
+text-decoration: none;
+color: red;
+  outline: 0;
+  box-shadow: 0 0 0 var(--bs-navbar-toggler-focus-width);
+}
 
 .header .links .icons span:first-child {
   width: 100%;
 }
 
-.header .links .icons span:nth-child(2) {
+.header  .links .icons span:nth-child(2) {
   width: 60%;
   transition: 0.3s;
 }
 
-.header .links .icons span:last-child {
+.header  .links .icons span:last-child {
   width: 100%;
 }
 
-.header .links:hover .icons span:nth-child(2) {
+.header  .links .icons:hover span:nth-child(2) {
   width: 100%;
 }
 

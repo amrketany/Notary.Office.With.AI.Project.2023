@@ -7,35 +7,35 @@ function SignUp() {
         <form>
           <div>
            <label  for="name">Enter  your  full  Name</label>
-           <input  type="text" id={styles.name}  name="name"  required="required"></input>
+           <input  type="text" id={styles.name}  name="name"  required="required" className={styles.signupbtn}></input>
           </div>
           <div>
            <label  for="Email">Enter  your  Email</label>
-           <input  type="email" id={styles.email}  name="email" required="required"></input>
+           <input  type="email" id={styles.email}  name="email" required="required" className={styles.signupbtn}></input>
           </div>
           <div>
            <label  for="pass">Enter  your  pass</label>
-           <input  type="password" id={styles.pass}  name="pass"  required="required"></input>
+           <input  type="password" id={styles.pass}  name="pass"  required="required" className={styles.signupbtn}></input>
           </div>
           <div>
            <label  for="repass">Re_Enter  your  Password</label>
-           <input  type="password" id={styles.repass}  name="repass"  required="required"></input>
+           <input  type="password" id={styles.repass}  name="repass"  required="required" className={styles.signupbtn}></input>
           </div>
           <div>
            <label  for="adress">Enter  your  Adress</label>
-           <input  type="text" id={styles.adress}  name="adress"  required="required"></input>
+           <input  type="text" id={styles.adress}  name="adress"  required="required" className={styles.signupbtn}></input>
           </div>
           <div>
            <label  for="jop">Enter  your  Jop</label>
-           <input  type="text" id={styles.jop}  name="jop"  required="required"></input>
+           <input  type="text" id={styles.jop}  name="jop"  required="required" className={styles.signupbtn}></input>
           </div>
           <div>
            <label  for="phone">Enter  your  phone</label>
-           <input  type="number" id={styles.phone}  name="phone"  required="required"></input>
+           <input  type="number" id={styles.phone}  name="phone"  required="required" className={styles.signupbtn}></input>
           </div>
           <div>
            <label  for="id">Enter  your  ID</label>
-           <input  type="number" id={styles.id}  name="name"  required="required"></input>
+           <input  type="number" id={styles.id}  name="name"  required="required" className={styles.signupbtn}></input>
           </div>
           <div>
            <label  for="nationality">Enter  your  Nationality</label>

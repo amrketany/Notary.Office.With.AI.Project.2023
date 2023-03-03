@@ -1,10 +1,11 @@
-.SignIn{
+.SignIn {
  background-color: #FF7F50;
  display: flex;
  justify-content: center;
  align-items: center;
  border-radius: 30px;
 }
+
 .container {
  display: flex;
  justify-content: center;
@@ -14,13 +15,13 @@
  margin: 20px 0px;
 }
 
-.img{
+.img {
  width: 60px;
  height: 60px;
  border-radius: 50%;
 }
 
-.logo{
+.logo {
  display: flex;
  flex-direction: column;
  justify-content: center;
@@ -28,7 +29,8 @@
  width: 100%;
 
 }
-.logo div{
+
+.logo div {
  width: 100%;
  height: 50px;
  background-color: #FFEBCD;
@@ -38,7 +40,8 @@
  align-items: center;
  justify-content: center;
 }
-form{
+
+form {
  display: flex;
  flex-direction: column;
  justify-content: flex-start;
@@ -47,7 +50,7 @@ form{
  margin: 30px;
 }
 
-input{
+input {
  border: none;
  border-bottom: 1px solid black;
  margin: 10px 0px;
@@ -56,23 +59,26 @@ input{
  height: 30px;
 }
 
-.r{
+.r {
  width: 100%;
 }
-.r:last-child{
+
+.r:last-child {
  display: flex;
  flex-direction: row;
  justify-content: space-between;
  align-items: center;
  height: 70px;
 }
-#submit{
+
+#submit {
  height: 70%;
  width: 30%;
  background-color: #FF7F50;
  cursor: pointer;
 }
-#check{
+
+#check {
  background-color: #FF7F50;
  color: #FF7F50;
  width: 20px;
@@ -80,12 +86,14 @@ input{
  border-radius: 50%;
  cursor: pointer;
 }
-input:focus{
+
+input:focus {
  box-shadow: 2px 2px 2px#2c4755ed;
  background-color: #FFEBCD;
- color:#2c4755ed ;
+ color: #2c4755ed;
 }
-a{
+
+a {
  text-decoration: none;
  color: #FF7F50;
  size: 10px;

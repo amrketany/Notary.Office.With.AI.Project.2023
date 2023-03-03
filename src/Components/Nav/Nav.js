@@ -3,9 +3,9 @@ import styles from "./Nav.module.css";
 import  logo  from  "../../imags/0.jpg"
 const Nav = () => {
   return (
-    <div className={styles.header}>
+    <div className={styles.header}  fixed="top">
       <div  className={styles.container}>
-       <a href="/home"> <img src={logo} className={styles.logo}  alt="logo"/></a>
+       <a href="/"> <img src={logo} className={styles.logo}  alt="logo"/></a>
       <div className={styles.navegation}>
         <div className={styles.nav}>
           <a href="/" target="_self" className={styles.active}>Home</a>
@@ -15,7 +15,6 @@ const Nav = () => {
           <a href="/services" target="_self">Services</a>
         </div>
         </div>
-        
          <div className={styles.links}>
         <span className={styles.icons}>
           <span></span>
@@ -29,8 +28,7 @@ const Nav = () => {
           <li><a href="/about">About</a></li>
           <li><a href="/services">Services</a></li>
         </ul>
-          </div>
-          
+          </div>          
         </div>
     </div>
   )
