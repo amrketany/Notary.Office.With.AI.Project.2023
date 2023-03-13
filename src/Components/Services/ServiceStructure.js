@@ -13,11 +13,9 @@ import { faCircleArrowDown } from '@fortawesome/free-solid-svg-icons';
 //type...of contract
 //contractlink
 
-
-
 const ServiceStrucure = () => {
     return (
-        <div>         
+        <div>
             <div className={styles.container}>
                 <div className={styles.txt}>
                     <p>
@@ -25,21 +23,21 @@ const ServiceStrucure = () => {
                     </p>
                 </div>
                 <div className={styles.get_file}>
-                    <h4> To Get Your File Follwo This Link <a href="/#">Go There</a></h4>
+                    <h4> To Get Your File Follow This Link <a href="/#">Go There</a></h4>
                 </div>
                 <div className={styles.upload}>
                     <h4>After Filling The File Upload It from Here</h4>
                     <FontAwesomeIcon icon={faCircleArrowDown} className={styles.icon} />
                     
                     <div className={styles.input_group}>
-                        <input type="file" className={styles.form_control} placeholder="Choose File"/>
-                        <input className={styles.uploadbtn } type="submit" value="Submit"/>
+                        <input type="file" className={styles.form_control} placeholder="Choose File" />
+                        <input className={styles.uploadbtn} type="submit" value="Submit" />
                     </div>
 
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
 export default ServiceStrucure;
