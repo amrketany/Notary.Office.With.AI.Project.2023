@@ -34,6 +34,8 @@ padding: 40px;
 
 .get_file{
  padding: 40px 0;
+ text-align: center;
+ margin: 20px;
 }
 
 .container .upload{
@@ -43,6 +45,8 @@ padding: 40px;
  align-content: space-between;
 justify-content: space-between;
 height: 300px;
+text-align: center;
+margin: 20px;
 }
 
 .upload .icon{
@@ -102,4 +106,12 @@ background-color: #2c4755;
  .form_control:hover {
    background: white;
    color: #2c4755;
+ }
+
+
+ @media(max-width:530px){
+  .get_file h4 a{
+    display: block;
+    margin-top: 20px;
+  }
  }

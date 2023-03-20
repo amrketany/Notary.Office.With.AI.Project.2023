@@ -14,6 +14,8 @@ import { faCircleArrowDown } from '@fortawesome/free-solid-svg-icons';
 //contractlink
 
 const ServiceStrucure = () => {
+    //Links
+const link ="https://rern.gov.eg/pages/requests/2";
     return (
         <div>
             <div className={styles.container}>
@@ -23,7 +25,7 @@ const ServiceStrucure = () => {
                     </p>
                 </div>
                 <div className={styles.get_file}>
-                    <h4> To Get Your File Follow This Link <a href="/#">Go There</a></h4>
+                    <h4> To Get Your File Follow This Link <a href={link}  target="_blank" rel="noreferrer">Go There</a></h4>
                 </div>
                 <div className={styles.upload}>
                     <h4>After Filling The File Upload It from Here</h4>

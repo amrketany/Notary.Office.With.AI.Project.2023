@@ -61,3 +61,17 @@
 input[type=submit] {
   background-color: #FF7F50;
 }
+
+.passInput{
+  position: relative;
+}
+
+.showPass{
+  position: absolute;
+  right: 0;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: #FF7F50;
+  color:#2c4755ed;
+}
