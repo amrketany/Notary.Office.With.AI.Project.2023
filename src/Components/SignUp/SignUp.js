@@ -7,6 +7,12 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function SignUp() {
+  //Trying To make Event Lisetner
+
+
+
+
+  //Start Make Password Icons
   let iconClass0 , iconClass1 ,  inputType0 , inputType1;
   const [statePass, setStatepass] = useState(true);
   const [stateRepass, setStaterepass] = useState(true);
@@ -26,54 +32,151 @@ function SignUp() {
     iconClass1 = faEyeSlash;
     inputType1="password"
   }
+  //End Password Icons
+  //..............................
+  //Start Validation
+  const initialValues = {
+    username: "", email: "", password: "", repassword: "", address: "", job: "", phone: "", idnumber: "", nationality: "",
+    governorate: ""
+  };
+
+  const [formValues, setFormValues] = useState(initialValues);
+  const [formError, setFormError] = useState({});
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  const handelChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({...formValues, [name] : value});
+    console.log(formValues);
+
+  }
+
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    setFormError(validate(formValues));
+    setIsSubmit(true);
+  }
+
+  const validate = (value) => {
+    const errors = {};
+    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    if (!value.username) {
+      errors.username = "UserName Is Required";
+    }
+    if (!value.phone) {
+      errors.phone = "Phone Is Required";
+    } else if (value.phone.length > 11 || value.phone.length < 11) {
+      errors.phone = "Phone Must be 11 Numbers";      
+    }
+    if (!value.job) {
+      errors.job = "Job Is Required";
+    }
+    if (!value.idnumber) {
+      errors.idnumber = "Id Number Is Required";
+    } else if (value.idnumber.length > 14 || value.idnumber.length < 14) {
+      errors.idnumber = "Id Number Must Be 14 Numbers";      
+    }
+    if (!value.address) {
+      errors.address = "Addrees Is Required";
+    }
+    if (!value.governorate) {
+      errors.governorate = "Governorate Is Required";
+    }
+    if (!value.nationality) {
+      errors.nationality = "Nationality Is Required";
+    }
+    if (!value.email) {
+      errors.email = "Email Is Required";
+    } else if (!regex.test(value.email)) {
+      errors.email = "Not Valid Email format!";
+    }
+    if (!value.password) {
+      errors.password = "Password Is Required";
+    } else if (value.password.length < 8) {
+      errors.password = "Password Should Be More Than 8 Digits";
+    }
+    if (!value.repassword) {
+      errors.repassword = "Re Enter Password Is Required";
+    } else if (value.repassword.length < 8) {
+      errors.repassword = "Password Should Be More Than 8 Digits";
+    }else if (value.repassword!==value.password) {
+      errors.repassword = "Password Don't Match Other Field";
+    }
+    return errors;
+  }
   
-
-
   return (
     <div className={styles.SignUp}>
       <div className={styles.container}>
-        <form onSubmit={(e) => { e.preventDefault() }}>
+        <form onSubmit={handelSubmit}>
           <div>
             <label for="name">Enter  your  full  Name</label>
-            <input type="text" id={styles.name} name="name" required="required" className={styles.signupbtn}></input>
+            <input type="text" id={styles.name} name="username" className={styles.signupbtn}
+              onChange={handelChange}></input>
+            <p className={styles.errorMessage}>{formError.username}</p>
           </div>
           <div>
             <label for="Email">Enter  your  Email</label>
-            <input type="email" id={styles.email} name="email" required="required" className={styles.signupbtn}></input>
+            <input type="text" id={styles.email} name="email" className={styles.signupbtn}
+              onChange={handelChange}></input>
+            <p className={styles.errorMessage}>{formError.email}</p>
           </div>
           <div className={styles.passInput}>
             <label for="pass">Enter  your  pass</label>
-            <input type={inputType0} id={styles.pass} name="pass" required="required" className={styles.signupbtn}></input>
+            <input type={inputType0} id={styles.pass} name="password" className={styles.signupbtn}
+              onChange={handelChange}></input>
             <button onClick={() => setStatepass(!statePass)} className={styles.showPass}>
               <FontAwesomeIcon icon={iconClass0} />
             </button>
+            <p className={styles.errorMessage}>{formError.password}</p>
           </div>
           <div className={styles.passInput}>
             <label for="repass">Re_Enter  your  Password</label>
-            <input type={inputType1} id={styles.repass} name="repass" required="required" className={styles.signupbtn}></input>
+            <input type={inputType1} id={styles.repass} name="repassword" className={styles.signupbtn}
+              onChange={handelChange}></input>
             <button onClick={() => setStaterepass(!stateRepass)} className={styles.showPass}>
               <FontAwesomeIcon icon={iconClass1} />
             </button>
+            <p className={styles.errorMessage}>{formError.repassword}</p>
           </div>
           <div>
             <label for="adress">Enter  your  Adress</label>
-            <input type="text" id={styles.adress} name="adress" required="required" className={styles.signupbtn}></input>
+            <input type="text" id={styles.adress} name="address" className={styles.signupbtn}
+              onChange={handelChange}></input>
+            <p className={styles.errorMessage}>{formError.address}</p>
           </div>
           <div>
-            <label for="jop">Enter  your  Jop</label>
-            <input type="text" id={styles.jop} name="jop" required="required" className={styles.signupbtn}></input>
+            <label for="job">Enter  your  Job</label>
+            <input type="text" id={styles.job} name="job" className={styles.signupbtn}
+              onChange={handelChange}></input>
+            <p className={styles.errorMessage}>{formError.job}</p>
           </div>
           <div>
             <label for="phone">Enter  your  phone</label>
-            <input type="number" id={styles.phone} name="phone" required="required" className={styles.signupbtn}></input>
+            <input type="text" maxLength={11} pattern="[0-9]*" id={styles.phone} name="phone" className={styles.signupbtn}
+              onChange={handelChange}
+              onClick={(event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }}
+            ></input>
+            <p className={styles.errorMessage}>{formError.phone}</p>
           </div>
           <div>
             <label for="id">Enter  your  ID</label>
-            <input type="number" id={styles.id} name="name" required="required" className={styles.signupbtn}></input>
+            <input type="text" id={styles.id} pattern="[0-9]*" name="idnumber" maxLength={14} className={styles.signupbtn}
+              onChange={handelChange}
+              onClick={(event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault();
+                }
+              }}></input>
+            <p className={styles.errorMessage}> {formError.idnumber}</p>
           </div>
           <div>
             <label for="nationality">Enter  your  Nationality</label>
-            <select id={styles.nationality} name="nationality" required="required">
+            <select id={styles.nationality} name="nationality" onChange={handelChange}>
               <option>Egypt</option>
               <option>Algeria</option>
               <option>Suria</option>
@@ -82,16 +185,18 @@ function SignUp() {
               <option>Cuit</option>
               <option>Russia</option>
             </select>
+            <p className={styles.errorMessage}>{formError.nationality}</p>
           </div>
           <div>
             <label for="governorate">Enter  your  Governorate</label>
-            <select id={styles.governorate} name="governorate" required="required">
+            <select id={styles.governorate} name="governorate" onChange={handelChange}>
               <option>Buhaira</option>
               <option>Cairo</option>
               <option>Alexandria</option>
               <option>Mansora</option>
               <option>Monofia</option>
             </select>
+            <p className={styles.errorMessage}>{formError.governorate}</p>
           </div>
           <div>
             <input type="submit" value="Sign Up"></input>

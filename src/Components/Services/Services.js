@@ -51,7 +51,7 @@ const Services = () => {
                   <div className={styles.forBackgroundImage3}>
                      <div className={styles.forBackgroundColor}>
                         <div className={styles.sliderContent}>
-            <h2>Buy and Sell any Machine</h2>
+            <h2>Buy and Sell any Veichle</h2>
                         <p>over tells the browser to make sure the image always covers the entire container, even if it has to stretch the image or cut a little bit off one of the edges. contain , on the other hand, says to always show the whole image, even if that leaves a little space to the sides or bottom.</p>
                         </div>
                      </div>
@@ -61,7 +61,7 @@ const Services = () => {
                   <div className={styles.forBackgroundImage4}>
                      <div className={styles.forBackgroundColor}>
                         <div className={styles.sliderContent}>
-            <h2>Rental any Machine</h2>
+            <h2>Rental any Veichle</h2>
                         <p>over tells the browser to make sure the image always covers the entire container, even if it has to stretch the image or cut a little bit off one of the edges. contain , on the other hand, says to always show the whole image, even if that leaves a little space to the sides or bottom.</p>
                         </div>
                      </div>
@@ -74,11 +74,11 @@ const Services = () => {
 
 
          <div className={styles.Service}>
-            <h2>Machine Services</h2>
+            <h2>Veichle Services</h2>
             <p>over tells the browser to make sure the image always covers the entire container, even if it has to stretch the image or cut a little bit off one of the edges. contain , on the other hand, says to always show the whole image, even if that leaves a little space to the sides or bottom.</p>
             <div>
-               <a href="/buysellmachine" className={styles.goServiceLink}>Buy and Sell any Machine</a>
-               <a href="/rentalmachine" className={styles.goServiceLink}>Rental any Machine</a>
+               <a href="/buysellmachine" className={styles.goServiceLink}>Buy and Sell any Veichle</a>
+               <a href="/rentalmachine" className={styles.goServiceLink}>Rental any Veichle</a>
             </div>
          </div>
          <div className={styles.Service}>
