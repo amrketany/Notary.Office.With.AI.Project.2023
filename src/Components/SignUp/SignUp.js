@@ -7,12 +7,7 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function SignUp() {
-  //Trying To make Event Lisetner
-
-
-
-
-  //Start Make Password Icons
+ //Start Make Password Icons
   let iconClass0 , iconClass1 ,  inputType0 , inputType1;
   const [statePass, setStatepass] = useState(true);
   const [stateRepass, setStaterepass] = useState(true);
@@ -34,7 +29,8 @@ function SignUp() {
   }
   //End Password Icons
   //..............................
-  //Start Validation
+
+  //Start Validation and onSubmit Method
   const initialValues = {
     username: "", email: "", password: "", repassword: "", address: "", job: "", phone: "", idnumber: "", nationality: "",
     governorate: ""
@@ -43,7 +39,7 @@ function SignUp() {
   const [formValues, setFormValues] = useState(initialValues);
   const [formError, setFormError] = useState({});
   const [isSubmit, setIsSubmit] = useState(false);
-
+//handle change inputs
   const handelChange = (e) => {
     const { name, value } = e.target;
     setFormValues({...formValues, [name] : value});
@@ -51,10 +47,42 @@ function SignUp() {
 
   }
 
+//Send data to api 
+  const handelApiSubmit = () => {
+    fetch("http://localhost:8000/customerSignUp", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            username: formValues.username,
+            email: formValues.email,
+            password: formValues.password,
+            repassword: formValues.repassword,
+            job: formValues.job,
+            address: formValues.address,
+            phone: formValues.phone,
+            idnumber: formValues.idnumber,
+            nationality: formValues.nationality,
+            governorate: formValues.governorate
+          })
+        }).then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+          })
+  }
+//Handle Submit Form 
   const handelSubmit = (e) => {
     e.preventDefault();
     setFormError(validate(formValues));
     setIsSubmit(true);
+    //Code to send data to apis only if all values is valid
+    Object.keys(formError).length === 0 && isSubmit ?
+      (
+        handelApiSubmit()
+      )
+      :
+      (console.log("Error"))
   }
 
   const validate = (value) => {
@@ -104,7 +132,7 @@ function SignUp() {
     }
     return errors;
   }
-  
+  //End Validation and onSubmit Method
   return (
     <div className={styles.SignUp}>
       <div className={styles.container}>

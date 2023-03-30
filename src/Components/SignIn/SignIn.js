@@ -46,17 +46,35 @@ const SignIn = () => {
     console.log(formValues);
   }
 
+
+  //Handle Submit Api
+const handelApiSubmit = () => {
+    fetch("http://localhost:8000/customerSignIn", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            email: formValues.email,
+            password: formValues.password,
+          })
+        }).then((response) => response.json())
+          .then((data) => {
+            console.log(data);
+          })
+  }
+//Function to handel Submit
   const handelSubmit = (e) => {
     e.preventDefault();
     setFormError(validate(formValues));
     setIsSubmit(true);
+
+    Object.keys(formError).length === 0 && isSubmit ?
+          (handelApiSubmit())
+          :
+          (console.log("Error"))
   }
-  //I-need-to-understand-it
-  // useEffect(() => {
-  //   if (Object.keys(formError).length === 0 && isSubmit) {
-  //     console.log(formValues);
-  //   }
-  // }, [formError]);
+
 
   //Validate-Function
   const validate = (value) => {
@@ -78,13 +96,6 @@ const SignIn = () => {
   //..........................................................
 
 
-
-
-
-
-
-
-
   return (
     <div className={styles.SignIn}>
       <div className={styles.container}>
@@ -94,14 +105,15 @@ const SignIn = () => {
           <h3>Welcome Home</h3>
         </div>
 
+        
+        {/* //To Show Sign In Massege Successfully */}
         {/* 
-        //To Show Sign In Massege Successfully
         {Object.keys(formError).length === 0 && isSubmit ?
           (<div className="ui message success">Success Sign In</div>)
           :
           (<pre>{JSON.stringify(formValues, undefined, 2)}</pre>)
-        } 
-        */}
+        }*/}
+        
         
         <form className={styles.signinForm} onSubmit={handelSubmit} >
           
@@ -144,15 +156,6 @@ const SignIn = () => {
 }
 
 export default SignIn;
-
-
-              // <div>
-              //   <input type="checkbox"  id={styles.check}  name='check'></input>
-              //   <label for="check">Remember me?</label>
-              // </div>
-
-
-              // pretty p-icon p-rotate
 
 
 
