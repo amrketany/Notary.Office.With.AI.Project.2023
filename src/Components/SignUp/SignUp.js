@@ -30,23 +30,43 @@ function SignUp() {
   //End Password Icons
   //..............................
 
+  //Function to Enter numbers only at phone and Id and fn filds
+  const EnterNumberOnly = (event) => {
+    if (!/[0-9]/.test(event.key)) {
+      event.preventDefault();
+    }
+  }
+  //.............................
+
   //Start Validation and onSubmit Method
   const initialValues = {
-    username: "", email: "", password: "", repassword: "", address: "", job: "", phone: "", idnumber: "", nationality: "",
+    username: "", email: "", password: "", repassword: "", address: "", job: "", phone: "", idnumber: "",fnnumber: "", nationality: "",
     governorate: ""
   };
 
   const [formValues, setFormValues] = useState(initialValues);
-  const [formError, setFormError] = useState({});
+  const [formError, setFormError] = useState([]);
   const [isSubmit, setIsSubmit] = useState(false);
 //handle change inputs
   const handelChange = (e) => {
     const { name, value } = e.target;
     setFormValues({...formValues, [name] : value});
-    console.log(formValues);
-
+    // console.log(formValues);
   }
 
+//Handle Submit Form 
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    setFormError(validate(formValues));
+    setIsSubmit(true);
+    //Code to send data to apis only if all values is valid
+    Object.keys(formError).length === 0  && isSubmit?
+      (
+        handelApiSubmit()
+      )
+      :
+      (console.log(isSubmit))
+  }
 //Send data to api 
   const handelApiSubmit = () => {
     fetch("http://localhost:8000/customerSignUp", {
@@ -56,14 +76,15 @@ function SignUp() {
           },
           body: JSON.stringify({
             username: formValues.username,
+            momname: formValues.momname,
             email: formValues.email,
             password: formValues.password,
-            repassword: formValues.repassword,
-            job: formValues.job,
             address: formValues.address,
             phone: formValues.phone,
             idnumber: formValues.idnumber,
+            fnnumber: formValues.fnnumber,
             nationality: formValues.nationality,
+            religon: formValues.religon,
             governorate: formValues.governorate
           })
         }).then((response) => response.json())
@@ -71,31 +92,23 @@ function SignUp() {
             console.log(data);
           })
   }
-//Handle Submit Form 
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    setFormError(validate(formValues));
-    setIsSubmit(true);
-    //Code to send data to apis only if all values is valid
-    Object.keys(formError).length === 0 && isSubmit ?
-      (
-        handelApiSubmit()
-      )
-      :
-      (console.log("Error"))
-  }
 
+
+//Start Control Validation
   const validate = (value) => {
     const errors = {};
     const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
     if (!value.username) {
       errors.username = "UserName Is Required";
     }
+    if (!value.momname) {
+      errors.momname = "Mother Name Is Required";
+    }
     if (!value.phone) {
       errors.phone = "Phone Is Required";
     } else if (value.phone.length > 11 || value.phone.length < 11) {
       errors.phone = "Phone Must be 11 Numbers";      
-    }
+    } 
     if (!value.job) {
       errors.job = "Job Is Required";
     }
@@ -104,14 +117,29 @@ function SignUp() {
     } else if (value.idnumber.length > 14 || value.idnumber.length < 14) {
       errors.idnumber = "Id Number Must Be 14 Numbers";      
     }
+    if (!value.fnnumber) {
+      errors.fnnumber = "Factory Number Is Required";
+    } else if (value.fnnumber.length < 9) {
+      errors.fnnumber = "Factory Number Must Be 9 Numbers";      
+    }
     if (!value.address) {
       errors.address = "Addrees Is Required";
     }
     if (!value.governorate) {
       errors.governorate = "Governorate Is Required";
+    } else if (value.governorate === "-Select") {
+      errors.governorate = "please Select a Governrate";
+    }
+    // add religon
+    if (!value.religon) {
+      errors.governorate = "Religon Is Required";
+    } else if (value.religon === "-Select") {
+      errors.religon = "please Select a religon";
     }
     if (!value.nationality) {
       errors.nationality = "Nationality Is Required";
+    }else if (value.nationality === "-Select") {
+      errors.nationality = "please Select a Nationality";
     }
     if (!value.email) {
       errors.email = "Email Is Required";
@@ -142,6 +170,13 @@ function SignUp() {
             <input type="text" id={styles.name} name="username" className={styles.signupbtn}
               onChange={handelChange}></input>
             <p className={styles.errorMessage}>{formError.username}</p>
+          </div>
+          {/* add mom name section */}
+          <div>
+            <label for="momname">Enter  your  full Mother  Name</label>
+            <input type="text" id={styles.momname} name="momname" className={styles.signupbtn}
+              onChange={handelChange}></input>
+            <p className={styles.errorMessage}>{formError.momname}</p>
           </div>
           <div>
             <label for="Email">Enter  your  Email</label>
@@ -181,30 +216,33 @@ function SignUp() {
           </div>
           <div>
             <label for="phone">Enter  your  phone</label>
-            <input type="text" maxLength={11} pattern="[0-9]*" id={styles.phone} name="phone" className={styles.signupbtn}
+            <input type="text" maxLength={11} pattern="[0-9]*"
+              id={styles.phone} name="phone" className={styles.signupbtn}
               onChange={handelChange}
-              onClick={(event) => {
-                if (!/[0-9]/.test(event.key)) {
-                  event.preventDefault();
-                }
-              }}
-            ></input>
+              onKeyPress={EnterNumberOnly}
+           placeholder="Enter Numbers only" ></input>
             <p className={styles.errorMessage}>{formError.phone}</p>
           </div>
           <div>
             <label for="id">Enter  your  ID</label>
             <input type="text" id={styles.id} pattern="[0-9]*" name="idnumber" maxLength={14} className={styles.signupbtn}
               onChange={handelChange}
-              onClick={(event) => {
-                if (!/[0-9]/.test(event.key)) {
-                  event.preventDefault();
-                }
-              }}></input>
+              onKeyPress={EnterNumberOnly}
+              placeholder="Enter Numbers only"></input>
             <p className={styles.errorMessage}> {formError.idnumber}</p>
+          </div>
+          {/* Add Factory number Section */}
+          <div>
+            <label for="fn">Enter  your  Factory number</label>
+            <input type="text" id={styles.fn} pattern="[A-Z][A-Z][0-9]*" name="fnnumber" maxLength={9} className={styles.signupbtn}
+              onChange={handelChange}
+              placeholder="Enter Numbers only"></input>
+            <p className={styles.errorMessage}> {formError.fnnumber}</p>
           </div>
           <div>
             <label for="nationality">Enter  your  Nationality</label>
             <select id={styles.nationality} name="nationality" onChange={handelChange}>
+              <option>-Select</option>
               <option>Egypt</option>
               <option>Algeria</option>
               <option>Suria</option>
@@ -218,6 +256,7 @@ function SignUp() {
           <div>
             <label for="governorate">Enter  your  Governorate</label>
             <select id={styles.governorate} name="governorate" onChange={handelChange}>
+              <option>-Select</option>
               <option>Buhaira</option>
               <option>Cairo</option>
               <option>Alexandria</option>
@@ -225,6 +264,16 @@ function SignUp() {
               <option>Monofia</option>
             </select>
             <p className={styles.errorMessage}>{formError.governorate}</p>
+          </div>
+          {/* add religion */}
+          <div>
+            <label for="religon">Enter  your  Religon</label>
+            <select id={styles.governorate} name="religon" onChange={handelChange}>
+              <option>-Select</option>
+              <option>Muslim</option>
+              <option>Christian</option>
+            </select>
+            <p className={styles.errorMessage}>{formError.religon}</p>
           </div>
           <div>
             <input type="submit" value="Sign Up"></input>
