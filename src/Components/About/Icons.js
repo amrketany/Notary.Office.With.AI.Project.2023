@@ -1,5 +1,5 @@
 import { Component as comp } from 'react';
-import './Icon.css';
+import './Icons.css';
 import './css/all.min.css';
 
 class Icon extends comp {

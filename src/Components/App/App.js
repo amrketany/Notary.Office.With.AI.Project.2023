@@ -1,8 +1,8 @@
-import styles  from './App.module.css';
-import React    from "react";
+import styles from './App.module.css';
+import React from "react";
 import Nav from '../../Components/Nav/Nav';
 import SignIn from '../../Components/SignIn/SignIn';
-import Home from "../../Components/Home/Home";
+import Home from "../Home/Home";
 import SignUp from '../SignUp/SignUp';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from '../Footer/Footer';
@@ -13,24 +13,24 @@ import RentalMachine from "../Services/Machine/RentalMachine";
 import BuySellBuilding from "../Services/Building/BuySellBuilding";
 import RentalBuilding from "../Services/Building/RentalBuilding";
 
-const App = () => { 
-  return (    
+const App = () => {
+  return (
     <BrowserRouter>
-    <div  className={styles.container}>
-        <Nav />  
+      <div className={styles.container}>
+        <Nav />
         <Routes>
-        <Route  exact path="/" element={ <Home/>} />
-        <Route  exact path="/signIn" element={ <SignIn/>} />
-        <Route  exact path="/signUp" element={ <SignUp/>} />
-        <Route  exact path="/about" element={ <About/>} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/signIn" element={<SignIn />} />
+          <Route exact path="/signUp" element={<SignUp />} />
+          <Route exact path="/about" element={<About />} />
           <Route exact path="/services" element={<Services />} />
-          <Route exact path="/buysellmachine" element={ <BuySellMachine/>} />
+          <Route exact path="/buysellmachine" element={<BuySellMachine />} />
           <Route exact path="/rentalmachine" element={<RentalMachine />} />
           <Route exact path="/buysellbuilding" element={<BuySellBuilding />} />
           <Route exact path="/rentalbuilding" element={<RentalBuilding />} />
-          
+
         </Routes>
-        <Footer/>
+        <Footer />
       </div>
     </BrowserRouter>
   )

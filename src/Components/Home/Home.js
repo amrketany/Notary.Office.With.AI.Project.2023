@@ -1,5 +1,7 @@
 import React from 'react';
 import image from './images/notary-public1.jpg';
+import './Home.css';
+
 class Data extends React.Component {
     render() {
         return (
