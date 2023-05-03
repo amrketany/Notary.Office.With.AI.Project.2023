@@ -40,7 +40,7 @@ function SignUp() {
 
   //Start Validation and onSubmit Method
   const initialValues = {
-    username: "", email: "", password: "", repassword: "", address: "", job: "", phone: "", idnumber: "",fnnumber: "", nationality: "",
+    name: "", momName:"", email: "", password: "", repassword: "", address: "", job: "", phone: "", id: "",factoryNum: "", nationality: "",
     governorate: ""
   };
 
@@ -69,20 +69,20 @@ function SignUp() {
   }
 //Send data to api 
   const handelApiSubmit = () => {
-    fetch("http://localhost:8000/customerSignUp", {
+    fetch("http://www.notaryoffice2023.somee.com/api/Visitors", {
           method: "POST",
           headers: {
             "content-type": "application/json",
           },
-          body: JSON.stringify({
-            username: formValues.username,
-            momname: formValues.momname,
+      body: JSON.stringify({
+            id: formValues.id,
+            name: formValues.name,
+            momName: formValues.momName,
             email: formValues.email,
             password: formValues.password,
             address: formValues.address,
             phone: formValues.phone,
-            idnumber: formValues.idnumber,
-            fnnumber: formValues.fnnumber,
+            factoryNum: formValues.factoryNum,
             nationality: formValues.nationality,
             religon: formValues.religon,
             governorate: formValues.governorate
@@ -98,11 +98,11 @@ function SignUp() {
   const validate = (value) => {
     const errors = {};
     const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-    if (!value.username) {
-      errors.username = "UserName Is Required";
+    if (!value.name) {
+      errors.name = "UserName Is Required";
     }
-    if (!value.momname) {
-      errors.momname = "Mother Name Is Required";
+    if (!value.momName) {
+      errors.momName = "Mother Name Is Required";
     }
     if (!value.phone) {
       errors.phone = "Phone Is Required";
@@ -112,15 +112,15 @@ function SignUp() {
     if (!value.job) {
       errors.job = "Job Is Required";
     }
-    if (!value.idnumber) {
-      errors.idnumber = "Id Number Is Required";
-    } else if (value.idnumber.length > 14 || value.idnumber.length < 14) {
-      errors.idnumber = "Id Number Must Be 14 Numbers";      
+    if (!value.id) {
+      errors.id = "Id Number Is Required";
+    } else if (value.id.length > 14 || value.id.length < 14) {
+      errors.id = "Id Number Must Be 14 Numbers";      
     }
-    if (!value.fnnumber) {
-      errors.fnnumber = "Factory Number Is Required";
-    } else if (value.fnnumber.length < 9) {
-      errors.fnnumber = "Factory Number Must Be 9 Numbers";      
+    if (!value.factoryNum) {
+      errors.factoryNum = "Factory Number Is Required";
+    } else if (value.factoryNum.length < 9) {
+      errors.factoryNum = "Factory Number Must Be 9 Numbers";      
     }
     if (!value.address) {
       errors.address = "Addrees Is Required";
@@ -167,16 +167,16 @@ function SignUp() {
         <form onSubmit={handelSubmit}>
           <div>
             <label for="name">Enter  your  full  Name</label>
-            <input type="text" id={styles.name} name="username" className={styles.signupbtn}
+            <input type="text" id={styles.name} name="name" className={styles.signupbtn}
               onChange={handelChange}></input>
-            <p className={styles.errorMessage}>{formError.username}</p>
+            <p className={styles.errorMessage}>{formError.name}</p>
           </div>
           {/* add mom name section */}
           <div>
-            <label for="momname">Enter  your  full Mother  Name</label>
-            <input type="text" id={styles.momname} name="momname" className={styles.signupbtn}
+            <label for="momName">Enter  your  full Mother  Name</label>
+            <input type="text" id={styles.momName} name="momName" className={styles.signupbtn}
               onChange={handelChange}></input>
-            <p className={styles.errorMessage}>{formError.momname}</p>
+            <p className={styles.errorMessage}>{formError.momName}</p>
           </div>
           <div>
             <label for="Email">Enter  your  Email</label>
@@ -225,16 +225,16 @@ function SignUp() {
           </div>
           <div>
             <label for="id">Enter  your  ID</label>
-            <input type="text" id={styles.id} pattern="[0-9]*" name="idnumber" maxLength={14} className={styles.signupbtn}
+            <input type="text" id={styles.id} pattern="[0-9]*" name="id" maxLength={14} className={styles.signupbtn}
               onChange={handelChange}
               onKeyPress={EnterNumberOnly}
               placeholder="Enter Numbers only"></input>
-            <p className={styles.errorMessage}> {formError.idnumber}</p>
+            <p className={styles.errorMessage}> {formError.id}</p>
           </div>
           {/* Add Factory number Section */}
           <div>
             <label for="fn">Enter  your  Factory number</label>
-            <input type="text" id={styles.fn} pattern="[A-Z][A-Z][0-9]*" name="fnnumber" maxLength={9} className={styles.signupbtn}
+            <input type="text" id={styles.fn} pattern="[A-Z][A-Z][0-9]*" name="factoryNum" maxLength={9} className={styles.signupbtn}
               onChange={handelChange}
               placeholder="Enter Numbers only"></input>
             <p className={styles.errorMessage}> {formError.fnnumber}</p>
