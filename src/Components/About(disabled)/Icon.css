@@ -1,0 +1,47 @@
+.cont2 {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: nowrap;
+    padding: 15px 60px;
+
+    text-align: center;
+    background-color: rgb(236, 236, 236);
+}
+
+.cont2>i {
+    font-size: 40px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all ease 0.5s;
+}
+
+.cont2>i:hover {
+    margin-top: 12px;
+    text-shadow: 2px 2px 2px rgb(128, 128, 128);
+
+}
+
+.cont2>i:nth-of-type(1) {
+    color: rgb(19, 19, 163);
+}
+
+.cont2>i:nth-of-type(2) {
+    color: rgb(214, 170, 25);
+}
+
+.cont2>i:nth-of-type(3) {
+    color: rgb(212, 7, 7);
+
+}
+
+.cont2>i:nth-of-type(4) {
+    color: rgb(15, 139, 255);
+}
+
+.cont2>i:nth-of-type(5) {
+    color: rgb(226, 6, 6);
+}
+
+.cont2>i:nth-of-type(6) {
+    color: rgb(3, 59, 179);
+}
