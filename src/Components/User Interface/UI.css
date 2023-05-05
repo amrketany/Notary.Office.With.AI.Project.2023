@@ -5,7 +5,16 @@ html {
 
 h2 {
     font-weight: bolder;
-    color: #898dbf;
+    color: #000;
+}
+
+a {
+    text-decoration: none;
+}
+
+.UI-container {
+    display: flex;
+    justify-content: flex-start;
 }
 
 form {
@@ -18,7 +27,7 @@ form * {
 
 form label {
     font-size: 18px;
-    color: #8f9096;
+    color: #000;
 }
 
 form .form-control,
@@ -26,11 +35,13 @@ form .form-control:focus {
     border-color: transparent;
     border-bottom-color: #bebcc1;
     box-shadow: none;
+
 }
 
 form .btn {
     border-radius: 0px;
     border-color: transparent;
+    margin: 30px 15px;
 }
 
 .btn.btn-default {
@@ -39,41 +50,81 @@ form .btn {
 }
 
 .btn.btn-primary {
-    background: #6c63ff;
+    background: #000000;
     color: white;
 }
 
-.sidebar {
-    height: 100vh !important;
-    bottom: 0;
-    padding-left: 20px;
-    font-size: 1.3rem;
-    background: #6c63ff;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
+
+.UI-container {
+    width: 100%;
 }
+
+.UI-container .menu {
+    height: 100vh;
+    width: 30%;
+    font-size: 1.3rem;
+    background: #ECECEC;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 20px 30px;
+    margin-right: 70px;
+
+
+}
+
+.UI-container .content {
+    width: 70%;
+}
+
+.UI-container .menu .nav-link {
+    margin-bottom: 20px;
+    font-size: 22px;
+    color: #000;
+    font-weight: 600;
+    text-align: left;
+    width: 180px;
+
+}
+
+.UI-container .menu .nav-link.active {
+    font-weight: 900;
+    color: #FFF;
+    border: 0px solid #2C4755;
+    border-width: 4px 0;
+    padding: 5px;
+    color: #2C4755;
+}
+
+
+
+.UI-container .menu .nav-link>i {
+    margin-right: 10px;
+    color: #000;
+}
+
 
 @media screen and (max-width:940px) {
-    .sidebar {
+    .UI-container .menu {
         font-size: 1rem;
-        padding-left: 0px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-right: 20px;
     }
-}
 
+    .UI-container .menu .nav-link {
+        display: flex;
+        align-items: center;
+        margin-bottom: 20px;
+        text-align: left;
+        font-size: 16px;
+    }
 
-.sidebar .nav-link {
-    margin-bottom: 20px;
-    color: #dddce5;
-}
-
-
-.nav-link.active {
-    color: #fff;
-}
-
-.main>.row {
-    height: 100%;
+    .UI-container .menu .nav-link>i {
+        font-size: 16px !important;
+    }
 }
 
 @media screen and (max-width:768px) {
@@ -89,112 +140,40 @@ form .btn {
         margin: auto;
     }
 
+    .UI-container .menu {
+        flex-direction: column;
+
+    }
+
 }
 
-.menu {
-    position: absolute;
-    right: 10%;
-    top: 30px;
-    margin: auto;
-    display: none;
-    cursor: pointer;
-    z-index: 5;
-    height: 33px;
-    width: 30px;
+@media (max-width:580px) {
+    .UI-container {
+        flex-direction: column;
+    }
+
+    .UI-container .menu {
+        width: 100%;
+        height: auto;
+        margin: 0;
+
+    }
+
+    .UI-container .content {
+        padding: 25px;
+    }
+
+
 }
 
-.bar,
-.bar:after,
-.bar:before {
-    width: 30px;
-    height: 3px;
-    background: rgb(236, 236, 236);
-    transition: all 0.2s;
-}
-
-.bar {
-    position: relative;
-}
-
-.bar:after {
-    position: absolute;
-    content: '';
-    left: 0;
-    top: 10px;
-    transition: top 0.2s 0.2s, transform 0.2s;
-}
-
-.bar:before {
-    position: absolute;
-    content: '';
-    left: 0;
-    bottom: 10px;
-    transition: bottom 0.2s 0.2s, transform 0.2s;
-}
-
-.bar.animate {
-    background: transparent;
-}
-
-.bar.animate:after {
-    top: 0;
-    transform: rotate(45deg);
-    transition: top 0.2s, transform 0.2s 0.2s;
-    background: #fff;
-}
-
-.bar.animate:before {
-    bottom: 0;
-    transform: rotate(-45deg);
-    transition: bottom 0.2s, transform 0.2s 0.2s;
-    background: #fff;
-}
-
-.expand-menu {
-    position: absolute;
-    z-index: 1;
-    height: 100%;
-    width: 100%;
-    background: rgb(236, 236, 236);
-    ;
-    transition: width 0.5s;
-    width: 0%;
-}
-
-.expand-menu .nav-link {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 20px;
-    color: #dddce5;
-    font-size: 1.5rem;
-    display: none;
-    opacity: 0;
-    transition: all 0.5s;
-}
-
-.expand-menu .nav-link.animate {
-    display: block;
-}
-
-.expand-menu .nav-link.animate-show {
-    opacity: 1;
-}
-
-.expand-menu .nav-link.active {
-    color: #fff;
-}
-
-.expand-menu.animate {
-    width: 100%;
-}
-
-.profile-tab,
-.contracts-tab {
+.profile-content,
+.contracts-content {
     display: none;
 }
 
 .contracts .contract {
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
     background-color: rgb(236, 236, 236);
@@ -203,6 +182,7 @@ form .btn {
     font-size: 20px;
     font-weight: 600;
     text-transform: capitalize;
+    padding: 10px;
 }
 
 
