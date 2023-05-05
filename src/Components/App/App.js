@@ -12,6 +12,7 @@ import BuySellMachine from "../Services/Machine/BuySellMachine";
 import RentalMachine from "../Services/Machine/RentalMachine";
 import BuySellBuilding from "../Services/Building/BuySellBuilding";
 import RentalBuilding from "../Services/Building/RentalBuilding";
+import UI from "../User Interface/UI";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route exact path="/signUp" element={<SignUp />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/services" element={<Services />} />
+          <Route exact path="/User-Settings" element={<UI />} />
           <Route exact path="/buysellmachine" element={<BuySellMachine />} />
           <Route exact path="/rentalmachine" element={<RentalMachine />} />
           <Route exact path="/buysellbuilding" element={<BuySellBuilding />} />
