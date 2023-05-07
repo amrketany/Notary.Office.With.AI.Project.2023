@@ -3,57 +3,10 @@ html {
     height: 100%;
 }
 
-h2 {
-    font-weight: bolder;
-    color: #000;
-}
-
-a {
-    text-decoration: none;
-}
-
 .UI-container {
     display: flex;
     justify-content: flex-start;
 }
-
-form {
-    width: 550px;
-}
-
-form * {
-    font-weight: bold;
-}
-
-form label {
-    font-size: 18px;
-    color: #000;
-}
-
-form .form-control,
-form .form-control:focus {
-    border-color: transparent;
-    border-bottom-color: #bebcc1;
-    box-shadow: none;
-
-}
-
-form .btn {
-    border-radius: 0px;
-    border-color: transparent;
-    margin: 30px 15px;
-}
-
-.btn.btn-default {
-    background: #ebebeb;
-    color: #8f9096;
-}
-
-.btn.btn-primary {
-    background: #000000;
-    color: white;
-}
-
 
 .UI-container {
     width: 100%;
@@ -135,10 +88,6 @@ form .btn {
         padding-bottom: 50px;
     }
 
-    form {
-        width: 100%;
-        margin: auto;
-    }
 
     .UI-container .menu {
         flex-direction: column;
@@ -186,28 +135,8 @@ form .btn {
 }
 
 
-img {
+.UI-container img {
     width: 45px;
     height: 60px;
     margin: 10px 20px;
-}
-
-/* specila class*/
-
-.special-height {
-    height: 100vh;
-}
-
-.special-padding {
-    padding-left: 0px;
-
-}
-
-.special3 {
-    color: #8f9096;
-    font-weight: 600;
-}
-
-.show {
-    display: block;
 }
