@@ -31,15 +31,15 @@ const ServiceStrucure = () => {
             },
             body: JSON.stringify({
                 formData
-            })
-
-            // it is another way may be true 
-            // body:  formData
-        }).then((response) => response.json())
+            })}).then((response) => response.json())
             .then((data) => {
                 console.log(data);
             })
     }
+//.............................
+// it is another way may be true 
+// body:  formData
+//...........................
 
 //  //Validate-Function
 //     const validate = (value) => {
