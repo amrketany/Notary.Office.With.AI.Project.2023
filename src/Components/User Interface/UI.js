@@ -3,10 +3,11 @@ import './UI.css';
 import cp from './cp.png';
 
 
-
-
-
 class UI extends React.Component {
+    state = {
+        userData: null,
+        fakeData: "abcdef",
+    }
     componentDidMount() {
         let profileTab = document.getElementsByClassName("profile-content")[0];
         let contractsTab = document.getElementsByClassName("contracts-content")[0];
@@ -29,19 +30,37 @@ class UI extends React.Component {
             contractsTab.classList.add("show");
         }
 
-        console.log("on");
+
+
+    }
+    componentDidUpdate() { console.log("Updated"); }
+
+    requestData() {
+        let request = new XMLHttpRequest();
+        request.open("GET", 'http://www.notaryoffice2023.somee.com/api/visitors');
+        request.send();
+        // console.log(request);
+        request.onreadystatechange = () => {
+            if (request.status === 200) {
+                let userData = JSON.parse(request.responseText)[0];
+                this.setState = {
+                    userData: userData,
+                }
+            }
+        };
+
     }
     render() {
+
         return (
 
             <div className='UI-container'>
-
                 <div className='menu'>
-                    <a className='nav-link active' href='#'>
+                    <a className='nav-link active' href='#profile-tab'>
                         <i className="fa-solid fa-circle-user"></i>
                         Profile
                     </a>
-                    <a className='nav-link' href='#'>
+                    <a className='nav-link' href='#contracts-tab'>
                         <i className="fa-solid fa-circle-check"></i>
                         Validated Contracts
                     </a>
@@ -54,10 +73,10 @@ class UI extends React.Component {
 
 
                             <label htmlFor="firstName">First Name</label>
-                            <input type="text" className="form-control" id="firstName" />
+                            <input type="text" className="form-control" id="firstName" value={this.state.fakeData} />
 
                             <label htmlFor="secondName">Second Name</label>
-                            <input type="text" className="form-control" id="secondName" />
+                            <input type="text" className="form-control" id="secondName" value={this.state.userData.email} />
 
                             <label htmlFor="motherName">Mother Name</label>
                             <input type="text" className="form-control" id="motherName" />

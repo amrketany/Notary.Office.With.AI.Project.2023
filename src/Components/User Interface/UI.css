@@ -38,16 +38,35 @@ html {
     font-weight: 600;
     text-align: left;
     width: 180px;
+    position: relative;
 
+}
+
+.UI-container .menu .nav-link::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 4px;
+    height: 0%;
+    top: 50%;
+    left: -8px;
+    background-color: #2C4755;
+    transition-property: height, top;
+    transition-timing-function: ease;
+    transition-duration: 0.35s;
 }
 
 .UI-container .menu .nav-link.active {
     font-weight: 900;
     color: #FFF;
-    border: 0px solid #2C4755;
-    border-width: 4px 0;
     padding: 5px;
     color: #2C4755;
+}
+
+.UI-container .menu .nav-link.active::before {
+    top: 0;
+    height: 100%;
+
 }
 
 
@@ -120,6 +139,54 @@ html {
     display: none;
 }
 
+
+
+.UI-container form {
+    width: 550px;
+}
+
+.UI-container form * {
+    font-weight: bold;
+}
+
+.UI-container form label {
+    font-size: 18px;
+    color: #000;
+}
+
+.UI-container form .form-control,
+.UI-container form .form-control:focus {
+    border-color: transparent;
+    border-bottom-color: #bebcc1;
+    box-shadow: none;
+
+}
+
+.UI-container form .btn {
+    border-radius: 0px;
+    border-color: transparent;
+    margin: 30px 15px;
+}
+
+.UI-container .btn.btn-default {
+    background: #ebebeb;
+    color: #8f9096;
+}
+
+.UI-container .btn.btn-primary {
+    background: #000000;
+    color: white;
+}
+
+
+.UI-container form {
+    width: 100%;
+    margin: auto;
+}
+
+
+
+
 .contracts .contract {
     display: flex;
     flex-wrap: wrap;
@@ -139,4 +206,8 @@ html {
     width: 45px;
     height: 60px;
     margin: 10px 20px;
+}
+
+.UI-container .show {
+    display: block;
 }
