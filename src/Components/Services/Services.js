@@ -71,11 +71,7 @@ const Services = () => {
                </div>
             </div>
          </div>
-<<<<<<< HEAD
          {/* //End Slider */}
-=======
-{/* //End Slider */}
->>>>>>> 5fe9837af1b2633094f20c44d7820e12fe13769c
 
 
          <div className={styles.Service}>
@@ -95,11 +91,7 @@ const Services = () => {
             </div>
          </div>
       </div>
-<<<<<<< HEAD
 
-=======
-            
->>>>>>> 5fe9837af1b2633094f20c44d7820e12fe13769c
    )
 }
 export default Services;

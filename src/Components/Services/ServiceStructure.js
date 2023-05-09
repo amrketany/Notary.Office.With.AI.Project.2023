@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-// import React, { useState } from "react";
-=======
 import React, { useState } from "react";
->>>>>>> 5fe9837af1b2633094f20c44d7820e12fe13769c
 import styles from "./ServiceStyle.module.css";
 
 
@@ -22,11 +18,7 @@ const ServiceStrucure = () => {
     //handel file change function
     function handelFileChange(e) {
         console.log(e.target.files[0])
-<<<<<<< HEAD
         if (e.target && e.target.files[0]) {
-=======
-        if (e.target && e.target.files[0]){
->>>>>>> 5fe9837af1b2633094f20c44d7820e12fe13769c
             formData.append('file', e.target.files[0]);
         }
     }
@@ -39,45 +31,14 @@ const ServiceStrucure = () => {
             },
             body: JSON.stringify({
                 formData
-<<<<<<< HEAD
             })
-
-
         }).then((response) => response.json())
-=======
-            })}).then((response) => response.json())
->>>>>>> 5fe9837af1b2633094f20c44d7820e12fe13769c
             .then((data) => {
                 console.log(data);
             })
     }
-<<<<<<< HEAD
 
-    //  //Validate-Function
-    //     const validate = (value) => {
-    //         const errors = {};
-    //         if (!value.file) {
-    //             errors.file = "File  Is Required";
-    //         }
-    //     }
-    //   //End-of-validation
-=======
-//.............................
-// it is another way may be true 
-// body:  formData
-//...........................
 
-//  //Validate-Function
-//     const validate = (value) => {
-//         const errors = {};
-//         if (!value.file) {
-//             errors.file = "File  Is Required";
-//         }
-//     }
-//   //End-of-validation
->>>>>>> 5fe9837af1b2633094f20c44d7820e12fe13769c
-
-    //Links
     const link = "https://rern.gov.eg/pages/requests/2";
     return (
         <div>
@@ -95,17 +56,13 @@ const ServiceStrucure = () => {
                     <FontAwesomeIcon icon={faCircleArrowDown} className={styles.icon} />
                     {/* Start upload your file */}
                     <div className={styles.input_group}>
-<<<<<<< HEAD
                         <input type="file" className={styles.form_control} placeholder="Choose File" name="file" onChange={handelFileChange} />
-=======
-                        <input type="file" className={styles.form_control} placeholder="Choose File" name="file" onChange={handelFileChange}/>
->>>>>>> 5fe9837af1b2633094f20c44d7820e12fe13769c
                         <button className={styles.uploadbtn} onClick={handelApiOnSubmit}>Submit</button>
-                    </div>
-                    
-                </div>
-            </div>
-        </div>
+                    </div >
+
+                </div >
+            </div >
+        </div >
     )
 }
 
