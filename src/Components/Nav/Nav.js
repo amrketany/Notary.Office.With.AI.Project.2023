@@ -24,11 +24,13 @@ const Nav = () => {
             <span></span>
           </span>
           <ul>
-            <li><a href="/home">Home</a></li>
-            <li><a href="/signIn">Sign in</a></li>
-            <li><a href="/signUp">Sign up</a></li>
-            <li><a href="/about">About</a></li>
-            <li><a href="/services">Services</a></li>
+            <li><NavLink to="/" target="_self">Home</NavLink></li>
+            <li><NavLink to="/signIn" target="_self">Sign in</NavLink></li>
+            <li><NavLink to="/signUp" target="_self">Sign up</NavLink></li>
+            <li><NavLink to="/about" target="_self">About</NavLink></li>
+            <li><NavLink to="/services" target="_self">Services</NavLink></li>
+            <li><NavLink to="/User-Settings" target="_self">User Settings</NavLink></li>
+            
           </ul>
         </div>
       </div>
