@@ -11,9 +11,10 @@ const Nav = () => {
           <div className={styles.nav}>
             <NavLink to="/" target="_self" className={styles.active}>Home</NavLink>
             <NavLink to="/about" target="_self">About</NavLink>
+            <NavLink to="/services" target="_self">Documentation</NavLink>
+            <NavLink to="/NewDocumentation" target="_self">NewDocumentation</NavLink>
             <NavLink to="/signIn" target="_self">Sign in</NavLink>
             <NavLink to="/signUp" target="_self">Sign up</NavLink>
-            <NavLink to="/services" target="_self">Services</NavLink>
             <NavLink to="/User-Settings" ta rget="_self">User Settings</NavLink>
           </div>
         </div>
@@ -25,10 +26,11 @@ const Nav = () => {
           </span>
           <ul>
             <li><NavLink to="/" target="_self">Home</NavLink></li>
+            <li><NavLink to="/about" target="_self">About</NavLink></li>
+            <li><NavLink to="/services" target="_self">Documentation</NavLink></li>
+            <li><NavLink to="/NewDocumentation" target="_self">NewDocumentation</NavLink></li>
             <li><NavLink to="/signIn" target="_self">Sign in</NavLink></li>
             <li><NavLink to="/signUp" target="_self">Sign up</NavLink></li>
-            <li><NavLink to="/about" target="_self">About</NavLink></li>
-            <li><NavLink to="/services" target="_self">Services</NavLink></li>
             <li><NavLink to="/User-Settings" target="_self">User Settings</NavLink></li>
             
           </ul>
