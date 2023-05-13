@@ -8,6 +8,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Footer from '../Footer/Footer';
 import About from '../About/About';
 import Services from '../Services/Services';
+import NewDocumentation from '../NewDocumentation/NewDocumentation';
 import BuySellMachine from "../Services/Machine/BuySellMachine";
 import RentalMachine from "../Services/Machine/RentalMachine";
 import BuySellBuilding from "../Services/Building/BuySellBuilding";
@@ -25,6 +26,7 @@ const App = () => {
           <Route exact path="/signUp" element={<SignUp />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/services" element={<Services />} />
+          <Route exact path="/NewDocumentation" element={<NewDocumentation />} />
           <Route exact path="/User-Settings" element={<UI />} />
           <Route exact path="/buysellmachine" element={<BuySellMachine />} />
           <Route exact path="/rentalmachine" element={<RentalMachine />} />
