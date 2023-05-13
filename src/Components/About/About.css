@@ -1,12 +1,19 @@
-.cont {
+.about-container ::selection {
+    background-color: #2C4755;
+    color: #FFF;
+}
+
+
+.about-container {
     display: flex;
     justify-content: space-between;
     background-color: rgb(236, 236, 236);
     padding: 15px;
     height: auto;
+    overflow: hidden;
 }
 
-.cont>img {
+.about-container>img {
     height: 60vh;
     border-radius: 15px;
     margin-top: 90px;
@@ -16,7 +23,7 @@
     z-index: 1;
 }
 
-.cont>.text {
+.about-container>.text {
     flex-basis: 40%;
     padding: 20px;
     margin-top: 35px;
@@ -27,14 +34,14 @@
 
 }
 
-.cont .text h1 {
+.about-container .text h1 {
     font-size: 35px;
     font-weight: bold;
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 
 }
 
-.cont .text .moto {
+.about-container .text .moto {
     font-size: 30px;
     margin: 10px 0;
 }

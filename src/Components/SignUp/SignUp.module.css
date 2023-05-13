@@ -1,8 +1,9 @@
-.container {
+.SignUp .container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: #FFF;
 }
 
 .SignUp .container form {
@@ -62,23 +63,23 @@ input[type=submit] {
   background-color: #FF7F50;
 }
 
-.passInput{
+.passInput {
   position: relative;
 }
 
-.showPass{
+.showPass {
   position: absolute;
   right: 0;
   width: 40px;
   height: 40px;
   border: none;
   background-color: #FF7F50;
-  color:#2c4755ed;
+  color: #2c4755ed;
 }
 
-.errorMessage{
+.errorMessage {
   margin: 10px 0;
-  color:#FF7F50;
+  color: #FF7F50;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 50px;
   background-color: #FFEBCD;

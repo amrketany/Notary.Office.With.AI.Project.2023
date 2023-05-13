@@ -6,7 +6,7 @@ class Data extends React.Component {
     render() {
         return (
             <>
-                <div className='cont'>
+                <div className='about-container'>
                     <img alt='' src='https://ilgglobal.com/Uploads/IndividualsServices/05969b944dd64d148b802c61e125facb_Notary-Services.jpeg' />
                     <div className="text">
                         <h1>Our Story</h1>
