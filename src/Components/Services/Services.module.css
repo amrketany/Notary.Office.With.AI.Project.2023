@@ -112,8 +112,23 @@ color: #FFEBCD;
   /* NewDocument */
 .iconNewDocumentation{
   margin-right: 10px;
-  font-size: 30px;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
 }
 .sss{
   display: inline-block;
+}
+
+.iconNewDocumentationbtn{
+  background-color: #FF7F50;
+    /* Green */
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 5px;
 }

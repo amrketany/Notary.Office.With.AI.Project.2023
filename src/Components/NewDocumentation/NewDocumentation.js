@@ -116,44 +116,44 @@ const Services = () => {
       {/* Start-make-top-dowen-list */}
       <div className={styles.mainDocument}>
         <div className={styles.docContent}>
-          <button onClick={() => setstateIcondocContent(!stateIcondocContent)}>
+          <button onClick={() => setstateIcondocContent(!stateIcondocContent)} className={styles.iconNewDocumentationbtn}>
             <FontAwesomeIcon icon={icondocContent} className={styles.iconNewDocumentation} />
           </button>
-          <h2 className={styles.sss}>Documentation</h2>
+          <h2 className={styles.sss}>Click To Choose Your Type Of Documentation</h2>
         </div>
         {stateIcondocContent &&
           <div className={styles.rentalAndbuy}>
             <div className={styles.rental}>
-              <button onClick={() => setstateIconRental(!stateIconRental)}>
+              <button onClick={() => setstateIconRental(!stateIconRental)} className={styles.iconNewDocumentationbtn}>
                 <FontAwesomeIcon icon={iconRental} className={styles.iconNewDocumentation} />
               </button>
-              <h2 className={styles.sss}>Rental</h2>
+              <h2 className={styles.sss}>Documentation for Rental Contract</h2>
             </div>
             {  stateIconRental &&
               <div className={styles.rentalAndbuy}>
                 <div className={styles.build}>
-                  <h2 className={styles.sss}>Building</h2>
+                  <h2 className={styles.sss}>Contract Belongs To Buildings</h2>
                 </div>
                 <div className={styles.veichle}>
 
-                  <h2 className={styles.sss}>Veichle</h2>
+                  <h2 className={styles.sss}>Contract Belongs To Veichles</h2>
                 </div>
               </div>
             }
 
             <div className={styles.buy}>
-              <button onClick={() => setstateIconBuy(!stateIconBuy)}>
+              <button onClick={() => setstateIconBuy(!stateIconBuy)} className={styles.iconNewDocumentationbtn}>
                 <FontAwesomeIcon icon={iconBuy} className={styles.iconNewDocumentation} />
               </button>
-              <h2 className={styles.sss}>Buy</h2>
+              <h2 className={styles.sss}>Documentation for Buy Contract</h2>
             </div>
             { stateIconBuy &&
               <div className={styles.buildAndVichele}>
                 <div className={styles.builed}>
-                  <h2 className={styles.sss}>Buileding</h2>
+                  <h2 className={styles.sss}>Contract Belongs To Builedings</h2>
                 </div>
                 <div className={styles.viechle}>
-                  <h2 className={styles.sss}>Veichle</h2>
+                  <h2 className={styles.sss}>Contract Belongs To Veichles</h2>
                 </div>
               </div>
             }
