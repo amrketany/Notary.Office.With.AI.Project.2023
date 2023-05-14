@@ -60,13 +60,22 @@ html {
 
 body {
     font-family: "Open Sans", sans-serif;
+    background-image: url(../../imags/glassBackground.avif);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
+
 
 ul {
     list-style: none;
 }
 
+a {
+    text-decoration: none;
+}
+
 .container {
+    z-index: 2;
     padding-left: 15px;
     padding-right: 15px;
     margin-left: auto;

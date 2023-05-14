@@ -1,0 +1,86 @@
+.info-container ::selection {
+    background-color: #2C4755;
+    color: #FFF;
+}
+
+
+.info-container .info-form {
+    width: 550px;
+    display: grid;
+    grid-template-columns: 3fr 12fr;
+}
+
+.info-container .info-form * {
+    font-weight: 900;
+}
+
+.info-container .info-form .contract-preview img {
+    width: 120px;
+    height: 90px;
+    border: 1px solid black;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+
+}
+
+.info-container .info-form .contract-preview img:hover {
+    border-width: 2px;
+}
+
+.info-container .info-form label {
+    font-size: 22px;
+    color: #000;
+    border: 1px solid black;
+    border-radius: 10px;
+    background-color: #FFF;
+    height: 45px;
+    text-align: center;
+    margin-right: 5px;
+}
+
+
+.info-container .info-form .form-control {
+    height: 45px;
+    background-color: #FFF;
+
+}
+
+.info-container .info-form .form-control,
+.info-container .info-form .form-control:focus {
+    border-color: transparent;
+    border-bottom-color: #bebcc1;
+    box-shadow: none;
+    border: 1px solid black;
+
+}
+
+.info-container .info-form input.form-control {
+    margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 600;
+    color: rgb(5, 112, 5);
+    letter-spacing: 3px;
+}
+
+.info-container .info-form .btn {
+    border-radius: 0px;
+    border-color: transparent;
+    margin: 30px 15px;
+}
+
+.info-container .info-form .btn.btn-default {
+    background: #ebebeb;
+    color: #8f9096;
+}
+
+.info-container .info-form .btn.btn-primary {
+    background: #000000;
+    color: white;
+}
+
+
+.info-container .info-form {
+    width: 100%;
+    margin: auto;
+}

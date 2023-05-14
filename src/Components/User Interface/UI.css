@@ -1,15 +1,23 @@
-body,
-html {
-    height: 100%;
+.UI-container a {
+    text-decoration: none;
+    color: initial;
+}
+
+
+.UI-container ::selection {
+    background-color: #2C4755;
+    color: #FFF;
 }
 
 .UI-container {
     display: flex;
     justify-content: flex-start;
+
 }
 
 .UI-container {
     width: 100%;
+    background-color: #FFF;
 }
 
 .UI-container .menu {
@@ -29,6 +37,7 @@ html {
 
 .UI-container .content {
     width: 70%;
+    padding: 30px 30px 30px 0;
 }
 
 .UI-container .menu .nav-link {
@@ -146,7 +155,7 @@ html {
 }
 
 .UI-container form * {
-    font-weight: bold;
+    font-weight: 900;
 }
 
 .UI-container form label {
@@ -160,6 +169,14 @@ html {
     border-bottom-color: #bebcc1;
     box-shadow: none;
 
+}
+
+.UI-container form input.form-control {
+    margin-bottom: 15px;
+    font-size: 21px;
+    font-weight: 600;
+    color: rgb(5, 112, 5);
+    letter-spacing: 3px;
 }
 
 .UI-container form .btn {
