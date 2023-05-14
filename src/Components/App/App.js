@@ -14,6 +14,7 @@ import RentalMachine from "../Services/Machine/RentalMachine";
 import BuySellBuilding from "../Services/Building/BuySellBuilding";
 import RentalBuilding from "../Services/Building/RentalBuilding";
 import UI from "../User Interface/UI";
+import ContractInfo from '../User Interface/ContractInfo';
 
 const App = () => {
   return (
@@ -27,11 +28,13 @@ const App = () => {
           <Route exact path="/about" element={<About />} />
           <Route exact path="/services" element={<Services />} />
           <Route exact path="/NewDocumentation" element={<NewDocumentation />} />
-          <Route exact path="/User-Settings" element={<UI />} />
+          <Route exact path="/User-Settings/*" element={<UI />} />
           <Route exact path="/buysellmachine" element={<BuySellMachine />} />
           <Route exact path="/rentalmachine" element={<RentalMachine />} />
           <Route exact path="/buysellbuilding" element={<BuySellBuilding />} />
           <Route exact path="/rentalbuilding" element={<RentalBuilding />} />
+          <Route exact path="/contract-info" element={<ContractInfo />} />
+
 
         </Routes>
         <Footer />

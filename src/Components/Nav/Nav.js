@@ -32,7 +32,7 @@ const Nav = () => {
             <li><NavLink to="/signIn" target="_self">Sign in</NavLink></li>
             <li><NavLink to="/signUp" target="_self">Sign up</NavLink></li>
             <li><NavLink to="/User-Settings" target="_self">User Settings</NavLink></li>
-            
+
           </ul>
         </div>
       </div>

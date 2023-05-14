@@ -1,6 +1,8 @@
 import React from 'react';
 import './UI.css';
-import cp from './cp.png';
+import cp from "./cp.png";
+
+
 
 
 class UI extends React.Component {
@@ -30,12 +32,6 @@ class UI extends React.Component {
             contractsTab.classList.add("show");
         }
 
-
-
-    }
-    componentDidUpdate() { console.log("Updated"); }
-
-    requestData() {
 
 
     }
@@ -90,7 +86,7 @@ class UI extends React.Component {
 
             <div className='UI-container'>
                 <div className='menu'>
-                    <a className='nav-link active' href='#profile-tab'>
+                    <a className='nav-link active' href='#profile-tab' >
                         <i className="fa-solid fa-circle-user"></i>
                         Profile
                     </a>
@@ -100,11 +96,8 @@ class UI extends React.Component {
                     </a>
                 </div>
                 <div className='content'>
-
                     <div className='profile-content show '>
                         <form>
-
-
 
                             <label htmlFor="firstName">First Name</label>
                             <input type="text" className="form-control" id="firstName" />
@@ -144,41 +137,53 @@ class UI extends React.Component {
                     </div>
                     <div className='contracts-content '>
                         <ul className='contracts'>
-                            <li className='contract'>
-                                <img src={cp} alt='contract-preview' />
-                                <p className='contract-title'>buy a nissan car</p>
-                            </li>
-                            <li className='contract'>
-                                <img src={cp} alt='contract-preview' />
-                                <p className='contract-title'>buy a nissan car</p>
-                            </li>
-                            <li className='contract'>
-                                <img src={cp} alt='contract-preview' />
-                                <p className='contract-title'>buy a nissan car</p>
-                            </li>
-                            <li className='contract'>
-                                <img src={cp} alt='contract-preview' />
-                                <p className='contract-title'>buy a nissan car</p>
-                            </li>
-                            <li className='contract'>
-                                <img src={cp} alt='contract-preview' />
-                                <p className='contract-title'>buy a nissan car</p>
-                            </li>
-                            <li className='contract'>
-                                <img src={cp} alt='contract-preview' />
-                                <p className='contract-title'>buy a nissan car</p>
-                            </li>
-                            <li className='contract'>
-                                <img src={cp} alt='contract-preview' />
-                                <p className='contract-title'>buy a nissan car</p>
-                            </li>
+                            <a href="/contract-info" target='_blank'>
+                                <li className='contract' data-CID={null}>
+                                    <img src={cp} alt='contract-preview' />
+                                    <p className='contract-title'>buy a nissan car</p>
+                                </li>
+                            </a>
+                            <a href="/contract-info" target='_blank'>
+                                <li className='contract' data-CID={null}>
+                                    <img src={cp} alt='contract-preview' />
+                                    <p className='contract-title'>buy a nissan car</p>
+                                </li>
+                            </a>
+                            <a href="/contract-info" target='_blank'>
+                                <li className='contract' data-CID={null}>
+                                    <img src={cp} alt='contract-preview' />
+                                    <p className='contract-title'>buy a nissan car</p>
+                                </li>
+                            </a>
+                            <a href="/contract-info" target='_blank'>
+                                <li className='contract' data-CID={null}>
+                                    <img src={cp} alt='contract-preview' />
+                                    <p className='contract-title'>buy a nissan car</p>
+                                </li>
+                            </a>
+                            <a href="/contract-info" target='_blank'>
+                                <li className='contract' data-CID={null}>
+                                    <img src={cp} alt='contract-preview' />
+                                    <p className='contract-title'>buy a nissan car</p>
+                                </li>
+                            </a>
+                            <a href="/contract-info" target='_blank'>
+                                <li className='contract' data-CID={null}>
+                                    <img src={cp} alt='contract-preview' />
+                                    <p className='contract-title'>buy a nissan car</p>
+                                </li>
+                            </a>
+                            <a href="/contract-info" target='_blank'>
+                                <li className='contract' data-CID={null}>
+                                    <img src={cp} alt='contract-preview' />
+                                    <p className='contract-title'>buy a nissan car</p>
+                                </li>
+                            </a>
                         </ul>
                     </div>
-
-
                 </div>
 
-            </div>
+            </div >
 
         );
 
