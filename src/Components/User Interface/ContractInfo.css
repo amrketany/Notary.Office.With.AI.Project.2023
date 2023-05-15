@@ -7,7 +7,7 @@
 .info-container .info-form {
     width: 550px;
     display: grid;
-    grid-template-columns: 3fr 12fr;
+    grid-template-columns: 3fr 7fr;
 }
 
 .info-container .info-form * {
@@ -83,4 +83,33 @@
 .info-container .info-form {
     width: 100%;
     margin: auto;
+}
+
+@media (max-width: 750px) {
+    .info-container .info-form {
+        grid-template-columns: 4fr 6fr;
+    }
+}
+
+@media (max-width: 640px) {
+    .info-container .info-form {
+        grid-template-columns: 1fr;
+
+    }
+
+    .info-container .info-form input.form-control,
+    .info-container .info-form .contract-preview {
+        margin: 5px 0 30px 0;
+
+
+    }
+
+    .info-container .info-form input.form-control {
+        font-size: 17px;
+    }
+
+    .info-container .info-form label {
+        width: 50%;
+        min-width: 200px;
+    }
 }

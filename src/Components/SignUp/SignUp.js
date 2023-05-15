@@ -7,25 +7,25 @@ import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function SignUp() {
- //Start Make Password Icons
-  let iconClass0 , iconClass1 ,  inputType0 , inputType1;
+  //Start Make Password Icons
+  let iconClass0, iconClass1, inputType0, inputType1;
   const [statePass, setStatepass] = useState(true);
   const [stateRepass, setStaterepass] = useState(true);
-  
+
   if (statePass === false) {
     iconClass0 = faEye;
     inputType0 = "text";
   } else {
     iconClass0 = faEyeSlash;
-    inputType0="password"
+    inputType0 = "password"
   }
-    
+
   if (stateRepass === false) {
     iconClass1 = faEye;
     inputType1 = "text";
   } else {
     iconClass1 = faEyeSlash;
-    inputType1="password"
+    inputType1 = "password"
   }
   //End Password Icons
   //..............................
@@ -40,61 +40,62 @@ function SignUp() {
 
   //Start Validation and onSubmit Method
   const initialValues = {
-    name: "", momName:"", email: "", password: "", repassword: "", address: "", job: "", phone: "", id: "",factoryNum: "", nationality: "",
+    name: "", momName: "", email: "", password: "", repassword: "", address: "", job: "", phone: "", id: "", factoryNum: "", nationality: "",
     governorate: ""
   };
 
   const [formValues, setFormValues] = useState(initialValues);
   const [formError, setFormError] = useState([]);
   const [isSubmit, setIsSubmit] = useState(false);
-//handle change inputs
+  //handle change inputs
   const handelChange = (e) => {
     const { name, value } = e.target;
-    setFormValues({...formValues, [name] : value});
+    setFormValues({ ...formValues, [name]: value });
     // console.log(formValues);
   }
 
-//Handle Submit Form 
+  //Handle Submit Form 
   const handelSubmit = (e) => {
     e.preventDefault();
     setFormError(validate(formValues));
     setIsSubmit(true);
     //Code to send data to apis only if all values is valid
-    Object.keys(formError).length === 0  && isSubmit?
+    Object.keys(formError).length === 0 && isSubmit ?
       (
+
         handelApiSubmit()
       )
       :
       (console.log(isSubmit))
   }
-//Send data to api 
+  //Send data to api 
   const handelApiSubmit = () => {
     fetch("http://www.notaryoffice2023.somee.com/api/Visitors", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
       body: JSON.stringify({
-            id: formValues.id,
-            name: formValues.name,
-            momName: formValues.momName,
-            email: formValues.email,
-            password: formValues.password,
-            address: formValues.address,
-            phone: formValues.phone,
-            factoryNum: formValues.factoryNum,
-            nationality: formValues.nationality,
-            religon: formValues.religon,
-            governorate: formValues.governorate
-          })
-        }).then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-          })
+        id: formValues.id,
+        name: formValues.name,
+        momName: formValues.momName,
+        email: formValues.email,
+        password: formValues.password,
+        address: formValues.address,
+        phone: formValues.phone,
+        factoryNum: formValues.factoryNum,
+        nationality: formValues.nationality,
+        religon: formValues.religon,
+        governorate: formValues.governorate
+      })
+    }).then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
   }
 
 
-//Start Control Validation
+  //Start Control Validation
   const validate = (value) => {
     const errors = {};
     const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
@@ -107,20 +108,20 @@ function SignUp() {
     if (!value.phone) {
       errors.phone = "Phone Is Required";
     } else if (value.phone.length > 11 || value.phone.length < 11) {
-      errors.phone = "Phone Must be 11 Numbers";      
-    } 
+      errors.phone = "Phone Must be 11 Numbers";
+    }
     if (!value.job) {
       errors.job = "Job Is Required";
     }
     if (!value.id) {
       errors.id = "Id Number Is Required";
     } else if (value.id.length > 14 || value.id.length < 14) {
-      errors.id = "Id Number Must Be 14 Numbers";      
+      errors.id = "Id Number Must Be 14 Numbers";
     }
     if (!value.factoryNum) {
       errors.factoryNum = "Factory Number Is Required";
     } else if (value.factoryNum.length < 9) {
-      errors.factoryNum = "Factory Number Must Be 9 Numbers";      
+      errors.factoryNum = "Factory Number Must Be 9 Numbers";
     }
     if (!value.address) {
       errors.address = "Addrees Is Required";
@@ -138,7 +139,7 @@ function SignUp() {
     }
     if (!value.nationality) {
       errors.nationality = "Nationality Is Required";
-    }else if (value.nationality === "-Select") {
+    } else if (value.nationality === "-Select") {
       errors.nationality = "please Select a Nationality";
     }
     if (!value.email) {
@@ -155,7 +156,7 @@ function SignUp() {
       errors.repassword = "Re Enter Password Is Required";
     } else if (value.repassword.length < 8) {
       errors.repassword = "Password Should Be More Than 8 Digits";
-    }else if (value.repassword!==value.password) {
+    } else if (value.repassword !== value.password) {
       errors.repassword = "Password Don't Match Other Field";
     }
     return errors;
@@ -220,7 +221,7 @@ function SignUp() {
               id={styles.phone} name="phone" className={styles.signupbtn}
               onChange={handelChange}
               onKeyPress={EnterNumberOnly}
-           placeholder="Enter Numbers only" ></input>
+              placeholder="Enter Numbers only" ></input>
             <p className={styles.errorMessage}>{formError.phone}</p>
           </div>
           <div>
