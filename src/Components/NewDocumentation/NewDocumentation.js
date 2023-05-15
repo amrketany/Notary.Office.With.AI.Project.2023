@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./../Services/Services.module.css";
 // import ph0 from "../../imags/ph0.jpg";
 // import ph1 from "../../imags/ph1.jpg";
@@ -10,7 +10,8 @@ import styles from "./../Services/Services.module.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
-
+import { faCircleArrowRight } from '@fortawesome/free-solid-svg-icons';
+const link = "https://rern.gov.eg/pages/requests/2";
 
 
 
@@ -44,7 +45,19 @@ const Services = () => {
    //End Password Icons
   //..............................
 
-
+  // Method to fetch data from api and show it
+  //0
+  const [contract, setContract] = useState("");
+  //1
+   const getContracts = () => {
+   fetch("http://localhost:8000/DocApis")
+   .then((resp) => resp.json())
+   .then((data) => setContract(data));
+  }
+  //2
+  useEffect(() => { getContracts() }, []);
+  //End fetching data to show
+  //............................................
 
   return (
     <div className={styles.Services}>
@@ -113,54 +126,94 @@ const Services = () => {
       </div>
       {/* //End Slider */}
 
+      
       {/* Start-make-top-dowen-list */}
       <div className={styles.mainDocument}>
-        <div className={styles.docContent}>
-          <button onClick={() => setstateIcondocContent(!stateIcondocContent)} className={styles.iconNewDocumentationbtn}>
-            <FontAwesomeIcon icon={icondocContent} className={styles.iconNewDocumentation} />
-          </button>
-          <h2 className={styles.sss}>Click To Choose Your Type Of Documentation</h2>
-        </div>
-        {stateIcondocContent &&
-          <div className={styles.rentalAndbuy}>
-            <div className={styles.rental}>
-              <button onClick={() => setstateIconRental(!stateIconRental)} className={styles.iconNewDocumentationbtn}>
-                <FontAwesomeIcon icon={iconRental} className={styles.iconNewDocumentation} />
-              </button>
-              <h2 className={styles.sss}>Documentation for Rental Contract</h2>
-            </div>
-            {  stateIconRental &&
-              <div className={styles.rentalAndbuy}>
-                <div className={styles.build}>
-                  <h2 className={styles.sss}>Contract Belongs To Buildings</h2>
-                </div>
-                <div className={styles.veichle}>
-
-                  <h2 className={styles.sss}>Contract Belongs To Veichles</h2>
-                </div>
-              </div>
-            }
-
-            <div className={styles.buy}>
-              <button onClick={() => setstateIconBuy(!stateIconBuy)} className={styles.iconNewDocumentationbtn}>
-                <FontAwesomeIcon icon={iconBuy} className={styles.iconNewDocumentation} />
-              </button>
-              <h2 className={styles.sss}>Documentation for Buy Contract</h2>
-            </div>
-            { stateIconBuy &&
-              <div className={styles.buildAndVichele}>
-                <div className={styles.builed}>
-                  <h2 className={styles.sss}>Contract Belongs To Builedings</h2>
-                </div>
-                <div className={styles.viechle}>
-                  <h2 className={styles.sss}>Contract Belongs To Veichles</h2>
-                </div>
-              </div>
-            }
-                  
+        <div className={styles.allContracts}>
+          {/* //div 0 */}
+          <div className={styles.docContent}>
+            
+            <button onClick={() => setstateIcondocContent(!stateIcondocContent)} className={styles.iconNewDocumentationbtn}>
+              <FontAwesomeIcon icon={icondocContent} className={styles.iconNewDocumentation} />
+            </button>
+            <h2 className={styles.textDocContent}>Click To Choose Your Type Of Documentation</h2>
           </div>
-        }
-        
+          {/* // div 1 */}
+          {stateIcondocContent &&
+            <div className={styles.rentalAndbuy}>
+              {/* // div 0 */}
+              <div className={styles.lastSection}>
+                {/* // div 0 */}
+                <div className={styles.rental}>
+                  <button onClick={() => setstateIconRental(!stateIconRental)} className={styles.iconNewDocumentationbtn}>
+                    <FontAwesomeIcon icon={iconRental} className={styles.iconNewDocumentation} />
+                  </button>
+                  <h2 className={styles.textDocContent}>Documentation for Rental Contract</h2>
+                </div>
+                {/* // div 1 */}
+                {stateIconRental &&
+                  <div className={styles.anyContract}>
+                    {
+                      contract.map((e) => {
+                        return (
+                          <div key={e.id} className={styles.contractType}>
+                            <div className={styles.divOne}>
+                              <FontAwesomeIcon icon={faCircleArrowRight} className={styles.iconContractType} />
+                              <h2 className={styles.textDocContent}>Contract Belongs To {e.type}</h2>
+                            </div>
+                            <div className={styles.divTwo}>
+                              <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Get File</a>
+                              {/* Start upload your file */}
+                              <div className={styles.input_group}>
+                                <input type="file" className={styles.form_control} placeholder="Choose File" name="file"  />
+                                <button className={styles.uploadbtn}>Submit</button>
+                              </div >
+                            </div>
+                          </div>
+                        )
+                      })
+                    }
+                  </div>
+                }
+              </div>
+              {/* // div 1 */}
+              <div className={styles.lastSection}>
+                {/* // div 0 */}
+                <div className={styles.buy}>
+                  <button onClick={() => setstateIconBuy(!stateIconBuy)} className={styles.iconNewDocumentationbtn}>
+                    <FontAwesomeIcon icon={iconBuy} className={styles.iconNewDocumentation} />
+                  </button>
+                  <h2 className={styles.textDocContent}>Documentation for Buy Contract</h2>
+                </div>
+                {/* // div 1 */}
+                {stateIconBuy &&
+                  <div className={styles.anyContract}>
+                     {
+                      contract.map((e) => {
+                        return (
+                          <div key={e.id} className={styles.contractType}>
+                            <div className={styles.divOne}>
+                              <FontAwesomeIcon icon={faCircleArrowRight} className={styles.iconContractType} />
+                              <h2 className={styles.textDocContent}>Contract Belongs To {e.type}</h2>
+                            </div>
+                            <div className={styles.divTwo}>
+                              <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Get File</a>
+                              {/* Start upload your file */}
+                              <div className={styles.input_group}>
+                                <input type="file" className={styles.form_control} placeholder="Choose File" name="file"  />
+                                <button className={styles.uploadbtn}>Submit</button>
+                              </div >
+                            </div>
+                          </div>
+                        )
+                      })
+                    }
+                  </div>
+                }
+              </div>
+            </div>
+          }
+        </div>
       </div>
     </div>
   )

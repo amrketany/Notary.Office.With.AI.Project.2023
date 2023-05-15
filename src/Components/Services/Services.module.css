@@ -110,20 +110,17 @@ color: #FFEBCD;
 
   /* //.......................... */
   /* NewDocument */
-.iconNewDocumentation{
+  /* Secound Design */
+/* .iconNewDocumentation{
   margin-right: 10px;
   font-size: 20px;
   width: 20px;
   height: 20px;
   text-align: center;
 }
-.sss{
-  display: inline-block;
-}
 
 .iconNewDocumentationbtn{
   background-color: #FF7F50;
-    /* Green */
     border: none;
     color: white;
     padding: 10px 20px;
@@ -131,4 +128,151 @@ color: #FFEBCD;
     text-decoration: none;
     display: inline-block;
     font-size: 5px;
+    width: 100%;
+}
+
+
+.mainDocument{
+width:100%;
+text-align: center;
+
+
+}
+.rentalAndbuy{
+  display: grid;
+  grid-template-columns: 40% 40%;
+  gap:0 20%;
+}
+
+.anyContract{
+    display: grid;
+      grid-template-columns: 40% 40%;
+      gap: 0 20%;
+} */
+/* ....................... */
+
+
+.iconNewDocumentation{
+  margin-right: 10px;
+  font-size: 10px;
+  width: 10px;
+  height: 10px;
+  text-align: center;
+}
+
+.iconContractType{
+    color: #2c4755;
+      background-color: white;
+      width: 25px;
+      height: 25px;
+      border-radius: 30px;
+      margin-right: 18px;
+      margin-left: 18px;
+      transform: rotate(30deg);
+      animation: icon 5s infinite;
+}
+@keyframes icon {
+  0%,
+  100% {
+    transform: rotate(-30deg);
+  }
+  50% {
+    transform: rotate(30deg);
+  }
+}
+.iconContractType:hover{
+  color: white;
+  background-color: #2c4755;
+}
+
+.fileLink{
+  text-decoration: none;
+    color: white;
+    background-color: #2c4755;
+    /* border-radius: 30px; */
+    cursor: pointer;
+    padding:  11px;
+}
+.fileLink:hover{
+    border-bottom: 2px solid #2c4755;
+      box-shadow: 2px 2px 2px #2c4755;
+}
+
+.iconNewDocumentationbtn {
+  background-color: #FF7F50;
+  border: none;
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 5px;
+}
+
+
+.mainDocument{
+width:100%;
+margin-bottom: 20px;
+}
+.rentalAndbuy{
+}
+
+.textDocContent{
+  display:inline-block;
+  font-size: 20px;
+  margin: 0;
+}
+
+.anyContract{
+
+}
+
+.contractType{
+  display: flex;
+  /* align-items: center; */
+  justify-content: space-between;
+  width: 100%;
+  height: 50px;
+  border: #FF7F50 1px solid;
+}
+
+.input_group {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  align-content: center;
+}
+
+.input_group .form_control {
+  background-color: #2c4755;
+  color: white;
+  border: none;
+  transition: .2s ease-in-out;
+  height: 94.5%;
+}
+
+
+.input_group .uploadbtn {
+  background-color: #2c4755;
+  color:white ;
+  border: none;
+  transition: .2s ease-in-out;
+  text-decoration: none;
+  cursor: pointer;
+  padding: 11px;
+}
+
+.uploadbtn:hover {
+  background-color:white ;
+  color: #2c4755;
+}
+
+.form_control:hover {
+  background: white;
+  color: #2c4755;
+}
+
+.divTwo{
+  display: flex;
+  flex-direction: row;
 }

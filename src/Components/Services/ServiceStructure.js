@@ -59,7 +59,6 @@ const ServiceStrucure = () => {
                         <input type="file" className={styles.form_control} placeholder="Choose File" name="file" onChange={handelFileChange} />
                         <button className={styles.uploadbtn} onClick={handelApiOnSubmit}>Submit</button>
                     </div >
-
                 </div >
             </div >
         </div >
