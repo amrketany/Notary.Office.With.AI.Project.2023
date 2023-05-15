@@ -98,7 +98,10 @@ function SignUp() {
   //Start Control Validation
   const validate = (value) => {
     const errors = {};
-    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    //email regex
+    const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    //FactoryNumber regex
+    const regexFactoryName = /[A-Z][A-Z][0-9]*/;
     if (!value.name) {
       errors.name = "UserName Is Required";
     }
@@ -133,7 +136,7 @@ function SignUp() {
     }
     // add religon
     if (!value.religon) {
-      errors.governorate = "Religon Is Required";
+      errors.religon = "Religon Is Required";
     } else if (value.religon === "-Select") {
       errors.religon = "please Select a religon";
     }
@@ -144,7 +147,7 @@ function SignUp() {
     }
     if (!value.email) {
       errors.email = "Email Is Required";
-    } else if (!regex.test(value.email)) {
+    } else if (!regexEmail.test(value.email)) {
       errors.email = "Not Valid Email format!";
     }
     if (!value.password) {
@@ -235,10 +238,10 @@ function SignUp() {
           {/* Add Factory number Section */}
           <div>
             <label for="fn">Enter  your  Factory number</label>
-            <input type="text" id={styles.fn} pattern="[A-Z][A-Z][0-9]*" name="factoryNum" maxLength={9} className={styles.signupbtn}
+            <input type="text" id={styles.fn} name="factoryNum" maxLength={9} className={styles.signupbtn}
               onChange={handelChange}
               placeholder="Enter Numbers only"></input>
-            <p className={styles.errorMessage}> {formError.fnnumber}</p>
+            <p className={styles.errorMessage}> {formError.factoryNum}</p>
           </div>
           <div>
             <label for="nationality">Enter  your  Nationality</label>
