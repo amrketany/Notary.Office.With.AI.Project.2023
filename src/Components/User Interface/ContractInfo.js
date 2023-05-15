@@ -50,6 +50,7 @@ class ContractInfo extends React.Component {
 
         gettingData.then((request) => {
             let contractData = JSON.parse(request.responseText)[0];
+            console.log(JSON.parse(request.responseText));
             this.setState({
                 id: contractData.id,
                 contractImage: contractData.contractImage,
