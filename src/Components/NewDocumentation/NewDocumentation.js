@@ -50,7 +50,7 @@ const Services = () => {
   const [contract, setContract] = useState("");
   //1
    const getContracts = () => {
-   fetch("http://localhost:8000/DocApis")
+   fetch("http://notaryofficeproject.somee.com/api/Services")
    .then((resp) => resp.json())
    .then((data) => setContract(data));
   }
@@ -101,7 +101,7 @@ const Services = () => {
                           <div key={e.id} className={styles.contractType}>
                             <div className={styles.divOne}>
                               <FontAwesomeIcon icon={faCircleArrowRight} className={styles.iconContractType} />
-                              <h2 className={styles.textDocContent}>Contract Belongs To {e.type}</h2>
+                              <h2 className={styles.textDocContent}>Contract For {e.serviceNameEn}</h2>
                             </div>
                             <div className={styles.divTwo}>
                               <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Get File</a>
@@ -136,7 +136,7 @@ const Services = () => {
                           <div key={e.id} className={styles.contractType}>
                             <div className={styles.divOne}>
                               <FontAwesomeIcon icon={faCircleArrowRight} className={styles.iconContractType} />
-                              <h2 className={styles.textDocContent}>Contract Belongs To {e.type}</h2>
+                              <h2 className={styles.textDocContent}>Contract For {e.serviceNameEn}</h2>
                             </div>
                             <div className={styles.divTwo}>
                               <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Get File</a>

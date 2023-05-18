@@ -8,7 +8,6 @@ import cp from "./cp.png";
 class UI extends React.Component {
     state = {
         userData: null,
-        fakeData: "abcdef",
     }
     componentDidMount() {
         let profileTab = document.getElementsByClassName("profile-content")[0];
@@ -43,19 +42,19 @@ class UI extends React.Component {
             request.send();
             request.onreadystatechange = () => {
                 if (request.readyState === 4 && request.status === 200) {
-                    let recievedData = JSON.parse(request.responseText)[0];
-                    console.log(this.state);
-                    this.state.userData = recievedData;
-                    console.log(this.state);
-                    resolve()
+                    let recievedData = JSON.parse(request.responseText)[1];
+                    this.setState({
+                        userData: recievedData,
+                    })
+                    resolve(request);
                 }
                 else if (request.readyState === 4 && request.status !== 200) {
-                    reject();
+                    reject(request);
                 }
             };
         });
 
-        gettingData.then(() => {
+        gettingData.then((request) => {
             document.getElementById("firstName").value = this.state.userData.name;
             document.getElementById("motherName").value = this.state.userData.momName;
             document.getElementById("factoryNumber").value = this.state.userData.factoryNum;
@@ -109,7 +108,7 @@ class UI extends React.Component {
                             <input type="text" className="form-control" id="factoryNumber" />
 
                             <label htmlFor="phoneNumber">Phone Number</label>
-                            <input type="number" className="form-control" id="phoneNumber" />
+                            <input type="text" className="form-control" id="phoneNumber" />
 
                             <label htmlFor="email">Email</label>
                             <input type="email" className="form-control" id="email" />
@@ -138,43 +137,43 @@ class UI extends React.Component {
                     <div className='contracts-content '>
                         <ul className='contracts'>
                             <a href="/contract-info" target='_blank'>
-                                <li className='contract' data-CID={null}>
+                                <li className='contract'>
                                     <img src={cp} alt='contract-preview' />
                                     <p className='contract-title'>buy a nissan car</p>
                                 </li>
                             </a>
                             <a href="/contract-info" target='_blank'>
-                                <li className='contract' data-CID={null}>
+                                <li className='contract'>
                                     <img src={cp} alt='contract-preview' />
                                     <p className='contract-title'>buy a nissan car</p>
                                 </li>
                             </a>
                             <a href="/contract-info" target='_blank'>
-                                <li className='contract' data-CID={null}>
+                                <li className='contract'>
                                     <img src={cp} alt='contract-preview' />
                                     <p className='contract-title'>buy a nissan car</p>
                                 </li>
                             </a>
                             <a href="/contract-info" target='_blank'>
-                                <li className='contract' data-CID={null}>
+                                <li className='contract'>
                                     <img src={cp} alt='contract-preview' />
                                     <p className='contract-title'>buy a nissan car</p>
                                 </li>
                             </a>
                             <a href="/contract-info" target='_blank'>
-                                <li className='contract' data-CID={null}>
+                                <li className='contract'>
                                     <img src={cp} alt='contract-preview' />
                                     <p className='contract-title'>buy a nissan car</p>
                                 </li>
                             </a>
                             <a href="/contract-info" target='_blank'>
-                                <li className='contract' data-CID={null}>
+                                <li className='contract'>
                                     <img src={cp} alt='contract-preview' />
                                     <p className='contract-title'>buy a nissan car</p>
                                 </li>
                             </a>
                             <a href="/contract-info" target='_blank'>
-                                <li className='contract' data-CID={null}>
+                                <li className='contract'>
                                     <img src={cp} alt='contract-preview' />
                                     <p className='contract-title'>buy a nissan car</p>
                                 </li>

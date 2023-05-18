@@ -12,7 +12,7 @@ function SignUp() {
   let iconClass0, iconClass1, inputType0, inputType1;
   const [statePass, setStatepass] = useState(true);
   const [stateRepass, setStaterepass] = useState(true);
-  
+
   if (statePass === false) {
     iconClass0 = faEye;
     inputType0 = "text";
@@ -20,7 +20,7 @@ function SignUp() {
     iconClass0 = faEyeSlash;
     inputType0 = "password"
   }
-    
+
   if (stateRepass === false) {
     iconClass1 = faEye;
     inputType1 = "text";
@@ -79,31 +79,31 @@ function SignUp() {
    //Send data to api 
   const handelApiSubmit = () => {
     fetch("http://www.notaryoffice2023.somee.com/api/Visitors", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
       body: JSON.stringify({
-            id: formValues.id,
-            name: formValues.name,
-            momName: formValues.momName,
-            email: formValues.email,
-            password: formValues.password,
-            address: formValues.address,
-            phone: formValues.phone,
-            factoryNum: formValues.factoryNum,
-            nationality: formValues.nationality,
-            religon: formValues.religon,
-            governorate: formValues.governorate
-          })
-        }).then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-          })
+        id: formValues.id,
+        name: formValues.name,
+        momName: formValues.momName,
+        email: formValues.email,
+        password: formValues.password,
+        address: formValues.address,
+        phone: formValues.phone,
+        factoryNum: formValues.factoryNum,
+        nationality: formValues.nationality,
+        religon: formValues.religon,
+        governorate: formValues.governorate
+      })
+    }).then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+      })
   }
 
 
-//Start Control Validation
+  //Start Control Validation
   const validate = (value) => {
     const errors = {};
     //email regex
@@ -119,22 +119,20 @@ function SignUp() {
     if (!value.phone) {
       errors.phone = "Phone Is Required";
     } else if (value.phone.length > 11 || value.phone.length < 11) {
-      errors.phone = "Phone Must be 11 Numbers";      
-    } 
+      errors.phone = "Phone Must be 11 Numbers";
+    }
     if (!value.job) {
       errors.job = "Job Is Required";
     }
     if (!value.id) {
       errors.id = "Id Number Is Required";
     } else if (value.id.length > 14 || value.id.length < 14) {
-      errors.id = "Id Number Must Be 14 Numbers";      
+      errors.id = "Id Number Must Be 14 Numbers";
     }
     if (!value.factoryNum) {
       errors.factoryNum = "Factory Number Is Required";
     } else if (value.factoryNum.length < 9) {
       errors.factoryNum = "Factory Number Must Be 9 Numbers";
-    } else if (!regexFactoryName.test(value.factoryNum)) { 
-      errors.factoryNum = "Not Valid Factory Number format!";
     }
     if (!value.address) {
       errors.address = "Addrees Is Required";
@@ -152,7 +150,7 @@ function SignUp() {
     }
     if (!value.nationality) {
       errors.nationality = "Nationality Is Required";
-    }else if (value.nationality === "-Select") {
+    } else if (value.nationality === "-Select") {
       errors.nationality = "please Select a Nationality";
     }
     if (!value.email) {
@@ -169,7 +167,7 @@ function SignUp() {
       errors.repassword = "Re Enter Password Is Required";
     } else if (value.repassword.length < 8) {
       errors.repassword = "Password Should Be More Than 8 Digits";
-    }else if (value.repassword!==value.password) {
+    } else if (value.repassword !== value.password) {
       errors.repassword = "Password Don't Match Other Field";
     }
     return errors;
