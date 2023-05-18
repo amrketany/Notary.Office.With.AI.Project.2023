@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
 import styles from "./SignUp.module.css";
-
+import SignIn from '../../Components/SignIn/SignIn';
 
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function SignUp() {
- //Start Make Password Icons
-  let iconClass0 , iconClass1 ,  inputType0 , inputType1;
+  //Start Make Password Icons
+  let iconClass0, iconClass1, inputType0, inputType1;
   const [statePass, setStatepass] = useState(true);
   const [stateRepass, setStaterepass] = useState(true);
   
@@ -17,7 +18,7 @@ function SignUp() {
     inputType0 = "text";
   } else {
     iconClass0 = faEyeSlash;
-    inputType0="password"
+    inputType0 = "password"
   }
     
   if (stateRepass === false) {
@@ -25,7 +26,7 @@ function SignUp() {
     inputType1 = "text";
   } else {
     iconClass1 = faEyeSlash;
-    inputType1="password"
+    inputType1 = "password"
   }
   //End Password Icons
   //..............................
@@ -40,34 +41,42 @@ function SignUp() {
 
   //Start Validation and onSubmit Method
   const initialValues = {
-    name: "", momName:"", email: "", password: "", repassword: "", address: "", job: "", phone: "", id: "",factoryNum: "", nationality: "",
+    name: "", momName: "", email: "", password: "", repassword: "", address: "", job: "", phone: "", id: "", factoryNum: "", nationality: "",
     governorate: ""
   };
 
   const [formValues, setFormValues] = useState(initialValues);
   const [formError, setFormError] = useState([]);
   const [isSubmit, setIsSubmit] = useState(false);
-//handle change inputs
+  //handle change inputs
   const handelChange = (e) => {
     const { name, value } = e.target;
-    setFormValues({...formValues, [name] : value});
+    setFormValues({ ...formValues, [name]: value });
     // console.log(formValues);
   }
 
-//Handle Submit Form 
+  //Handle Submit Form 
   const handelSubmit = (e) => {
     e.preventDefault();
     setFormError(validate(formValues));
     setIsSubmit(true);
     //Code to send data to apis only if all values is valid
-    Object.keys(formError).length === 0  && isSubmit?
+    Object.keys(formError).length === 0 && isSubmit ?
       (
-        handelApiSubmit()
+        allSubmitFunctions()
       )
       :
       (console.log(isSubmit))
   }
-//Send data to api 
+
+  //console.log(isSubmit)
+  const allSubmitFunctions = () => {
+    handelApiSubmit();
+    alert("Successfully submitted")
+    
+       
+  }
+   //Send data to api 
   const handelApiSubmit = () => {
     fetch("http://www.notaryoffice2023.somee.com/api/Visitors", {
           method: "POST",
@@ -225,7 +234,7 @@ function SignUp() {
               id={styles.phone} name="phone" className={styles.signupbtn}
               onChange={handelChange}
               onKeyPress={EnterNumberOnly}
-           placeholder="Enter Numbers only" ></input>
+              placeholder="Enter Numbers only" ></input>
             <p className={styles.errorMessage}>{formError.phone}</p>
           </div>
           <div>
@@ -239,7 +248,7 @@ function SignUp() {
           {/* Add Factory number Section */}
           <div>
             <label for="fn">Enter  your  Factory number</label>
-            <input type="text" id={styles.fn}  name="factoryNum" maxLength={9} className={styles.signupbtn}
+            <input type="text" id={styles.fn} name="factoryNum" maxLength={9} className={styles.signupbtn}
               onChange={handelChange}
               placeholder="Enter Numbers only"></input>
             <p className={styles.errorMessage}> {formError.factoryNum}</p>
