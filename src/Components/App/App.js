@@ -16,6 +16,9 @@ import RentalBuilding from "../Services/Building/RentalBuilding";
 import UI from "../User Interface/UI";
 import ContractInfo from '../User Interface/ContractInfo';
 
+
+
+
 const App = () => {
   return (
     <BrowserRouter>

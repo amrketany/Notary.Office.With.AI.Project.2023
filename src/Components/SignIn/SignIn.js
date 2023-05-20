@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
-
+let signindata;
 
 const SignIn = () => {
 
@@ -34,7 +34,7 @@ const SignIn = () => {
   //<p>{formError.email }</p>
   //<p>{formError.password }</p>
 
-  
+
   const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
   const [formError, setFormError] = useState({});
@@ -48,31 +48,32 @@ const SignIn = () => {
 
 
   //Handle Submit Api
-const handelApiSubmit = () => {
-    fetch("http://localhost:8000/customerSignIn", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({
-            email: formValues.email,
-            password: formValues.password,
-          })
-        }).then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-          })
+  const handelApiSubmit = () => {
+    fetch("http://localhost:8000/api/visitors/signin", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formValues.email,
+        password: formValues.password,
+      })
+    }).then((response) => response.json())
+      .then((data) => {
+        console.log(data);
+        signindata = data;
+      })
   }
-//Function to handel Submit
+  //Function to handel Submit
   const handelSubmit = (e) => {
     e.preventDefault();
     setFormError(validate(formValues));
     setIsSubmit(true);
 
     Object.keys(formError).length === 0 && isSubmit ?
-          (handelApiSubmit())
-          :
-          (console.log("Error"))
+      (handelApiSubmit())
+      :
+      (console.log(formError))
   }
 
 
@@ -105,7 +106,7 @@ const handelApiSubmit = () => {
           <h3>Welcome Home</h3>
         </div>
 
-        
+
         {/* //To Show Sign In Massege Successfully */}
         {/* 
         {Object.keys(formError).length === 0 && isSubmit ?
@@ -113,10 +114,10 @@ const handelApiSubmit = () => {
           :
           (<pre>{JSON.stringify(formValues, undefined, 2)}</pre>)
         }*/}
-        
-        
+
+
         <form className={styles.signinForm} onSubmit={handelSubmit} >
-          
+
           <div className={styles.email_in}>
             <label for="mail" className={styles.signinLable}>Email</label>
             <input className={styles.signinLable} type={"text"} placeholder='Enter  your  Email' id="mail" name='email'
@@ -154,8 +155,8 @@ const handelApiSubmit = () => {
     </div>
   )
 }
-
 export default SignIn;
+export { signindata }
 
 
 

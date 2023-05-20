@@ -36,7 +36,7 @@ class ContractInfo extends React.Component {
 
         let gettingData = new Promise((res, rej) => {
             let request = new XMLHttpRequest();
-            request.open("GET", "http://www.notaryoffice2023.somee.com/api/Contract");
+            request.open("GET", "http://www.notaryofficeproject.somee.com/api/Contract");
             request.send();
             request.onreadystatechange = () => {
                 if (request.readyState === 4 && request.status === 200) {

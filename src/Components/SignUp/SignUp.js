@@ -73,10 +73,10 @@ function SignUp() {
   const allSubmitFunctions = () => {
     handelApiSubmit();
     alert("Successfully submitted")
-    
-       
+
+
   }
-   //Send data to api 
+  //Send data to api 
   const handelApiSubmit = () => {
     fetch("http://www.notaryoffice2023.somee.com/api/Visitors", {
       method: "POST",

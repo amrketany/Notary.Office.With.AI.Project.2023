@@ -2,11 +2,16 @@ import React from 'react';
 import styles from "./Nav.module.css";
 import logo from "../../imags/0.jpg"
 import { NavLink } from 'react-router-dom';
+import { name } from '../../Components/User Interface/UI';
+
 const Nav = () => {
   return (
     <div className={styles.header} fixed="top">
       <div className={styles.container}>
-        <a href="/"> <img src={logo} className={styles.logo} alt="logo" /></a>
+        <div className={styles.logoName}>
+          <a href="/"> <img src={logo} className={styles.logo} alt="logo" /></a>
+          <div className={styles.username}>{name}</div>
+        </div>
         <div className={styles.navegation}>
           <div className={styles.nav}>
             <NavLink to="/" target="_self" className={styles.active}>Home</NavLink>

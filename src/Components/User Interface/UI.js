@@ -1,8 +1,18 @@
 import React from 'react';
 import './UI.css';
 import cp from "./cp.png";
+import { signindata } from '../SignIn/SignIn';
 
 
+let id = null;
+let name = null;
+if (Object.keys(localStorage).indexOf("notaryUserID") === -1 || (typeof signindata !== "undefined" && signindata.username.split("@")[0] !== localStorage.getItem("notaryUserID"))) {
+
+    localStorage.setItem("notaryUserID", signindata.username.split("@")[0]);
+
+}
+id = localStorage.getItem("notaryUserID");
+name = localStorage.getItem("notaryUserName");
 
 
 class UI extends React.Component {
@@ -35,17 +45,18 @@ class UI extends React.Component {
 
     }
     render() {
-
+        console.log(signindata);
         let gettingData = new Promise((resolve, reject) => {
             let request = new XMLHttpRequest();
-            request.open("GET", 'http://www.notaryoffice2023.somee.com/api/visitors');
+            let currentUserID = id;
+            request.open("GET", 'http://www.notaryofficeproject.somee.com/api/visitors/' + currentUserID);
             request.send();
             request.onreadystatechange = () => {
                 if (request.readyState === 4 && request.status === 200) {
-                    let recievedData = JSON.parse(request.responseText)[1];
-                    this.setState({
-                        userData: recievedData,
-                    })
+                    let recievedData = JSON.parse(request.responseText);
+                    localStorage.setItem("notaryUserName", recievedData.name);
+                    name = recievedData.name;
+                    this.state.userData = recievedData;
                     resolve(request);
                 }
                 else if (request.readyState === 4 && request.status !== 200) {
@@ -55,6 +66,8 @@ class UI extends React.Component {
         });
 
         gettingData.then((request) => {
+
+
             document.getElementById("firstName").value = this.state.userData.name;
             document.getElementById("motherName").value = this.state.userData.momName;
             document.getElementById("factoryNumber").value = this.state.userData.factoryNum;
@@ -67,6 +80,7 @@ class UI extends React.Component {
             document.getElementById("religion").value = this.state.userData.religon;
 
         }, () => {
+
             document.getElementById("firstName").value = "Loading";
             document.getElementById("firstName").value = "Loading";
             document.getElementById("motherName").value = "Loading";
@@ -181,7 +195,6 @@ class UI extends React.Component {
                         </ul>
                     </div>
                 </div>
-
             </div >
 
         );
@@ -190,3 +203,4 @@ class UI extends React.Component {
 }
 
 export default UI;
+export { name };
