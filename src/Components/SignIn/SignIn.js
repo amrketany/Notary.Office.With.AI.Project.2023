@@ -8,10 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
-let signindata;
 
-const SignIn = () => {
-
+const SignIn = ({ extractor }) => {
   let iconClass, inputType;
   const [state, setState] = useState(true);
   if (state === false) {
@@ -48,7 +46,7 @@ const SignIn = () => {
 
 
   //Handle Submit Api
-  const handelApiSubmit = () => {
+  const handelApiSubmit = (ex) => {
     fetch("http://localhost:8000/api/visitors/signin", {
       method: "POST",
       headers: {
@@ -61,7 +59,8 @@ const SignIn = () => {
     }).then((response) => response.json())
       .then((data) => {
         console.log(data);
-        signindata = data;
+        ex(data);
+        console.log("extracted!");
       })
   }
   //Function to handel Submit
@@ -71,7 +70,7 @@ const SignIn = () => {
     setIsSubmit(true);
 
     Object.keys(formError).length === 0 && isSubmit ?
-      (handelApiSubmit())
+      (handelApiSubmit(extractor))
       :
       (console.log(formError))
   }
@@ -156,7 +155,6 @@ const SignIn = () => {
   )
 }
 export default SignIn;
-export { signindata }
 
 
 

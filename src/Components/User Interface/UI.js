@@ -1,18 +1,6 @@
 import React from 'react';
 import './UI.css';
 import cp from "./cp.png";
-import { signindata } from '../SignIn/SignIn';
-
-
-let id = null;
-let name = null;
-if (Object.keys(localStorage).indexOf("notaryUserID") === -1 || (typeof signindata !== "undefined" && signindata.username.split("@")[0] !== localStorage.getItem("notaryUserID"))) {
-
-    localStorage.setItem("notaryUserID", signindata.username.split("@")[0]);
-
-}
-id = localStorage.getItem("notaryUserID");
-name = localStorage.getItem("notaryUserName");
 
 
 class UI extends React.Component {
@@ -45,18 +33,22 @@ class UI extends React.Component {
 
     }
     render() {
-        console.log(signindata);
+
+
+
         let gettingData = new Promise((resolve, reject) => {
             let request = new XMLHttpRequest();
-            let currentUserID = id;
-            request.open("GET", 'http://www.notaryofficeproject.somee.com/api/visitors/' + currentUserID);
+            request.open("GET", 'http://www.notaryofficeproject.somee.com/api/visitors/' + this.props.currentUser.username.split("@")[0]);
             request.send();
             request.onreadystatechange = () => {
                 if (request.readyState === 4 && request.status === 200) {
                     let recievedData = JSON.parse(request.responseText);
-                    localStorage.setItem("notaryUserName", recievedData.name);
-                    name = recievedData.name;
-                    this.state.userData = recievedData;
+
+                    this.setState({
+                        userData: recievedData,
+                    });
+
+
                     resolve(request);
                 }
                 else if (request.readyState === 4 && request.status !== 200) {
@@ -203,4 +195,3 @@ class UI extends React.Component {
 }
 
 export default UI;
-export { name };

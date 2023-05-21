@@ -10,7 +10,6 @@ const Nav = () => {
       <div className={styles.container}>
         <div className={styles.logoName}>
           <a href="/"> <img src={logo} className={styles.logo} alt="logo" /></a>
-          <div className={styles.username}>{name}</div>
         </div>
         <div className={styles.navegation}>
           <div className={styles.nav}>
