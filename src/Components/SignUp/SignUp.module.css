@@ -48,10 +48,6 @@
     justify-content: center;
   }
 
-  /* .SignUp .container form div {
-     margin: 20px;
-     width: 100%;
-    } */
 }
 
 .SignUp .container form div select {
@@ -68,13 +64,15 @@ input[type=submit] {
 }
 
 .showPass {
-  position: absolute;
-  right: 0;
-  width: 40px;
-  height: 40px;
-  border: none;
-  background-color: #FF7F50;
-  color: #2c4755ed;
+    position: absolute;
+      right: 0px;
+      /* bottom: 0px; */
+      /* width: 40px; */
+      /* height: 40px; */
+      padding: 8px;
+      border: none;
+      background-color: #FF7F50;
+      color: #2c4755ed;
 }
 
 .errorMessage {

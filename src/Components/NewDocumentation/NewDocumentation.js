@@ -74,7 +74,6 @@ const Services = () => {
         <div className={styles.allContracts}>
           {/* //div 0 */}
           <div className={styles.docContent}>
-            
             <button onClick={() => setstateIcondocContent(!stateIcondocContent)} className={styles.iconNewDocumentationbtn}>
               <FontAwesomeIcon icon={icondocContent} className={styles.iconNewDocumentation} />
             </button>
@@ -158,6 +157,7 @@ const Services = () => {
         </div>
       </div>
       {/* // start Slider */}
+      {/* Slider Work Only When Making Reload for all page  */}
       <div className={styles.sliderCountainer}>
         <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
           <div class="carousel-inner">
@@ -165,7 +165,7 @@ const Services = () => {
               <div className={styles.forBackgroundImage0}>
                 <div className={styles.forBackgroundColor}>
                   <div className={styles.sliderContent}>
-                    <h2>All Machines and Buildings Documentations</h2>
+                    <h2>All Veichles and Buildings Documentations</h2>
                     <p>over tells the browser to make sure the image always covers the entire container, even if it has to stretch the image or cut a little bit off one of the edges. contain , on the other hand, says to always show the whole image, even if that leaves a little space to the sides or bottom.</p>
                   </div>
                 </div>

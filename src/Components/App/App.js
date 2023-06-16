@@ -15,7 +15,6 @@ import BuySellBuilding from "../Services/Building/BuySellBuilding";
 import RentalBuilding from "../Services/Building/RentalBuilding";
 import UI from "../User Interface/UI";
 import ContractInfo from '../User Interface/ContractInfo';
-
 const App = () => {
   return (
     <BrowserRouter>
@@ -34,12 +33,9 @@ const App = () => {
           <Route exact path="/buysellbuilding" element={<BuySellBuilding />} />
           <Route exact path="/rentalbuilding" element={<RentalBuilding />} />
           <Route exact path="/contract-info" element={<ContractInfo />} />
-
-
         </Routes>
         <Footer />
       </div>
     </BrowserRouter>
-  )
-}
+  )}
 export default App;

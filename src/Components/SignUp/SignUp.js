@@ -1,17 +1,25 @@
 import React, { useState } from 'react'
 import styles from "./SignUp.module.css";
-import SignIn from '../../Components/SignIn/SignIn';
+import Swal from 'sweetalert2';
 
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 
 function SignUp() {
   //Start Make Password Icons
   let iconClass0, iconClass1, inputType0, inputType1;
   const [statePass, setStatepass] = useState(true);
   const [stateRepass, setStaterepass] = useState(true);
+
+
+    //Navigate if login success
+    const navigate = useNavigate();
+    //Handel alert Liberary
+  const alert = (data) => {
+    Swal.fire(data)
+  }
 
   if (statePass === false) {
     iconClass0 = faEye;
@@ -61,24 +69,16 @@ function SignUp() {
     setFormError(validate(formValues));
     setIsSubmit(true);
     //Code to send data to apis only if all values is valid
-    Object.keys(formError).length === 0 && isSubmit ?
-      (
-        allSubmitFunctions()
-      )
-      :
-      (console.log(isSubmit))
+    if (formError.length === 0 || formError.length === undefined && isSubmit ===true) {
+      (handelApiSubmit())
+    } else {
+      console.log(formError.length);
+    }
   }
 
-  //console.log(isSubmit)
-  const allSubmitFunctions = () => {
-    handelApiSubmit();
-    alert("Successfully submitted")
-    
-       
-  }
    //Send data to api 
   const handelApiSubmit = () => {
-    fetch("http://www.notaryoffice2023.somee.com/api/Visitors", {
+    fetch("http://NotaryOfficeProject.somee.com/api/Visitors", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -98,7 +98,14 @@ function SignUp() {
       })
     }).then((response) => response.json())
       .then((data) => {
-        console.log(data);
+        console.log(data, "userRegister");
+        if (data.message === null) {
+          navigate('/signIn');
+        } else if (data.message !== undefined){
+          alert(data.message);
+        } else {
+          alert("Complete Sign Up Data Please!");
+        }
       })
   }
 
@@ -200,18 +207,18 @@ function SignUp() {
             <label for="pass">Enter  your  pass</label>
             <input type={inputType0} id={styles.pass} name="password" className={styles.signupbtn}
               onChange={handelChange}></input>
-            <button onClick={() => setStatepass(!statePass)} className={styles.showPass}>
+            <span onClick={() => setStatepass(!statePass)} className={styles.showPass}>
               <FontAwesomeIcon icon={iconClass0} />
-            </button>
+            </span>
             <p className={styles.errorMessage}>{formError.password}</p>
           </div>
           <div className={styles.passInput}>
             <label for="repass">Re_Enter  your  Password</label>
             <input type={inputType1} id={styles.repass} name="repassword" className={styles.signupbtn}
               onChange={handelChange}></input>
-            <button onClick={() => setStaterepass(!stateRepass)} className={styles.showPass}>
+            <span onClick={() => setStaterepass(!stateRepass)} className={styles.showPass} >
               <FontAwesomeIcon icon={iconClass1} />
-            </button>
+            </span>
             <p className={styles.errorMessage}>{formError.repassword}</p>
           </div>
           <div>

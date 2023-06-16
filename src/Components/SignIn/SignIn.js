@@ -8,10 +8,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
+import Swal from 'sweetalert2';
+
+
+import {  useNavigate } from 'react-router-dom';
 
 
 const SignIn = () => {
-
   let iconClass, inputType;
   const [state, setState] = useState(true);
   if (state === false) {
@@ -22,22 +25,18 @@ const SignIn = () => {
     inputType = "password"
   }
 
+  //Handel alert Liberary
+  const alert = (data) => {
+    Swal.fire(data)
+  }
 
 
+  //Navigate if login success
+  const navigate = useNavigate();
 
-  //I-will-try-to-make-validation
-  //................................................................
-  //value={formValues.emai}
-  //value={formValues.password}
-  //onChange={handelChange}
-  //onSubmit={handelSubmit}
-  //<p>{formError.email }</p>
-  //<p>{formError.password }</p>
-
-  
   const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
-  const [formError, setFormError] = useState({});
+  const [formError, setFormError] = useState([]);
   const [isSubmit, setIsSubmit] = useState(false);
   const handelChange = (e) => {
     const { name, value } = e.target;
@@ -46,33 +45,43 @@ const SignIn = () => {
     console.log(formValues);
   }
 
-
   //Handle Submit Api
-const handelApiSubmit = () => {
-    fetch("http://localhost:8000/customerSignIn", {
-          method: "POST",
-          headers: {
-            "content-type": "application/json",
-          },
-          body: JSON.stringify({
-            email: formValues.email,
-            password: formValues.password,
-          })
-        }).then((response) => response.json())
-          .then((data) => {
-            console.log(data);
-          })
+  const handelApiSubmit = () => {
+    fetch("http://NotaryOfficeProject.somee.com/api/Visitors/SignIn", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify({
+        email: formValues.email,
+        password: formValues.password,
+      })
+    }).then((response) => response.json())
+      .then((data) => {
+        console.log(data, "userRegister");
+        if (data.message === null) {
+          navigate('/User-Settings/*');
+        } else if (data.message !== undefined) {
+          alert(data.message);
+        } else {
+          alert("Complete Sign In Data Please!");
+        }
+      })
   }
 //Function to handel Submit
   const handelSubmit = (e) => {
     e.preventDefault();
     setFormError(validate(formValues));
     setIsSubmit(true);
-
-    Object.keys(formError).length === 0 && isSubmit ?
-          (handelApiSubmit())
-          :
-          (console.log("Error"))
+    if (formError.length === 0 || formError.length === undefined && isSubmit ===true) {
+      (handelApiSubmit())
+    } else {
+      console.log(formError.length);
+    }
+    // Object.keys(formError).length === 0 && isSubmit ?
+    //       (handelApiSubmit())
+    //       :
+    //       (console.log("Error"))
   }
 
 
@@ -101,22 +110,11 @@ const handelApiSubmit = () => {
       <div className={styles.container}>
         <div className={styles.logo}>
           <div className={styles.dhaccount}><p>Don't  have  an  account ? <a href='/signUp' className={styles.signupLink}>Sign Up</a></p></div>
-          <a href="/home">  <img src={logo} alt="mm" className={styles.img} /></a>
+          <a href="/home">  <img src={logo} alt="img not found" className={styles.img} /></a>
           <h3>Welcome Home</h3>
         </div>
 
-        
-        {/* //To Show Sign In Massege Successfully */}
-        {/* 
-        {Object.keys(formError).length === 0 && isSubmit ?
-          (<div className="ui message success">Success Sign In</div>)
-          :
-          (<pre>{JSON.stringify(formValues, undefined, 2)}</pre>)
-        }*/}
-        
-        
         <form className={styles.signinForm} onSubmit={handelSubmit} >
-          
           <div className={styles.email_in}>
             <label for="mail" className={styles.signinLable}>Email</label>
             <input className={styles.signinLable} type={"text"} placeholder='Enter  your  Email' id="mail" name='email'
@@ -130,9 +128,11 @@ const handelApiSubmit = () => {
               value={formValues.password}
               onChange={handelChange}>
             </input>
-            <button onClick={() => setState(!state)} className={styles.showIcon} >
+            <span onClick={() => {
+              setState(!state)
+            }} className={styles.showIcon} >
               <FontAwesomeIcon icon={iconClass} />
-            </button>
+            </span>
           </div>
           <p className={styles.errorMessage}>{formError.password}</p>
           <div className={styles.btnRemember}>
