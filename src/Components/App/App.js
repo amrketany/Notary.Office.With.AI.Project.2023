@@ -1,5 +1,5 @@
 import styles from './App.module.css';
-import React from "react";
+import React, { useState } from "react";
 import Nav from '../../Components/Nav/Nav';
 import SignIn from '../../Components/SignIn/SignIn';
 import Home from "../Home/Home";
@@ -15,14 +15,22 @@ import BuySellBuilding from "../Services/Building/BuySellBuilding";
 import RentalBuilding from "../Services/Building/RentalBuilding";
 import UI from "../User Interface/UI";
 import ContractInfo from '../User Interface/ContractInfo';
+import jwtDecode from 'jwt-decode';
 const App = () => {
+  const [userData, setUserData] = useState(null);
+  function saveUserData() {
+    let encodedToken = localStorage.getItem("userToken");
+    let decodedToken = jwtDecode(encodedToken);
+    setUserData(decodedToken);
+    console.log(decodedToken);
+  }
   return (
     <BrowserRouter>
       <div className={styles.container}>
-        <Nav />
+        <Nav userData={userData} />
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route exact path="/signIn" element={<SignIn />} />
+          <Route exact path="/signIn"  element={<SignIn  saveUserData={saveUserData}/>} />
           <Route exact path="/signUp" element={<SignUp />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/services" element={<Services />} />
@@ -39,3 +47,5 @@ const App = () => {
     </BrowserRouter>
   )}
 export default App;
+
+

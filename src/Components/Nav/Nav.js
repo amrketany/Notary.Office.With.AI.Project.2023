@@ -2,21 +2,35 @@ import React from 'react';
 import styles from "./Nav.module.css";
 import logo from "../../imags/0.jpg"
 import { NavLink } from 'react-router-dom';
-const Nav = () => {
+import { name } from '../../Components/User Interface/UI';
+
+const Nav = (props) => {
   return (
     <div className={styles.header} fixed="top">
       <div className={styles.container}>
-        <a href="/"> <img src={logo} className={styles.logo} alt="logo" /></a>
+        <div className={styles.logoName}>
+          <a href="/"> <img src={logo} className={styles.logo} alt="logo" /></a>
+        </div>
         <div className={styles.navegation}>
+          
           <div className={styles.nav}>
-            <NavLink to="/" target="_self" className={styles.active}>Home</NavLink>
+            {props.userData ?
+              <div>
+              <NavLink to="/" target="_self" className={styles.active}>Home</NavLink>
             <NavLink to="/about" target="_self">About</NavLink>
             {/* <NavLink to="/services" target="_self">Documentation</NavLink> */}
             <NavLink to="/NewDocumentation" target="_self">Documentation</NavLink>
-            <NavLink to="/signIn" target="_self">Sign in</NavLink>
-            <NavLink to="/signUp" target="_self">Sign up</NavLink>
             <NavLink to="/User-Settings" ta rget="_self">User Settings</NavLink>
+            </div>
+          : ''}
+          <div>
+          <NavLink to="/signIn" target="_self">Sign in</NavLink>
+          <NavLink to="/signUp" target="_self">Sign up</NavLink>
           </div>
+          </div> 
+          
+          
+         
         </div>
         <div className={styles.links}>
           <span className={styles.icons}>

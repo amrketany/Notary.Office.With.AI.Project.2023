@@ -3,7 +3,6 @@ import styles from "./SignIn.module.css";
 import logo from "../../imags/13.jpg";
 import "../../../node_modules/pretty-checkbox/dist/pretty-checkbox.min.css";
 import "../../../node_modules/pretty-checkbox/dist/pretty-checkbox.css";
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
@@ -14,7 +13,7 @@ import Swal from 'sweetalert2';
 import {  useNavigate } from 'react-router-dom';
 
 
-const SignIn = () => {
+const SignIn = (props) => {
   let iconClass, inputType;
   const [state, setState] = useState(true);
   if (state === false) {
@@ -45,6 +44,19 @@ const SignIn = () => {
     console.log(formValues);
   }
 
+    //Function to handel Submit
+  const handelSubmit = (e) => {
+    e.preventDefault();
+    setFormError(validate(formValues));
+    setIsSubmit(true);
+    if (formError.length === 0 || formError.length === undefined && isSubmit ===true) {
+      (handelApiSubmit())
+    } else {
+      console.log(formError.length);
+    }
+     }
+
+
   //Handle Submit Api
   const handelApiSubmit = () => {
     fetch("http://NotaryOfficeProject.somee.com/api/Visitors/SignIn", {
@@ -60,7 +72,10 @@ const SignIn = () => {
       .then((data) => {
         console.log(data, "userRegister");
         if (data.message === null) {
-          navigate('/User-Settings/*');
+          localStorage.setItem("userToken", data.token);
+          //call user data
+          props.saveUserData();
+          navigate('/');
         } else if (data.message !== undefined) {
           alert(data.message);
         } else {
@@ -68,21 +83,7 @@ const SignIn = () => {
         }
       })
   }
-//Function to handel Submit
-  const handelSubmit = (e) => {
-    e.preventDefault();
-    setFormError(validate(formValues));
-    setIsSubmit(true);
-    if (formError.length === 0 || formError.length === undefined && isSubmit ===true) {
-      (handelApiSubmit())
-    } else {
-      console.log(formError.length);
-    }
-    // Object.keys(formError).length === 0 && isSubmit ?
-    //       (handelApiSubmit())
-    //       :
-    //       (console.log("Error"))
-  }
+
 
 
   //Validate-Function
@@ -154,7 +155,6 @@ const SignIn = () => {
     </div>
   )
 }
-
 export default SignIn;
 
 

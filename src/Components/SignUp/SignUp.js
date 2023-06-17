@@ -63,20 +63,23 @@ function SignUp() {
     // console.log(formValues);
   }
 
+
   //Handle Submit Form 
   const handelSubmit = (e) => {
     e.preventDefault();
     setFormError(validate(formValues));
     setIsSubmit(true);
-    //Code to send data to apis only if all values is valid
+    // Code to send data to apis only if all values is valid
     if (formError.length === 0 || formError.length === undefined && isSubmit ===true) {
-      (handelApiSubmit())
+          (handelApiSubmit())
     } else {
+      console.log(formError);
       console.log(formError.length);
+    } 
     }
-  }
-
    //Send data to api 
+
+  //Send data to api 
   const handelApiSubmit = () => {
     fetch("http://NotaryOfficeProject.somee.com/api/Visitors", {
       method: "POST",
@@ -140,6 +143,8 @@ function SignUp() {
       errors.factoryNum = "Factory Number Is Required";
     } else if (value.factoryNum.length < 9) {
       errors.factoryNum = "Factory Number Must Be 9 Numbers";
+    } else if (!regexFactoryName.test(value.factoryNum)) {
+      errors.factoryNum = "Not Valid FactoryNum format!";
     }
     if (!value.address) {
       errors.address = "Addrees Is Required";

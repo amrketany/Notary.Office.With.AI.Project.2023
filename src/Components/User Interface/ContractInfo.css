@@ -1,3 +1,10 @@
+.info-container {
+    background-color: #ECECEC;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid black;
+}
+
 .info-container ::selection {
     background-color: #2C4755;
     color: #FFF;

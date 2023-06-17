@@ -3,8 +3,6 @@ import './UI.css';
 import cp from "./cp.png";
 
 
-
-
 class UI extends React.Component {
     state = {
         userData: null,
@@ -36,16 +34,21 @@ class UI extends React.Component {
     }
     render() {
 
+
+
         let gettingData = new Promise((resolve, reject) => {
             let request = new XMLHttpRequest();
-            request.open("GET", 'http://www.notaryoffice2023.somee.com/api/visitors');
+            request.open("GET", 'http://www.notaryofficeproject.somee.com/api/visitors/' + this.props.currentUser.username.split("@")[0]);
             request.send();
             request.onreadystatechange = () => {
                 if (request.readyState === 4 && request.status === 200) {
-                    let recievedData = JSON.parse(request.responseText)[1];
+                    let recievedData = JSON.parse(request.responseText);
+
                     this.setState({
                         userData: recievedData,
-                    })
+                    });
+
+
                     resolve(request);
                 }
                 else if (request.readyState === 4 && request.status !== 200) {
@@ -55,6 +58,8 @@ class UI extends React.Component {
         });
 
         gettingData.then((request) => {
+
+
             document.getElementById("firstName").value = this.state.userData.name;
             document.getElementById("motherName").value = this.state.userData.momName;
             document.getElementById("factoryNumber").value = this.state.userData.factoryNum;
@@ -67,6 +72,7 @@ class UI extends React.Component {
             document.getElementById("religion").value = this.state.userData.religon;
 
         }, () => {
+
             document.getElementById("firstName").value = "Loading";
             document.getElementById("firstName").value = "Loading";
             document.getElementById("motherName").value = "Loading";
@@ -181,7 +187,6 @@ class UI extends React.Component {
                         </ul>
                     </div>
                 </div>
-
             </div >
 
         );
