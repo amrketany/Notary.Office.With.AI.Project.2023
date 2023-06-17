@@ -16,18 +16,21 @@ const Nav = (props) => {
           <div className={styles.nav}>
             {props.userData ?
               <div>
-              <NavLink to="/" target="_self" className={styles.active}>Home</NavLink>
-            <NavLink to="/about" target="_self">About</NavLink>
-            {/* <NavLink to="/services" target="_self">Documentation</NavLink> */}
-            <NavLink to="/NewDocumentation" target="_self">Documentation</NavLink>
-            <NavLink to="/User-Settings" ta rget="_self">User Settings</NavLink>
-            </div>
-          : ''}
-          <div>
-          <NavLink to="/signIn" target="_self">Sign in</NavLink>
-          <NavLink to="/signUp" target="_self">Sign up</NavLink>
+                <NavLink to="/" target="_self" className={styles.active}>Home</NavLink>
+                <NavLink to="/about" target="_self">About</NavLink>
+                {/* <NavLink to="/services" target="_self">Documentation</NavLink> */}
+                <NavLink to="/NewDocumentation" target="_self">Documentation</NavLink>
+                <NavLink to="/User-Settings" ta rget="_self">User Settings</NavLink>
+                {/* <NavLink to="/signIn" target="_self">Log Out</NavLink> */}
+                <a   onClick={props.logOut}>Log Out</a>
+              </div>
+              :
+              <div>
+                <NavLink to="/signIn" target="_self">Sign in</NavLink>
+                <NavLink to="/signUp" target="_self">Sign up</NavLink>
+              </div>
+            }
           </div>
-          </div> 
           
           
          
