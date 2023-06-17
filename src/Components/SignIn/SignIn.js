@@ -110,7 +110,7 @@ const SignIn = (props) => {
         <div className={styles.logo}>
           <div className={styles.dhaccount}><p>Don't  have  an  account ? <a href='/signUp' className={styles.signupLink}>Sign Up</a></p></div>
           <a href="/home">  <img src={logo} alt="img not found" className={styles.img} /></a>
-          <h3>Welcome Home</h3>
+          <h3 className={styles.welcomeMessage}>Welcome Home</h3>
         </div>
 
         <form className={styles.signinForm} onSubmit={handelSubmit} >
