@@ -21,7 +21,7 @@ import ForgotPass from '../ForgotPass/ForgotPass';
 const App = () => {
 
 
-  //Protect Route Path
+  //Protect Route Path...ProtectedRoute it is function component should start with capital liter like App
   function ProtectedRoute(props) {
     if (localStorage.getItem("userToken") == null) {
       return <Navigate to="/signIn"/>   //Navigate Return Component

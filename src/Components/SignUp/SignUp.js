@@ -260,7 +260,7 @@ function SignUp() {
             <label for="fn">Enter  your  Factory number</label>
             <input type="text" id={styles.fn} name="factoryNum" maxLength={9} className={styles.signupbtn}
               onChange={handelChange}
-              placeholder="Enter Numbers only"></input>
+              placeholder="Like AS1111115"></input>
             <p className={styles.errorMessage}> {formError.factoryNum}</p>
           </div>
           <div>
