@@ -5,7 +5,7 @@ import SignIn from '../../Components/SignIn/SignIn';
 import LogOut from '../../Components/LogOut/LogOut';
 import Home from "../Home/Home";
 import SignUp from '../SignUp/SignUp';
-import {  Route, Routes, useNavigate } from "react-router-dom";
+import {  Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Footer from '../Footer/Footer';
 import About from '../About/About';
 import Services from '../Services/Services';
@@ -20,6 +20,15 @@ import jwtDecode from 'jwt-decode';
 import ForgotPass from '../ForgotPass/ForgotPass';
 const App = () => {
 
+
+  //Protect Route Path
+  function ProtectedRoute(props) {
+    if (localStorage.getItem("userToken") == null) {
+      return <Navigate to="/signIn"/>   //Navigate Return Component
+    } else {
+     return props.children;
+    }
+  }
   //handel Token
   const [userData, setUserData] = useState(null);
   function saveUserData() {
@@ -36,8 +45,8 @@ const App = () => {
     setUserData(null);
     navigate("/signIn");
 }
-
-  useEffect(() => {  //handel Refreshing
+  //handel Refreshing
+  useEffect(() => {  
     if (localStorage.getItem("userToken") != null) {
       saveUserData();
     }
@@ -51,16 +60,16 @@ const App = () => {
           <Route exact path="/signIn"  element={<SignIn  saveUserData={saveUserData}/>} />
           <Route exact path="/forgotPass"  element={<ForgotPass  />} />
           <Route exact path="/signUp" element={<SignUp />} />
-          <Route exact path="/signIn" element={<LogOut />} />
-          <Route exact path="/about" element={<About />} />
-          <Route exact path="/services" element={<Services />} />
-          <Route exact path="/NewDocumentation" element={<NewDocumentation />} />
-          <Route exact path="/User-Settings/*" element={<UI />} />
-          <Route exact path="/buysellmachine" element={<BuySellMachine />} />
-          <Route exact path="/rentalmachine" element={<RentalMachine />} />
-          <Route exact path="/buysellbuilding" element={<BuySellBuilding />} />
-          <Route exact path="/rentalbuilding" element={<RentalBuilding />} />
-          <Route exact path="/contract-info" element={<ContractInfo />} />
+          <Route exact path="/signIn" element={<ProtectedRoute> <LogOut /></ProtectedRoute>} />
+          <Route exact path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
+          <Route exact path="/services" element={<ProtectedRoute><Services /></ProtectedRoute>} />
+          <Route exact path="/NewDocumentation" element={<ProtectedRoute><NewDocumentation /></ProtectedRoute>} />
+          <Route exact path="/User-Settings/*" element={<ProtectedRoute><UI /></ProtectedRoute>} />
+          <Route exact path="/buysellmachine" element={<ProtectedRoute><BuySellMachine /></ProtectedRoute>} />
+          <Route exact path="/rentalmachine" element={<ProtectedRoute><RentalMachine /></ProtectedRoute>} />
+          <Route exact path="/buysellbuilding" element={<ProtectedRoute><BuySellBuilding /></ProtectedRoute>} />
+          <Route exact path="/rentalbuilding" element={<ProtectedRoute><RentalBuilding /></ProtectedRoute>} />
+          <Route exact path="/contract-info" element={<ProtectedRoute><ContractInfo /></ProtectedRoute>} />
         </Routes>
         <Footer />
       </div>
