@@ -74,6 +74,9 @@
   align-items: center;
 } */
 
+.logOut{
+  cursor: pointer;
+}
 
 .header .username {
   font-size: 25px;

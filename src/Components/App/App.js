@@ -17,6 +17,7 @@ import RentalBuilding from "../Services/Building/RentalBuilding";
 import UI from "../User Interface/UI";
 import ContractInfo from '../User Interface/ContractInfo';
 import jwtDecode from 'jwt-decode';
+import ForgotPass from '../ForgotPass/ForgotPass';
 const App = () => {
 
   //handel Token
@@ -48,6 +49,7 @@ const App = () => {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route exact path="/signIn"  element={<SignIn  saveUserData={saveUserData}/>} />
+          <Route exact path="/forgotPass"  element={<ForgotPass  />} />
           <Route exact path="/signUp" element={<SignUp />} />
           <Route exact path="/signIn" element={<LogOut />} />
           <Route exact path="/about" element={<About />} />

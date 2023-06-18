@@ -17,7 +17,7 @@ const Nav = (props) => {
                   <NavLink to="/" target="_self" className={styles.active}>Home</NavLink>
                   <NavLink to="/about" target="_self">About</NavLink>
                   {/* <NavLink to="/services" target="_self">Documentation</NavLink> */}
-                  <NavLink to="/NewDocumentation" target="_self">Documentation</NavLink>
+                  <NavLink to="/NewDocumentation" target="_self">Scan Contract With AI</NavLink>
                   
                 </div>
                 : ""
@@ -27,7 +27,7 @@ const Nav = (props) => {
               {
                 props.userData ?
                   <><NavLink to="/User-Settings" ta rget="_self">User Settings</NavLink>
-                    <a onClick={props.logOut}>Log Out</a>
+                    <a className={styles.logOut} onClick={props.logOut}>Log Out</a>
                   </>
                   
                   :
@@ -53,9 +53,9 @@ const Nav = (props) => {
                 <li><NavLink to="/" target="_self">Home</NavLink></li>
                 <li><NavLink to="/about" target="_self">About</NavLink></li>
                 {/* <li><NavLink to="/services" target="_self">Documentation</NavLink></li> */}
-                <li><NavLink to="/NewDocumentation" target="_self">NewDocumentation</NavLink></li>
+                <li><NavLink to="/NewDocumentation" target="_self">Scan Contract With AI</NavLink></li>
                 <li><NavLink to="/User-Settings" target="_self">User Settings</NavLink></li>
-                <li><a onClick={props.logOut}>Log Out</a></li></div>
+                <li><a className={styles.logOut} onClick={props.logOut}>Log Out</a></li></div>
                : <div className={styles.ShowLinks}>
                 <li><NavLink to="/signIn" target="_self">Sign in</NavLink></li>
                 <li><NavLink to="/signUp" target="_self">Sign up</NavLink></li>

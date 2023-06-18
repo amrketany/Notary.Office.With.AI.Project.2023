@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import styles from "./SignIn.module.css";
+import styles from "../SignIn/SignIn.module.css";
 import logo from "../../imags/13.jpg";
 import "../../../node_modules/pretty-checkbox/dist/pretty-checkbox.min.css";
 import "../../../node_modules/pretty-checkbox/dist/pretty-checkbox.css";
@@ -11,16 +11,16 @@ import Swal from 'sweetalert2';
 import {  useNavigate } from 'react-router-dom';
 
 
-const SignIn = (props) => {
+const ForgotPass = (props) => {
   let iconClass, inputType;
-  const [state, setState] = useState(true);
-  if (state === false) {
-    iconClass = faEye;
-    inputType = "text";
-  } else {
-    iconClass = faEyeSlash;
-    inputType = "password"
-  }
+  // const [state, setState] = useState(true);
+  // if (state === false) {
+  //   iconClass = faEye;
+  //   inputType = "text";
+  // } else {
+  //   iconClass = faEyeSlash;
+  //   inputType = "password"
+  // }
 
   //Handel alert Liberary
   const alert = (data) => {
@@ -109,8 +109,6 @@ const SignIn = (props) => {
       <div className={styles.container}>
         <div className={styles.logo}>
           <div className={styles.dhaccount}><p>Don't  have  an  account ? <a href='/signUp' className={styles.signupLink}>Sign Up</a></p></div>
-          <a href="/home">  <img src={logo} alt="img not found" className={styles.img} /></a>
-          <h3 className={styles.welcomeMessage}>Welcome Home</h3>
         </div>
 
         <form className={styles.signinForm} onSubmit={handelSubmit} >
@@ -122,29 +120,29 @@ const SignIn = (props) => {
           </div>
           <p className={styles.errorMessage}>{formError.email}</p>
           <div className={styles.password_in} >
-            <label for="pass" className={styles.signinLable}>Password</label>
+            <label for="pass" className={styles.signinLable}>phone</label>
             <input className={styles.signinLable} type={inputType} placeholder='Enter  your  pass' id="pass" name='password'
               value={formValues.password}
               onChange={handelChange}>
             </input>
-            <span onClick={() => {
-              setState(!state)
-            }} className={styles.showIcon} >
-              <FontAwesomeIcon icon={iconClass} />
-            </span>
+            
           </div>
+          <div className={styles.password_in} >
+            <label for="pass" className={styles.signinLable}>Id</label>
+            <input className={styles.signinLable} type={inputType} placeholder='Enter  your  pass' id="pass" name='password'
+              value={formValues.password}
+              onChange={handelChange}>
+            </input>
+                    </div>
           <p className={styles.errorMessage}>{formError.password}</p>
           <div className={styles.btnRemember}>
             <div className="pretty p-icon p-rotate">
               <input type="checkbox" />
               <div className="state p-success">
-                <i className="icon mdi mdi-check"></i>
-                <FontAwesomeIcon icon={faCheck} className={styles.icon} class="icon mdi mdi-check" />
-                <label>Remember me.</label>
+                
               </div>
             </div>
           </div>
-          <a className={styles.signupLink} href='/forgotPass'>Forgot  your  pass?</a>
           <div className={styles.signinLable}>
             <input type="submit" value="Submit" id={styles.submit}></input>
           </div>
@@ -153,7 +151,7 @@ const SignIn = (props) => {
     </div>
   )
 }
-export default SignIn;
+export default ForgotPass;
 
 
 
