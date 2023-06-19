@@ -50,9 +50,12 @@ const Services = () => {
   const [contract, setContract] = useState("");
   //1
    const getContracts = () => {
-   fetch("http://notaryofficeproject.somee.com/api/Services")
-   .then((resp) => resp.json())
-   .then((data) => setContract(data));
+     fetch("http://notaryofficeproject.somee.com/api/Services")
+       .then((resp) => resp.json())
+       .then((data) => {
+         setContract(data)
+         console.log(data)
+       });
   }
   //2
   useEffect(() => { getContracts() }, []);
@@ -103,11 +106,11 @@ const Services = () => {
                               <h2 className={styles.textDocContent}>Contract For {e.serviceNameEn}</h2>
                             </div>
                             <div className={styles.divTwo}>
-                              <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Get File</a>
+                              <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Contract</a>
                               {/* Start upload your file */}
                               <div className={styles.input_group}>
-                                <input type="file" className={styles.form_control} placeholder="Choose File" name="file"  />
-                                <button className={styles.uploadbtn}>Submit</button>
+                                <input type="file" className={styles.form_control} placeholder="Upload Contract" name="file"  />
+                                <button className={styles.uploadbtn} >Submit</button>
                               </div >
                             </div>
                           </div>
@@ -138,10 +141,10 @@ const Services = () => {
                               <h2 className={styles.textDocContent}>Contract For {e.serviceNameEn}</h2>
                             </div>
                             <div className={styles.divTwo}>
-                              <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Get File</a>
+                              <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Contract</a>
                               {/* Start upload your file */}
                               <div className={styles.input_group}>
-                                <input type="file" className={styles.form_control} placeholder="Choose File" name="file"  />
+                                <input type="file" className={styles.form_control} placeholder="Upload Contract" name="file"  />
                                 <button className={styles.uploadbtn}>Submit</button>
                               </div >
                             </div>

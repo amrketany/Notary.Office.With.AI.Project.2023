@@ -70,11 +70,13 @@ function SignUp() {
     setFormError(validate(formValues));
     setIsSubmit(true);
     // Code to send data to apis only if all values is valid
-    if (formError.length === 0 || formError.length === undefined && isSubmit ===true) {
+    if (formError.length===undefined || formError.length===null && isSubmit ===true) {
           (handelApiSubmit())
     } else {
       console.log(formError);
+      console.log(Object.keys.prototype.length);
       console.log(formError.length);
+      console.log(isSubmit);
     } 
     }
    //Send data to api 
@@ -108,6 +110,7 @@ function SignUp() {
           alert(data.message);
         } else {
           alert("Complete Sign Up Data Please!");
+          console.log(data.message);
         }
       })
   }
@@ -309,3 +312,47 @@ function SignUp() {
 }
 
 export default SignUp;
+
+
+
+
+
+
+
+
+
+
+  //Send data to api []
+  // const handelApiSubmit = () => {
+  //   fetch("http://NotaryOfficeProject.somee.com/api/Visitors", {
+  //     method: "POST",
+  //     headers: {
+  //       "content-type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       id: formValues.id,
+  //       name: formValues.name,
+  //       momName: formValues.momName,
+  //       email: formValues.email,
+  //       password: formValues.password,
+  //       address: formValues.address,
+  //       phone: formValues.phone,
+  //       factoryNum: formValues.factoryNum,
+  //       nationality: formValues.nationality,
+  //       religon: formValues.religon,
+  //       governorate: formValues.governorate
+  //     })
+  //   }).then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data, "userRegister");
+  //       if (data.message === null) {
+  //         navigate('/signIn');
+  //       } else if (data.message !== undefined){
+  //         alert(data.message);
+  //       } else {
+  //         alert(data.errors);
+  //         // alert("Complete Sign Up Data Please!");
+  //         console.log(data.message);
+  //       }
+  //     })
+  // }
