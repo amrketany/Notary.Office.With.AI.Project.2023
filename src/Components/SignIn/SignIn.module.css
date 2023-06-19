@@ -20,8 +20,8 @@
 }
 
 .img {
- width: 40px;
- height: 40px;
+ width: 30px;
+ height: 30px;
  border-radius: 50%;
 }
 
@@ -35,7 +35,7 @@
 
 .logo .dhaccount {
  width: 100%;
- height: 50px;
+ height: 40px;
  background-color: #FFEBCD;
  margin: 0;
  margin-bottom: 10px;
@@ -54,7 +54,7 @@ input {
  margin: 10px 0px;
  box-sizing: border-box;
  outline: none;
- height: 30px;
+ height: 25px;
  width: 70%;
 }
 
@@ -64,7 +64,7 @@ input {
 
 
 #submit {
- height: 40px;
+ height: 35px;
  width: 30%;
  background-color:#FF7F50;
  cursor: pointer;
@@ -83,11 +83,11 @@ input:focus {
 .signupLink {
  text-decoration: none;
  color: #FF7F50;
- size: 10px;
+ size: 8px;
 }
 
 .btnRemember{
- margin: 10px 0;
+ margin: 8px 0;
 }
 
 
@@ -101,7 +101,7 @@ width: 80%;
  position: relative;
 }
 .welcomeMessage{
-  font-size: 20px;
+  font-size: 15px;
 }
 .showIcon{
     position: absolute;
@@ -116,7 +116,7 @@ width: 80%;
 }
 
 .errorMessage {
-  margin: 10px 0;
+  margin: 8px 0;
   color: #FF7F50;
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
   font-weight: 50px;
