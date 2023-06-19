@@ -3,18 +3,11 @@
  display: flex;
   justify-content: center;
   align-items: center;
-
-    width: 100%;
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      margin-top: auto;
-      margin-bottom: auto;
-      padding: 0;
-      align-content: center;
+  width: 100%;
+  display: flex;
+  position: absolute;
+  top: 0;
+  bottom:0;
 }
 
 .container {
@@ -23,6 +16,7 @@
  align-items: center;
  flex-direction: column;
  background-color: white;
+
 }
 
 .img {
