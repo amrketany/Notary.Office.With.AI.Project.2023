@@ -12,8 +12,6 @@ import { useNavigate } from 'react-router-dom';
 
 
 const SignIn = (props) => {
-  // const navigate = useNavigate;
-  let token = "";
   let iconClass, inputType;
   const [state, setState] = useState(true);
   if (state === false) {
@@ -24,12 +22,18 @@ const SignIn = (props) => {
     inputType = "password"
   }
 
+  //Handel alert Liberary
+  const alert = (data) => {
+    Swal.fire(data)
+  }
 
 
+  //Navigate if login success
+  const navigate = useNavigate();
 
   const initialValues = { email: "", password: "" };
   const [formValues, setFormValues] = useState(initialValues);
-  const [formError, setFormError] = useState({});
+  const [formError, setFormError] = useState([]);
   const [isSubmit, setIsSubmit] = useState(false);
   const handelChange = (e) => {
     const { name, value } = e.target;
@@ -67,9 +71,9 @@ const SignIn = (props) => {
         console.log(data, "userRegister");
         if (data.message === null) {
           localStorage.setItem("userToken", data.token);
-          token = data.token;
-          // call user data
+          //call user data
           props.saveUserData();
+          navigate('/');
         } else if (data.message !== undefined) {
           alert(data.message);
         } else {
@@ -83,7 +87,7 @@ const SignIn = (props) => {
   //Validate-Function
   const validate = (value) => {
     const errors = {};
-    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const regex = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
     if (!value.email) {
       errors.email = "Email Is Required";
     } else if (!regex.test(value.email)) {
@@ -99,7 +103,6 @@ const SignIn = (props) => {
   //End-of-validation
   //..........................................................
 
-  // if(localStorage.getItem("userToken") === token){useNavigate('/');}
 
   return (
     <div className={styles.SignIn}>
@@ -124,9 +127,11 @@ const SignIn = (props) => {
               value={formValues.password}
               onChange={handelChange}>
             </input>
-            <button onClick={() => setState(!state)} className={styles.showIcon} >
+            <span onClick={() => {
+              setState(!state)
+            }} className={styles.showIcon} >
               <FontAwesomeIcon icon={iconClass} />
-            </button>
+            </span>
           </div>
           <p className={styles.errorMessage}>{formError.password}</p>
           <div className={styles.btnRemember}>
@@ -149,7 +154,3 @@ const SignIn = (props) => {
   )
 }
 export default SignIn;
-
-
-
-

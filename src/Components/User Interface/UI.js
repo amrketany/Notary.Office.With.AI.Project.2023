@@ -110,6 +110,7 @@ class UI extends React.Component {
 
 
             let contractsArea = document.querySelector('.contracts-content .contracts');
+            console.log(contractsArea);
             if (response.data.length > 0) contractsArea.innerHTML = "";
 
             for (let cont = 0; cont < response.data.length; cont++) {
@@ -149,11 +150,11 @@ class UI extends React.Component {
 
             <div className='UI-container'>
                 <div className='menu'>
-                    <a className='nav-link active' href='#profile-tab' data-order="0">
+                    <a className='nav-link active' data-order="0">
                         <i className="fa-solid fa-user"></i>
                         Profile
                     </a>
-                    <a className='nav-link' href='#contracts-tab' data-order="1">
+                    <a className='nav-link' data-order="1">
                         <i className="fa-solid fa-circle-check"></i>
                         Validated Contracts
                     </a>

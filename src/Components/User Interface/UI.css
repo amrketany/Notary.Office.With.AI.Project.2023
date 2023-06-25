@@ -127,6 +127,7 @@
         margin-bottom: 20px;
         text-align: left;
         font-size: 16px;
+        cursor: pointer;
     }
 
     .UI-container .menu .nav-link>i {
