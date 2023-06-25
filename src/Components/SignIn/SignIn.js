@@ -146,7 +146,7 @@ const SignIn = (props) => {
           </div>
           <a className={styles.signupLink} href='/forgotPass'>Forgot  your  pass?</a>
           <div className={styles.signinLable}>
-            <input type="submit" value="Submit" id={styles.submit}></input>
+            <input type="submit" value="Sign In" id={styles.submit}></input>
           </div>
         </form>
       </div>

@@ -13,9 +13,6 @@ import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { faCircleArrowRight } from '@fortawesome/free-solid-svg-icons';
 const link = "https://rern.gov.eg/pages/requests/2";
 
-
-
-
 const Services = () => {
 
  //Start Handel  Icons Change and Hide content
@@ -106,12 +103,12 @@ const Services = () => {
                               <h2 className={styles.textDocContent}>Contract For {e.serviceNameEn}</h2>
                             </div>
                             <div className={styles.divTwo}>
-                              <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Contract</a>
+                              <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Template</a>
                               {/* Start upload your file */}
-                              <div className={styles.input_group}>
+                              <form className={styles.input_group}>
                                 <input type="file" className={styles.form_control} placeholder="Upload Contract" name="file"  />
-                                <button className={styles.uploadbtn} >Submit</button>
-                              </div >
+                                <button className={styles.uploadbtn} >Scan</button>
+                              </form >
                             </div>
                           </div>
                         )
@@ -141,12 +138,12 @@ const Services = () => {
                               <h2 className={styles.textDocContent}>Contract For {e.serviceNameEn}</h2>
                             </div>
                             <div className={styles.divTwo}>
-                              <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Contract</a>
+                              <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Template</a>
                               {/* Start upload your file */}
-                              <div className={styles.input_group}>
+                              <form className={styles.input_group}>
                                 <input type="file" className={styles.form_control} placeholder="Upload Contract" name="file"  />
-                                <button className={styles.uploadbtn}>Submit</button>
-                              </div >
+                                <button className={styles.uploadbtn}>Scan</button>
+                              </form >
                             </div>
                           </div>
                         )

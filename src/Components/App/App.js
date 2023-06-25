@@ -35,9 +35,7 @@ const App = () => {
     let encodedToken = localStorage.getItem("userToken");
     let decodedToken = jwtDecode(encodedToken);
     setUserData(decodedToken);
-    console.log(decodedToken);
-    console.log(decodedToken);
-    console.log(decodedToken);
+
   }
 
   //Handel log out
