@@ -36,6 +36,8 @@ const App = () => {
     let decodedToken = jwtDecode(encodedToken);
     setUserData(decodedToken);
     console.log(decodedToken);
+    console.log(decodedToken);
+    console.log(decodedToken);
   }
 
   //Handel log out
