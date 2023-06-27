@@ -14,11 +14,11 @@ import BuySellMachine from "../Services/Machine/BuySellMachine";
 import RentalMachine from "../Services/Machine/RentalMachine";
 import BuySellBuilding from "../Services/Building/BuySellBuilding";
 import RentalBuilding from "../Services/Building/RentalBuilding";
-import UI from "../User Interface/UI";
 import ContractInfo from '../User Interface/ContractInfo';
 import jwtDecode from 'jwt-decode';
 import ForgotPass from '../ForgotPass/ForgotPass';
 import UserSettings from '../User Interface/UI';
+import Viewer from '../User Interface/Viewer';
 const App = () => {
 
 
@@ -71,6 +71,7 @@ const App = () => {
         <Route exact path="/buysellbuilding" element={<ProtectedRoute><BuySellBuilding /></ProtectedRoute>} />
         <Route exact path="/rentalbuilding" element={<ProtectedRoute><RentalBuilding /></ProtectedRoute>} />
         <Route exact path="/contract-info" element={<ProtectedRoute><ContractInfo /></ProtectedRoute>} />
+        <Route exact path="/viewer" element={<ProtectedRoute><Viewer /></ProtectedRoute>} />
       </Routes>
       <Footer />
     </div>

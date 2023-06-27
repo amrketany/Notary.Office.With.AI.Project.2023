@@ -136,12 +136,18 @@
 }
 
 
-.info-container .info-form .form-group .property-field,
-.info-container .info-form .form-group .vehicle-field {
+.info-container .info-form .form-group.property-field,
+.info-container .info-form .form-group.vehicle-field {
     display: none;
-    background-color: red;
 }
 
-.show {
-    display: block;
+.info-container .info-form .form-group.property-field.show,
+.info-container .info-form .form-group.vehicle-field.show {
+    display: flex;
+}
+
+.info-container .info-form .form-group label[for="propertyId"]+input[value=""],
+.info-container .info-form .form-group label[for="vehicleId"]+input[value=""],
+.info-container .info-form .form-group label[for="endDate"]+input[value=""] {
+    background-color: #e2e0e0;
 }

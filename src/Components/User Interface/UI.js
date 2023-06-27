@@ -49,8 +49,7 @@ class UI extends React.Component {
     }
     render() {
 
-        // let TOKEN = localStorage.getItem("userToken");
-        let TOKEN = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxNDc3MTQ3NDQ0NDQ0NEBOb3RhcnlPZmZpY2UuY29tIiwianRpIjoiMzc4YjBjYzQtYTcyZi00NWE5LTg5Y2MtOTMxODMwMmZhZmI3IiwiZW1haWwiOiJhaG1lZGFsaTFAZ21haWwuY29tIiwidWlkIjoiMTQ3NzE0NzQ0NDQ0NDQiLCJyb2xlcyI6IlVzZXIiLCJleHAiOjE2ODc4MTcwODEsImlzcyI6IktoYWxlZCIsImF1ZCI6IkRvY3RvcnMifQ._Pnj6usAhzh6RD6HvbvyJHdGzUfgIeDiOOvLTUFkBTA";
+        let TOKEN = localStorage.getItem("userToken");
         let headers = {
             "authorization": `bearer ${TOKEN}`,
         }
@@ -116,7 +115,7 @@ class UI extends React.Component {
             for (let cont = 0; cont < response.data.length; cont++) {
 
                 let element = document.createElement("a");
-                element.setAttribute("href", "/contract-info");
+                element.setAttribute("href", "/#/contract-info");
                 element.setAttribute("target", "_blank");
                 let temp = document.createElement("li");
                 temp.setAttribute("class", "contract");
@@ -127,7 +126,7 @@ class UI extends React.Component {
 
                 temp2 = document.createElement("p");
                 temp2.setAttribute("class", "contract-title");
-                let text = `Buying a ${response.data[cont].property !== null ? "property" : "vehicle"} for ${response.data[cont].monyAmount} LE`;
+                let text = `${response.data[cont].type ? "Hiring " : "Buying "} a ${response.data[cont].propertyId !== null ? "property" : "vehicle"} for ${response.data[cont].monyAmount} LE`;
                 temp2.append(document.createTextNode(text));
 
                 temp.append(temp2);

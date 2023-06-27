@@ -1,6 +1,5 @@
 import React from 'react';
 import './ContractInfo.css';
-import cp from "./cp.png";
 import axios from 'axios';
 
 
@@ -18,17 +17,18 @@ class ContractInfo extends React.Component {
         firstPartyId: "Loading",
         secondPartyId: "Loading",
         propertyId: "Loading",
-        vehicalId: "Loading",
+        vehicleId: "Loading",
         creator: "Loading",
         firstParty: "Loading",
         property: "Loading",
         secondParty: "Loading",
-        vehical: "Loading"
+        vehicle: "Loading"
 
     }
     componentDidMount() {
         document.getElementById('preview-img').onclick = () => {
-            window.open(cp, "_blank");
+            localStorage.setItem('cvs', this.state.contractImageSrc);
+            window.open('/#/Viewer', "_blank");
         }
     }
 
@@ -51,6 +51,8 @@ class ContractInfo extends React.Component {
 
             axios.get("http://NotaryOfficeProject.somee.com/api/Visitors/" + contractData.firstPartyId).then((R) => { this.setState({ firstParty: R.data.name }); });
             axios.get("http://NotaryOfficeProject.somee.com/api/Visitors/" + contractData.secondPartyId).then((R) => { this.setState({ secondParty: R.data.name }); });
+            this.setState({ type: contractData.type ? "Rent" : "Sell", endDate: contractData.type ? contractData.endDate : "" });
+
             if (contractData.propertyId != null) {
                 console.log("FROM PROPERT CHECK");
                 console.log(contractData.propertyId != null);
@@ -65,24 +67,25 @@ class ContractInfo extends React.Component {
                 console.log(contractData.vehicalId != null);
                 console.log(contractData.vehicalID);
                 let fields = document.querySelectorAll(".vehicle-field");
-                for (let x = 0; x < fields.length; x++) { fields[x].classList.add("show"); }
+                console.log(fields);
+                for (let x = 0; x < fields.length; x++) { fields[x].classList.add("show"); console.log("Showing Field: " + x) }
                 axios.get("http://NotaryOfficeProject.somee.com/api/Vehical/" + contractData.vehicalId, { headers }).then((R) => { this.setState({ vehicalLicence: R.data.licenseNum, vehicalEndData: R.data.licenseEndDate, vehicalBrand: R.data.brand, vehicalColor: R.data.color, vehicalEngine: R.data.engine, vehicalModel: R.data.modle, }); });
 
             }
 
             this.setState({
                 id: contractData.id,
-                contractImage: contractData.contractImage,
+                contractImageSrc: 'data:image/png;base64,' + contractData.contractImage,
                 startDate: contractData.startDate.split("T")[0],
-                endDate: contractData.endDate.split("T")[0],
+                endDate: contractData.type ? contractData.endDate.split("T")[0] : "",
                 monyAmount: contractData.monyAmount,
-                type: contractData.type,
+                type: contractData.type ? "Rent" : "Sell",
                 creatorId: contractData.creatorId,
                 createDate: contractData.createDate.split("T")[0],
                 firstPartyId: contractData.firstPartyId,
                 secondPartyId: contractData.secondPartyId,
-                propertyId: contractData.propertyId,
-                vehicalId: contractData.vehicalId,
+                propertyId: contractData.propertyId === null ? "" : contractData.propertyId,
+                vehicleId: contractData.vehicalId === null ? "" : contractData.vehicalId,
                 creator: contractData.creator,
                 firstParty: null,
                 secondParty: null,
@@ -96,12 +99,12 @@ class ContractInfo extends React.Component {
                 propertySouth: contractData.property,
                 propertyEast: contractData.property,
                 propertyWest: contractData.property,
-                vehicalLicence: contractData.vehical,
-                vehicalEndData: contractData.vehical,
-                vehicalBrand: contractData.vehical,
-                vehicalModel: contractData.vehical,
-                vehicalColor: contractData.vehical,
-                vehicalEngine: contractData.vehical,
+                vehicleLicence: contractData.vehical,
+                vehicleEndData: contractData.vehical,
+                vehicleBrand: contractData.vehical,
+                vehicleModel: contractData.vehical,
+                vehicleColor: contractData.vehical,
+                vehicleEngine: contractData.vehical,
 
 
 
@@ -119,7 +122,7 @@ class ContractInfo extends React.Component {
                         <div className='form-group'>
                             <label htmlFor="preview">Contract Preview:</label>
                             <div className='contract-preview' id='preview'>
-                                <img src={cp} alt="contract preview" id="preview-img" />
+                                <img src={this.state.contractImageSrc} alt="contract preview" id="preview-img" />
                             </div >
                         </div>
 
@@ -165,7 +168,7 @@ class ContractInfo extends React.Component {
 
                         <div className='form-group'>
                             <label htmlFor="type">Contract Type:</label>
-                            <input type="text" className="form-control" id="type" value={this.state.type ? "Rent" : "Sell"} disabled />
+                            <input type="text" className="form-control" id="type" value={this.state.type} disabled />
                         </div>
 
                         <div className='form-group'>
@@ -185,7 +188,7 @@ class ContractInfo extends React.Component {
 
                         <div className='form-group'>
                             <label htmlFor="vehicleId">Vehicle ID:</label>
-                            <input type="text" className="form-control" id="vehicleId" value={this.state.vehicalId} disabled />
+                            <input type="text" className="form-control" id="vehicleId" value={this.state.vehicleId} disabled />
                         </div>
 
                         {/* <div className='form-group'>
@@ -245,27 +248,27 @@ class ContractInfo extends React.Component {
 
                         <div className='form-group vehicle-field'>
                             <label htmlFor="vehicle">Vehicle License Number:</label>
-                            <input type="text" className="form-control" id="vehicle" value={this.state.vehicalLicence} disabled />
+                            <input type="text" className="form-control" id="vehicle" value={this.state.vehicleLicence} disabled />
                         </div>
                         <div className='form-group vehicle-field'>
                             <label htmlFor="vehicle">Vehicle License End Data:</label>
-                            <input type="text" className="form-control" id="vehicle" value={this.state.vehicalEndData} disabled />
+                            <input type="text" className="form-control" id="vehicle" value={this.state.vehicleEndData} disabled />
                         </div>
                         <div className='form-group vehicle-field'>
                             <label htmlFor="vehicle">Vehicle Brand:</label>
-                            <input type="text" className="form-control" id="vehicle" value={this.state.vehicalBrand} disabled />
+                            <input type="text" className="form-control" id="vehicle" value={this.state.vehicleBrand} disabled />
                         </div>
                         <div className='form-group vehicle-field'>
                             <label htmlFor="vehicle">Vehicle Model:</label>
-                            <input type="text" className="form-control" id="vehicle" value={this.state.vehicalModel} disabled />
+                            <input type="text" className="form-control" id="vehicle" value={this.state.vehicleModel} disabled />
                         </div>
                         <div className='form-group vehicle-field'>
                             <label htmlFor="vehicle">Vehicle Engine:</label>
-                            <input type="text" className="form-control" id="vehicle" value={this.state.vehicalEngine} disabled />
+                            <input type="text" className="form-control" id="vehicle" value={this.state.vehicleEngine} disabled />
                         </div>
                         <div className='form-group vehicle-field'>
                             <label htmlFor="vehicle">Vehicle Color:</label>
-                            <input type="text" className="form-control" id="vehicle" value={this.state.vehicalColor} disabled />
+                            <input type="text" className="form-control" id="vehicle" value={this.state.vehicleColor} disabled />
                         </div>
 
                     </div>
