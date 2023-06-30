@@ -20,39 +20,54 @@
     background-color: #FFF;
 }
 
+
+.UI-container .content {
+    width: 70%;
+    margin: 0 auto 50px;
+    padding-top: 30px;
+
+
+}
+
+
 .UI-container .menu {
     height: 100vh;
-    width: 30%;
+    width: 5%;
     font-size: 1.3rem;
     background: #ECECEC;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding: 20px 30px;
-    margin-right: 70px;
-
+    padding: 20px 0px 20px 10px;
+    margin-right: 40px;
+    border-right: 4px double black;
+    position: fixed;
+    transition: width ease 0.5s;
 
 }
 
-.UI-container .content {
-    width: 70%;
-    padding: 30px 30px 30px 0;
+.UI-container .menu:hover {
+    width: 40%;
+
 }
 
 .UI-container .menu .nav-link {
     margin-bottom: 20px;
+    color: #011E80;
     font-size: 22px;
-    color: #000;
     font-weight: 600;
     text-align: left;
-    width: 180px;
+    width: 80%;
+    height: 40px;
+    overflow: hidden;
     position: relative;
+
 
 }
 
 .UI-container .menu .nav-link::before {
-    content: '';
+    /* content: ''; */
     position: absolute;
     display: block;
     width: 4px;
@@ -67,9 +82,7 @@
 
 .UI-container .menu .nav-link.active {
     font-weight: 900;
-    color: #FFF;
-    padding: 5px;
-    color: #2C4755;
+    color: #0430c0;
 }
 
 .UI-container .menu .nav-link.active::before {
@@ -81,9 +94,17 @@
 
 
 .UI-container .menu .nav-link>i {
-    margin-right: 10px;
-    color: #000;
+    padding: 0;
+    color: #011E80;
+    font-size: 27px;
+    margin-right: 20px;
 }
+
+
+.UI-container .menu .nav-link.active>i {
+    color: #0430c0;
+}
+
 
 
 @media screen and (max-width:940px) {
@@ -95,16 +116,23 @@
         margin-right: 20px;
     }
 
+    .UI-container .menu {
+        width: 6%;
+        padding: 20px 0px;
+    }
+
     .UI-container .menu .nav-link {
         display: flex;
         align-items: center;
         margin-bottom: 20px;
         text-align: left;
         font-size: 16px;
+        cursor: pointer;
     }
 
     .UI-container .menu .nav-link>i {
-        font-size: 16px !important;
+        font-size: 25px;
+        margin-left: 0;
     }
 }
 
@@ -133,7 +161,15 @@
         width: 100%;
         height: auto;
         margin: 0;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
 
+    }
+
+
+    .UI-container .menu:hover {
+        width: 100%;
     }
 
     .UI-container .content {
@@ -143,8 +179,16 @@
 
 }
 
+@media (max-width:580px) {
+    .UI-container .menu {
+        flex-direction: column;
+    }
+}
+
 .profile-content,
-.contracts-content {
+.contracts-content,
+.properties-content,
+.vehicles-content {
     display: none;
 }
 
@@ -161,6 +205,7 @@
 .UI-container form label {
     font-size: 18px;
     color: #000;
+    font-family: cairo;
 }
 
 .UI-container form .form-control,
@@ -175,7 +220,7 @@
     margin-bottom: 15px;
     font-size: 21px;
     font-weight: 600;
-    color: rgb(5, 112, 5);
+    color: #0430C0;
     letter-spacing: 3px;
 }
 
@@ -204,7 +249,10 @@
 
 
 
-.contracts .contract {
+.contracts .contract,
+.properties .property,
+.vehicles .vehicle {
+
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -216,6 +264,23 @@
     font-weight: 600;
     text-transform: capitalize;
     padding: 10px;
+}
+
+.contracts-content .contracts,
+.properties-content .properties,
+.vehicles-content .vehicles {
+    padding: 0;
+}
+
+.contracts-content .contracts>span,
+.properties-content .properties>span,
+.vehicles-content .vehicles>span {
+    font-size: 25px;
+    font-weight: 700;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 

@@ -1,8 +1,15 @@
 .info-container {
     background-color: #ECECEC;
-    padding: 15px;
-    border-radius: 10px;
     border: 1px solid black;
+}
+
+.info-container-inner {
+    width: 95%;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: #FFF;
+    margin: 20px auto 70px;
+
 }
 
 .info-container ::selection {
@@ -14,7 +21,15 @@
 .info-container .info-form {
     width: 550px;
     display: grid;
-    grid-template-columns: 3fr 7fr;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 100px;
+}
+
+.info-container .info-form .form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
 }
 
 .info-container .info-form * {
@@ -36,22 +51,16 @@
 }
 
 .info-container .info-form label {
-    font-size: 22px;
+    font-size: 18px;
+    text-align: left;
+    font-weight: 500;
     color: #000;
-    border: 1px solid black;
-    border-radius: 10px;
-    background-color: #FFF;
-    height: 45px;
-    text-align: center;
-    margin-right: 5px;
+    height: 20px;
+    margin-right: 0px;
+    margin-bottom: 10px;
 }
 
 
-.info-container .info-form .form-control {
-    height: 45px;
-    background-color: #FFF;
-
-}
 
 .info-container .info-form .form-control,
 .info-container .info-form .form-control:focus {
@@ -63,11 +72,16 @@
 }
 
 .info-container .info-form input.form-control {
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     font-size: 21px;
     font-weight: 600;
-    color: rgb(5, 112, 5);
-    letter-spacing: 3px;
+    color: #045d8d;
+    letter-spacing: 1px;
+    height: 45px;
+    font-size: 21px;
+    background-color: #FFF;
+    border-color: #bdbdbd;
+
 }
 
 .info-container .info-form .btn {
@@ -119,4 +133,21 @@
         width: 50%;
         min-width: 200px;
     }
+}
+
+
+.info-container .info-form .form-group.property-field,
+.info-container .info-form .form-group.vehicle-field {
+    display: none;
+}
+
+.info-container .info-form .form-group.property-field.show,
+.info-container .info-form .form-group.vehicle-field.show {
+    display: flex;
+}
+
+.info-container .info-form .form-group label[for="propertyId"]+input[value=""],
+.info-container .info-form .form-group label[for="vehicleId"]+input[value=""],
+.info-container .info-form .form-group label[for="endDate"]+input[value=""] {
+    background-color: #e2e0e0;
 }

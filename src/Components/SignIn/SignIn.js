@@ -8,7 +8,7 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import Swal from 'sweetalert2';
-import {  useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 
 const SignIn = (props) => {
@@ -43,17 +43,17 @@ const SignIn = (props) => {
     console.log(formValues);
   }
 
-    //Function to handel Submit
+  //Function to handel Submit
   const handelSubmit = (e) => {
     e.preventDefault();
     setFormError(validate(formValues));
     setIsSubmit(true);
-    if (formError.length === 0 || formError.length === undefined && isSubmit ===true) {
+    if (formError.length === 0 || formError.length === undefined && isSubmit === true) {
       (handelApiSubmit())
     } else {
       console.log(formError.length);
     }
-     }
+  }
 
 
   //Handle Submit Api
@@ -88,7 +88,7 @@ const SignIn = (props) => {
   //Validate-Function
   const validate = (value) => {
     const errors = {};
-    const regex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const regex = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
     if (!value.email) {
       errors.email = "Email Is Required";
     } else if (!regex.test(value.email)) {
@@ -147,7 +147,7 @@ const SignIn = (props) => {
           </div>
           <a className={styles.signupLink} href='/forgotPass'>Forgot  your  pass?</a>
           <div className={styles.signinLable}>
-            <input type="submit" value="Sign In" id={styles.submit}></input>
+            <input type="submit" value="Submit" id={styles.submit}></input>
           </div>
         </form>
       </div>
@@ -155,7 +155,3 @@ const SignIn = (props) => {
   )
 }
 export default SignIn;
-
-
-
-

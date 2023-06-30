@@ -14,9 +14,9 @@ function SignUp() {
   const [stateRepass, setStaterepass] = useState(true);
 
 
-    //Navigate if login success
-    const navigate = useNavigate();
-    //Handel alert Liberary
+  //Navigate if login success
+  const navigate = useNavigate();
+  //Handel alert Liberary
   const alert = (data) => {
     Swal.fire(data)
   }
@@ -70,16 +70,16 @@ function SignUp() {
     setFormError(validate(formValues));
     setIsSubmit(true);
     // Code to send data to apis only if all values is valid
-    if (formError.length===undefined || formError.length===null && isSubmit ===true) {
-          (handelApiSubmit())
+    if (formError.length === undefined || formError.length === null && isSubmit === true) {
+      (handelApiSubmit())
     } else {
       console.log(formError);
       console.log(Object.keys.prototype.length);
       console.log(formError.length);
       console.log(isSubmit);
-    } 
     }
-   //Send data to api 
+  }
+  //Send data to api 
 
   //Send data to api 
   const handelApiSubmit = () => {
@@ -106,7 +106,7 @@ function SignUp() {
         console.log(data, "userRegister");
         if (data.message === null) {
           navigate('/signIn');
-        } else if (data.message !== undefined){
+        } else if (data.message !== undefined) {
           alert(data.message);
         } else {
           alert("Complete Sign Up Data Please!");
