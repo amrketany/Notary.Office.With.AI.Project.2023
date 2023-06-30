@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styles from "./../Services/Services.module.css";
+// import styles from "./../Services/Services.module.css";
+import styles from "./NewDocumentation.module.css";
 // import ph0 from "../../imags/ph0.jpg";
 // import ph1 from "../../imags/ph1.jpg";
 // import ph3 from "../../imags/ph2.jpg";
@@ -238,7 +239,7 @@ const Services = (props) => {
                   <div className={styles.forBackgroundColor}>
                     <div className={styles.sliderContent}>
                       <h2>All Veichles and Buildings Documentations</h2>
-                      <p>over tells the browser to make sure the image always covers the entire container, even if it has to stretch the image or cut a little bit off one of the edges. contain , on the other hand, says to always show the whole image, even if that leaves a little space to the sides or bottom.</p>
+                      <p>We at Notary Office believe in high quality and exceptional customer service</p>
                     </div>
                   </div>
                 </div>
@@ -248,7 +249,7 @@ const Services = (props) => {
                   <div className={styles.forBackgroundColor}>
                     <div className={styles.sliderContent}>
                       <h2>Rental any Building</h2>
-                      <p>over tells the browser to make sure the image always covers the entire container, even if it has to stretch the image or cut a little bit off one of the edges. contain , on the other hand, says to always show the whole image, even if that leaves a little space to the sides or bottom.</p>
+                      <p>We belive in efficiency</p>
                     </div>
                   </div>
                 </div>
@@ -258,7 +259,7 @@ const Services = (props) => {
                   <div className={styles.forBackgroundColor}>
                     <div className={styles.sliderContent}>
                       <h2>Buy and Sell any Building</h2>
-                      <p>over tells the browser to make sure the image always covers the entire container, even if it has to stretch the image or cut a little bit off one of the edges. contain , on the other hand, says to always show the whole image, even if that leaves a little space to the sides or bottom.</p>
+                      <p> regardless of where you are located</p>
                     </div>
                   </div>
                 </div>
@@ -268,7 +269,7 @@ const Services = (props) => {
                   <div className={styles.forBackgroundColor}>
                     <div className={styles.sliderContent}>
                       <h2>Buy and Sell any Veichle</h2>
-                      <p>over tells the browser to make sure the image always covers the entire container, even if it has to stretch the image or cut a little bit off one of the edges. contain , on the other hand, says to always show the whole image, even if that leaves a little space to the sides or bottom.</p>
+                      <p>we strive to deliver the best products at the most affordable timeframes</p>
                     </div>
                   </div>
                 </div>
@@ -278,7 +279,7 @@ const Services = (props) => {
                   <div className={styles.forBackgroundColor}>
                     <div className={styles.sliderContent}>
                       <h2>Rental any Veichle</h2>
-                      <p>over tells the browser to make sure the image always covers the entire container, even if it has to stretch the image or cut a little bit off one of the edges. contain , on the other hand, says to always show the whole image, even if that leaves a little space to the sides or bottom.</p>
+                      <p>Validate your Property Contracts and Manage Them Later at no Time</p>
                     </div>
                   </div>
                 </div>
