@@ -15,44 +15,44 @@ const link = "https://rern.gov.eg/pages/requests/2";
 
 const Services = () => {
 
- //Start Handel  Icons Change and Hide content
-  let icondocContent , iconBuy , iconRental;
+  //Start Handel  Icons Change and Hide content
+  let icondocContent, iconBuy, iconRental;
   const [stateIcondocContent, setstateIcondocContent] = useState(false);
   const [stateIconBuy, setstateIconBuy] = useState(false);
   const [stateIconRental, setstateIconRental] = useState(false);
-  
+
   //stateIcondocContent
   if (stateIcondocContent === true) {
     icondocContent = faCaretDown;
   } else {
-    icondocContent =  faCaretRight;
+    icondocContent = faCaretRight;
   }
   //stateIconBuy
   if (stateIconBuy === true) {
     iconBuy = faCaretDown;
   } else {
-    iconBuy =  faCaretRight;
+    iconBuy = faCaretRight;
   }
   //stateIconRental
   if (stateIconRental === true) {
     iconRental = faCaretDown;
   } else {
-    iconRental =  faCaretRight;
+    iconRental = faCaretRight;
   }
-   //End Password Icons
+  //End Password Icons
   //..............................
 
   // Method to fetch data from api and show it
   //0
   const [contract, setContract] = useState("");
   //1
-   const getContracts = () => {
-     fetch("http://notaryofficeproject.somee.com/api/Services")
-       .then((resp) => resp.json())
-       .then((data) => {
-         setContract(data)
-         console.log(data)
-       });
+  const getContracts = () => {
+    fetch("http://notaryofficeproject.somee.com/api/Services")
+      .then((resp) => resp.json())
+      .then((data) => {
+        setContract(data)
+        console.log(data)
+      });
   }
   //2
   useEffect(() => { getContracts() }, []);
@@ -69,7 +69,7 @@ const Services = () => {
         </p>
       </div> */}
 
-       {/* Start-make-top-dowen-list */}
+      {/* Start-make-top-dowen-list */}
       <div className={styles.mainDocument}>
         <div className={styles.allContracts}>
           {/* //div 0 */}
@@ -106,7 +106,7 @@ const Services = () => {
                               <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Template</a>
                               {/* Start upload your file */}
                               <form className={styles.input_group}>
-                                <input type="file" className={styles.form_control} placeholder="Upload Contract" name="file"  />
+                                <input type="file" className={styles.form_control} placeholder="Upload Contract" name="file" />
                                 <button className={styles.uploadbtn} >Scan</button>
                               </form >
                             </div>
@@ -129,7 +129,7 @@ const Services = () => {
                 {/* // div 1 */}
                 {stateIconBuy &&
                   <div className={styles.anyContract}>
-                     {
+                    {
                       contract.map((e) => {
                         return (
                           <div key={e.id} className={styles.contractType}>
@@ -141,7 +141,7 @@ const Services = () => {
                               <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Template</a>
                               {/* Start upload your file */}
                               <form className={styles.input_group}>
-                                <input type="file" className={styles.form_control} placeholder="Upload Contract" name="file"  />
+                                <input type="file" className={styles.form_control} placeholder="Upload Contract" name="file" />
                                 <button className={styles.uploadbtn}>Scan</button>
                               </form >
                             </div>
@@ -216,10 +216,10 @@ const Services = () => {
       </div>
       {/* //End Slider */}
 
-      
-     
+
+
 
     </div>
   )
 }
-     export default Services;
+export default Services;

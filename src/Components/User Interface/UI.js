@@ -35,7 +35,6 @@ class UI extends React.Component {
 
         function switcher(tabsNumber, linkNumber) {
             for (let x = 0; x < tabsNumber; x++) {
-                console.log("inside switcher for");
                 links[x].classList.remove("active");
                 tabs[x].classList.remove("show");
 
@@ -61,27 +60,22 @@ class UI extends React.Component {
 
         dataRequest.then((response) => {
             this.state.userData = response.data;
-            console.log("data updated");
-            console.log(this.state.userData);
             return response;
 
         });
         contractRequest.then((response) => {
 
             this.state.userContracts = response.data;
-            console.log("contract updated");
             return response;
 
         });
         vehicleRequest.then((response) => {
             this.state.userVehicles = response.data;
-            console.log("vehicles updated");
             return response;
 
         });
         propertyRequest.then((response) => {
             this.state.userProperties = response.data;
-            console.log("property updated");
             return response;
 
         });
@@ -99,7 +93,6 @@ class UI extends React.Component {
             document.getElementById("governorate").value = this.state.userData.governorate;
             document.getElementById("address").value = this.state.userData.address;
             document.getElementById("religion").value = this.state.userData.religon;
-            console.log("all good");
         });
 
 
@@ -109,7 +102,6 @@ class UI extends React.Component {
 
 
             let contractsArea = document.querySelector('.contracts-content .contracts');
-            console.log(contractsArea);
             if (response.data.length > 0) contractsArea.innerHTML = "";
 
             for (let cont = 0; cont < response.data.length; cont++) {
@@ -134,7 +126,6 @@ class UI extends React.Component {
                 element.append(temp);
 
                 element.onclick = () => {
-                    console.log(response.data[cont].id);
                     localStorage.setItem('ccid', response.data[cont].id);
                 };
 
