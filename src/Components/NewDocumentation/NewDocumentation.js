@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import styles from "./../Services/Services.module.css";
+// import styles from "./../Services/Services.module.css";
+import styles from "./NewDocumentation.module.css";
 // import ph0 from "../../imags/ph0.jpg";
 // import ph1 from "../../imags/ph1.jpg";
 // import ph3 from "../../imags/ph2.jpg";
@@ -11,9 +12,11 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { faCircleArrowRight } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 const link = "https://rern.gov.eg/pages/requests/2";
 
-const Services = () => {
+const Services = (props) => {
 
   //Start Handel  Icons Change and Hide content
   let icondocContent, iconBuy, iconRental;
@@ -41,6 +44,76 @@ const Services = () => {
   }
   //End Password Icons
   //..............................
+  //Handel alert Liberary
+  const alert = (data) => {
+    Swal.fire(data)
+  }
+  //Navigate if login success
+  const navigate = useNavigate();
+
+  // //way 1 to upload file
+  // const initialValues = { file: "" };
+  // const [formValues, setFormValues] = useState(initialValues);
+  // const [isSubmit, setIsSubmit] = useState(false);
+  // const handelChange = (e) => {
+  //   const { name, value } = e.target;
+  //   //i-need-to-uderstand-it
+  //   setFormValues({ ...formValues, [name]: value });
+  //   console.log(formValues);
+  // }
+  // //Function to handel Submit
+  // const handelSubmit = (e) => {
+  //   e.preventDefault();
+  //   setIsSubmit(true);
+  //   (handelApiSubmit())
+  // }
+  // //Handle Submit Api
+  // const handelApiSubmit = () => {
+  //   fetch("http://eslammamdouh.pythonanywhere.com/upload", {
+  //     method: "POST",
+  //     // headers: {
+  //     //   'Content-Type':'multipart/form-data',
+  //     // },
+  //     body: JSON.stringify({
+  //       file: formValues.file,
+  //     })
+  //   }).then((response) => response.json())
+  //     .then((data) => {
+  //       console.log(data, "userRegister");
+  //       console.log(data.status);
+  //       alert(data.message);
+  //     })
+  // }
+
+
+  // //way 2 to upload file
+  //   const fileInput = document.querySelector('#uploadFile') ;
+  //   const formData = new FormData();
+  //   formData.append('file', fileInput.files[0]);
+
+  // const options = {
+  //   method: 'POST',
+  //   body: formData,
+  //   // If you add this, upload won't work
+  //   // headers: {
+  //   //   'Content-Type': 'multipart/form-data',
+  //   // }
+  // };
+  // fetch('http://eslammamdouh.pythonanywhere.com/upload', options);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   // Method to fetch data from api and show it
   //0
@@ -105,9 +178,9 @@ const Services = () => {
                             <div className={styles.divTwo}>
                               <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Template</a>
                               {/* Start upload your file */}
-                              <form className={styles.input_group}>
-                                <input type="file" className={styles.form_control} placeholder="Upload Contract" name="file" />
-                                <button className={styles.uploadbtn} >Scan</button>
+                              <form className={styles.input_group} >
+                                <input type="file" id="uploadFile0" className={styles.form_control} placeholder="Upload Contract" name="file" />
+                                <input type="submit" className={styles.uploadbtn} value="Scan" />
                               </form >
                             </div>
                           </div>
@@ -140,9 +213,9 @@ const Services = () => {
                             <div className={styles.divTwo}>
                               <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Template</a>
                               {/* Start upload your file */}
-                              <form className={styles.input_group}>
-                                <input type="file" className={styles.form_control} placeholder="Upload Contract" name="file" />
-                                <button className={styles.uploadbtn}>Scan</button>
+                              <form className={styles.input_group} >
+                                <input type="file" id="uploadFile" className={styles.form_control} placeholder="Upload Contract" name="file" />
+                                <input type="submit" className={styles.uploadbtn} value="Scan" />
                               </form >
                             </div>
                           </div>
@@ -166,7 +239,7 @@ const Services = () => {
                 <div className={styles.forBackgroundColor}>
                   <div className={styles.sliderContent}>
                     <h2>All Veichles and Buildings Documentations</h2>
-                    <p>over tells the browser to make sure the image always covers the entire container, even if it has to stretch the image or cut a little bit off one of the edges. contain , on the other hand, says to always show the whole image, even if that leaves a little space to the sides or bottom.</p>
+                    <p>We at Notary Office believe in high quality and exceptional customer service</p>
                   </div>
                 </div>
               </div>
@@ -176,7 +249,7 @@ const Services = () => {
                 <div className={styles.forBackgroundColor}>
                   <div className={styles.sliderContent}>
                     <h2>Rental any Building</h2>
-                    <p>over tells the browser to make sure the image always covers the entire container, even if it has to stretch the image or cut a little bit off one of the edges. contain , on the other hand, says to always show the whole image, even if that leaves a little space to the sides or bottom.</p>
+                    <p>We belive in efficiency</p>
                   </div>
                 </div>
               </div>
@@ -186,7 +259,7 @@ const Services = () => {
                 <div className={styles.forBackgroundColor}>
                   <div className={styles.sliderContent}>
                     <h2>Buy and Sell any Building</h2>
-                    <p>over tells the browser to make sure the image always covers the entire container, even if it has to stretch the image or cut a little bit off one of the edges. contain , on the other hand, says to always show the whole image, even if that leaves a little space to the sides or bottom.</p>
+                    <p> regardless of where you are located</p>
                   </div>
                 </div>
               </div>
@@ -196,7 +269,7 @@ const Services = () => {
                 <div className={styles.forBackgroundColor}>
                   <div className={styles.sliderContent}>
                     <h2>Buy and Sell any Veichle</h2>
-                    <p>over tells the browser to make sure the image always covers the entire container, even if it has to stretch the image or cut a little bit off one of the edges. contain , on the other hand, says to always show the whole image, even if that leaves a little space to the sides or bottom.</p>
+                    <p>we strive to deliver the best products at the most affordable timeframes</p>
                   </div>
                 </div>
               </div>
@@ -206,7 +279,7 @@ const Services = () => {
                 <div className={styles.forBackgroundColor}>
                   <div className={styles.sliderContent}>
                     <h2>Rental any Veichle</h2>
-                    <p>over tells the browser to make sure the image always covers the entire container, even if it has to stretch the image or cut a little bit off one of the edges. contain , on the other hand, says to always show the whole image, even if that leaves a little space to the sides or bottom.</p>
+                    <p>Validate your Property Contracts and Manage Them Later at no Time</p>
                   </div>
                 </div>
               </div>
@@ -215,11 +288,8 @@ const Services = () => {
         </div>
       </div>
       {/* //End Slider */}
-
-
-
-
     </div>
   )
 }
+
 export default Services;

@@ -1,5 +1,4 @@
 import React from 'react';
-import image from './images/notary-public1.jpg';
 import './Home.css';
 import { NavLink } from 'react-router-dom';
 
