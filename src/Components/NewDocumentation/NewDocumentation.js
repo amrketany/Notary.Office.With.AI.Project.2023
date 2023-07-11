@@ -118,7 +118,7 @@ const [img, setImg] = useState('')
         .then((res) => {
           console.log(res.data.Lines);
           setImg('');
-          // return <App ContractData={res.data} />;
+          return <App ContractData={res.data} />;
         });
       
    }
@@ -135,6 +135,7 @@ const [img, setImg] = useState('')
         .then((data) => {
           setContract(data);
           console.log(data);
+          
         });
     }
     //2
