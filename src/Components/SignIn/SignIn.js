@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import styles from "./SignIn.module.css";
-import logo from "../../imags/13.jpg";
+import logo from "../../imags/logo.jpeg";
 import "../../../node_modules/pretty-checkbox/dist/pretty-checkbox.min.css";
 import "../../../node_modules/pretty-checkbox/dist/pretty-checkbox.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -58,7 +58,7 @@ const SignIn = (props) => {
 
   //Handle Submit Api
   const handelApiSubmit = () => {
-    fetch("http://NotaryOfficeProject.somee.com/api/Visitors/SignIn", {
+    fetch("http://notaryoffice-001-site1.ctempurl.com/api/Visitors/SignIn", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -85,7 +85,7 @@ const SignIn = (props) => {
 
 
 
-  //Validate-Function
+  //Validate Function
   const validate = (value) => {
     const errors = {};
     const regex = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
@@ -111,7 +111,7 @@ const SignIn = (props) => {
         <div className={styles.logo}>
           <div className={styles.dhaccount}><p>Don't  have  an  account ? <a href='/signUp' className={styles.signupLink}>Sign Up</a></p></div>
           <a href="/home">  <img src={logo} alt="img not found" className={styles.img} /></a>
-          <h3 className={styles.welcomeMessage}>Welcome Home</h3>
+          {/* <h3 className={styles.welcomeMessage}>Welcome Home</h3> */}
         </div>
 
         <form className={styles.signinForm} onSubmit={handelSubmit} >

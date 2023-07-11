@@ -19,10 +19,12 @@ import jwtDecode from 'jwt-decode';
 import ForgotPass from '../ForgotPass/ForgotPass';
 import UserSettings from '../User Interface/UI';
 import Viewer from '../User Interface/Viewer';
-const App = () => {
-
-
-  //Protect Route Path...ProtectedRoute it is function component should start with capital liter like App
+const App = (props) => {
+  
+//Thia Is Props Name  ContractData
+//...Protected Route it is function component should start with capital liter like App
+  
+//Protect Route Path
   function ProtectedRoute(props) {
     if (localStorage.getItem("userToken") == null) {
       return <Navigate to="/signIn" />   //Navigate Return Component
@@ -38,7 +40,6 @@ const App = () => {
     setUserData(decodedToken);
     console.log(decodedToken);
   }
-
   //Handel log out
   const navigate = useNavigate();
   function logOut() {

@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from "react";
+import axios from "axios";
+import App from '../App/App';
+
 // import styles from "./../Services/Services.module.css";
 import styles from "./NewDocumentation.module.css";
 // import ph0 from "../../imags/ph0.jpg";
@@ -101,18 +104,25 @@ const Services = (props) => {
 // };
 // fetch('http://eslammamdouh.pythonanywhere.com/upload', options);
 
-
-
-
-
-
-
-
-
-
-
-
-
+//Try with Axios 4/7/2023
+const [img, setImg] = useState('')
+   const HandelChangeAxios = (e) => {
+      console.log(e.target.files);
+      setImg(e.target.files[0])
+   }
+   function handelSubmitAxios() {
+      const formData = new FormData();
+      formData.append("image", img);
+      axios
+        .post('http://eslammamdouh.pythonanywhere.com/scan', formData )
+        .then((res) => {
+          console.log(res.data.Lines);
+          setImg('');
+          return <App ContractData={res.data} />;
+        });
+      
+   }
+  
 
 
     // Method to fetch data from api and show it
@@ -120,11 +130,11 @@ const Services = (props) => {
     const [contract, setContract] = useState("");
     //1
     const getContracts = () => {
-      fetch("http://notaryofficeproject.somee.com/api/Services")
+      fetch("http://notaryoffice-001-site1.ctempurl.com/api/Services")
         .then((resp) => resp.json())
         .then((data) => {
-          setContract(data)
-          console.log(data)
+          setContract(data);
+          console.log(data);
         });
     }
     //2
@@ -170,7 +180,7 @@ const Services = (props) => {
                       {
                         contract.map((e) => {
                           return (
-                            <div key={e.id} className={styles.contractType}>
+                            <div  className={styles.contractType}>
                               <div className={styles.divOne}>
                                 <FontAwesomeIcon icon={faCircleArrowRight} className={styles.iconContractType} />
                                 <h2 className={styles.textDocContent}>Contract For {e.serviceNameEn}</h2>
@@ -178,10 +188,10 @@ const Services = (props) => {
                               <div className={styles.divTwo}>
                                 <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Template</a>
                                 {/* Start upload your file */}
-                                <form className={styles.input_group} >
-                                  <input type="file" id="uploadFile0" className={styles.form_control} placeholder="Upload Contract" name="file" />
-                                  <input type="submit" className={styles.uploadbtn} value="Scan" />
-                                </form >
+                                <div key={e.id} className={styles.input_group} >
+                                  <input onChange={HandelChangeAxios} type="file" id="uploadFile0" className={styles.form_control} placeholder="Upload Contract" name="file" />
+                                  <button onClick={handelSubmitAxios} className={styles.uploadbtn} value="Scan" >Scan</button>
+                                </div >
                               </div>
                             </div>
                           )
@@ -213,10 +223,10 @@ const Services = (props) => {
                               <div className={styles.divTwo}>
                                 <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Template</a>
                                 {/* Start upload your file */}
-                                <form className={styles.input_group} >
-                                  <input type="file" id="uploadFile" className={styles.form_control} placeholder="Upload Contract" name="file" />
-                                  <input type="submit" className={styles.uploadbtn} value="Scan" />
-                                </form >
+                                <div key={e.id} className={styles.input_group} >
+                                  <input onChange={HandelChangeAxios} type="file" id="uploadFile0" className={styles.form_control} placeholder="Upload Contract" name="file" />
+                                  <button onClick={handelSubmitAxios} className={styles.uploadbtn} value="Scan" >Scan</button>
+                                </div >
                               </div>
                             </div>
                           )
