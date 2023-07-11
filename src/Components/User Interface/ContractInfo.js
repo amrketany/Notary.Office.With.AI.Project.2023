@@ -105,15 +105,8 @@ class ContractInfo extends React.Component {
                 vehicleModel: contractData.vehical,
                 vehicleColor: contractData.vehical,
                 vehicleEngine: contractData.vehical,
-
-
-
             });
-
         });
-
-
-
         return (
             <div className='info-container'>
                 <div className='info-container-inner'>

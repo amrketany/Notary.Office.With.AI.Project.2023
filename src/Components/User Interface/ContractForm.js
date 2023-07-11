@@ -1,13 +1,13 @@
 import React from 'react';
 import './ContractInfo.css';
-//import axios from 'axios';
+import axios from 'axios';
 
 
 class ContractForm extends React.Component {
 
     state = {
         id: "",
-        contractImage: "",
+        // contractImageSrc: 'data:image/png;base64,' + contractData.contractImage,
         startDate: "",
         endDate: "",
         monyAmount: "",
@@ -20,9 +20,23 @@ class ContractForm extends React.Component {
         vehicleId: "",
         creator: "",
         firstParty: "",
-        property: "",
         secondParty: "",
-        vehicle: ""
+        propertyGovernorate: "",
+        propertyCity: "",
+        propertyDistrict: "",
+        propertyBuildingNumber: "",
+        propertyApartmentNumber: "",
+        propertySpace: "",
+        propertyNorth: "",
+        propertySouth: "",
+        propertyEast: "",
+        propertyWest: "",
+        vehicleLicence: "",
+        vehicleEndData: "",
+        vehicleBrand: "",
+        vehicleModel: "",
+        vehicleColor: "",
+        vehicleEngine: "",
 
     }
     componentDidMount() {
@@ -30,9 +44,6 @@ class ContractForm extends React.Component {
             localStorage.setItem('cvs', this.state.contractImageSrc);
             window.open('/#/Viewer', "_blank");
         }
-
-
-
 
         let data = {
 
@@ -53,40 +64,54 @@ class ContractForm extends React.Component {
         }
 
         this.setState({
-            id: data["Buyer Id: "],
-            // contractImageSrc: 'data:image/png;base64,' + contractData.contractImage,
-            startDate: data["Sale Date: "],
-            endDate: data["Contract Type: "] ? data["License End Date: "].split("T")[0] : "",
-            monyAmount: data["Money Amount: "],
-            type: data["Contract Type: "] ? "Rent" : "Sell",
-            creatorId: "",
-            createDate: data["Sale Date: "].split("T")[0],
-            firstPartyId: data["Seller Id: "],
-            secondPartyId: data["Buyer Id: "],
-            propertyId: data.propertyId === null ? "" : data.propertyId,
-            vehicleId: data.vehicalId === null ? "" : data.vehicalId,
-            creator: data["creator"],
-            firstParty: null,
-            secondParty: null,
-            propertyGovernorate: data.property,
-            propertyCity: data.property,
-            propertyDistrict: data.property,
-            propertyBuildingNumber: data.property,
-            propertyApartmentNumber: data.property,
-            propertySpace: data.property,
-            propertyNorth: data.property,
-            propertySouth: data.property,
-            propertyEast: data.property,
-            propertyWest: data.property,
-            vehicleLicence: data.vehical,
-            vehicleEndData: data.vehical,
-            vehicleBrand: data.vehical,
-            vehicleModel: data.vehical,
-            vehicleColor: data.vehical,
-            vehicleEngine: data.vehical,
-
+            //contractImageSrc: 'data:image/png;base64,' + contractData.contractImage,
+            startDate: data['Sale Date: '],
+            monyAmount: data['Money Amount: '],
+            type: data['Contract Type: '],
+            firstPartyId: data['Seller Id: '],
+            secondPartyId: data['Buyer Id: '],
+            firstParty: data['Seller Name: '],
+            secondParty: data['Buyer Name: '],
+            vehicleLicence: data['License Number: '],
+            vehicleEndData: data['License End Date: '],
+            vehicleBrand: data['Brand: '],
+            vehicleModel: data['Model: '],
+            vehicleColor: data['Color: '],
+            vehicleEngine: data['Engine: '],
         });
 
+        let token = localStorage.getItem("userToken");
+        let headers = {
+            "authorization": `bearer ${token}`,
+        }
+
+
+
+        console.log("Will REquest");
+
+        let gettingCurrentUser = axios.get("http://notaryoffice-001-site1.ctempurl.com/Api/Visitors/GetCurrentlyUser", { headers })
+        gettingCurrentUser.then((res) => {
+            console.log("Geettingg current user");
+            console.log(res.data);
+            this.setState({
+                creatorId: res.data.id,
+                creator: res.data.name,
+
+            });
+        })
+
+        if (data['VIN: '] === "") {
+            this.setState({
+                vehicleId: data['VIN: '],
+            });
+        }
+        else {
+            this.setState({
+                propertyId: data['property ID'],
+
+            })
+
+        }
 
 
 

@@ -83,7 +83,7 @@ function SignUp() {
 
   //Send data to api 
   const handelApiSubmit = () => {
-    fetch("http://NotaryOfficeProject.somee.com/api/Visitors", {
+    fetch("http://notaryoffice-001-site1.ctempurl.com/api/Visitors", {
       method: "POST",
       headers: {
         "content-type": "application/json",
