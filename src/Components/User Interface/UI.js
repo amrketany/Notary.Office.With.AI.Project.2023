@@ -54,10 +54,10 @@ class UI extends React.Component {
             "authorization": `bearer ${TOKEN}`,
         }
 
-        let dataRequest = axios.get("http://notaryofficeproject.somee.com/Api/Visitors/GetCurrentlyUser", { headers });
-        let contractRequest = axios.get("http://NotaryOfficeProject.somee.com/api/Contract/GetForCurrentlyUser", { headers });
-        let propertyRequest = axios.get("http://notaryofficeproject.somee.com/api/Property/GetForCurrentlyUser", { headers });
-        let vehicleRequest = axios.get("http://notaryofficeproject.somee.com/api/Vehical/GetForCurrentlyUser", { headers });
+        let dataRequest = axios.get("http://notaryoffice-001-site1.ctempurl.com/Api/Visitors/GetCurrentlyUser", { headers });
+        let contractRequest = axios.get("http://notaryoffice-001-site1.ctempurl.com/api/Contract/GetForCurrentlyUser", { headers });
+        let propertyRequest = axios.get("http://notaryoffice-001-site1.ctempurl.com/api/Property/GetForCurrentlyUser", { headers });
+        let vehicleRequest = axios.get("http://notaryoffice-001-site1.ctempurl.com/api/Vehical/GetForCurrentlyUser", { headers });
 
         dataRequest.then((response) => {
             this.state.userData = response.data;

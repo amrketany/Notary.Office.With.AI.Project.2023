@@ -43,14 +43,14 @@ class ContractInfo extends React.Component {
         }
 
 
-        let getContractData = axios.get("http://NotaryOfficeProject.somee.com/api/Contract/" + ccid, { headers });
+        let getContractData = axios.get("http://notaryoffice-001-site1.ctempurl.com/api/Contract/" + ccid, { headers });
 
         getContractData.then((response) => {
             console.log(response.data);
             let contractData = response.data;
 
-            axios.get("http://NotaryOfficeProject.somee.com/api/Visitors/" + contractData.firstPartyId).then((R) => { this.setState({ firstParty: R.data.name }); });
-            axios.get("http://NotaryOfficeProject.somee.com/api/Visitors/" + contractData.secondPartyId).then((R) => { this.setState({ secondParty: R.data.name }); });
+            axios.get("http://notaryoffice-001-site1.ctempurl.com/api/Visitors/" + contractData.firstPartyId).then((R) => { this.setState({ firstParty: R.data.name }); });
+            axios.get("http://notaryoffice-001-site1.ctempurl.com/api/Visitors/" + contractData.secondPartyId).then((R) => { this.setState({ secondParty: R.data.name }); });
             this.setState({ type: contractData.type ? "Rent" : "Sell", endDate: contractData.type ? contractData.endDate : "" });
 
             if (contractData.propertyId != null) {
@@ -59,7 +59,7 @@ class ContractInfo extends React.Component {
                 console.log(contractData.propertyId);
                 let fields = document.querySelectorAll(".property-field");
                 for (let x = 0; x < fields.length; x++) { fields[x].classList.add("show"); }
-                axios.get("http://NotaryOfficeProject.somee.com/api/Property/" + contractData.propertyId, { headers }).then((R) => { this.setState({ propertyGovernorate: R.data.governorate, propertyCity: R.data.city, propertyDistrict: R.data.district, propertyBuildingNumber: R.data.buldingNum, propertyApartmentNumber: R.data.apartmentNum, propertySpace: R.data.space, propertyNorth: R.data.northernLimit, propertySouth: R.data.southernLimit, propertyEast: R.data.easternLimit, propertyWest: R.data.wasterLimit, }); });
+                axios.get("http://notaryoffice-001-site1.ctempurl.com/api/Property/" + contractData.propertyId, { headers }).then((R) => { this.setState({ propertyGovernorate: R.data.governorate, propertyCity: R.data.city, propertyDistrict: R.data.district, propertyBuildingNumber: R.data.buldingNum, propertyApartmentNumber: R.data.apartmentNum, propertySpace: R.data.space, propertyNorth: R.data.northernLimit, propertySouth: R.data.southernLimit, propertyEast: R.data.easternLimit, propertyWest: R.data.wasterLimit, }); });
 
             }
             else if (contractData.vehicalId !== null) {
