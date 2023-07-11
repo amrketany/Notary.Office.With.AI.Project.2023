@@ -26,7 +26,7 @@ const Nav = (props) => {
             <div className={styles.logSystem}>
               {
                 props.userData ?
-                  <><NavLink to="/User-Settings" ta rget="_self">User Settings</NavLink>
+                  <><NavLink to="/UserSettings" ta rget="_self">User Settings</NavLink>
                     <a className={styles.logOut} onClick={props.logOut}>Log Out</a>
                   </>
 

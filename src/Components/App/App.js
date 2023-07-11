@@ -15,6 +15,7 @@ import RentalMachine from "../Services/Machine/RentalMachine";
 import BuySellBuilding from "../Services/Building/BuySellBuilding";
 import RentalBuilding from "../Services/Building/RentalBuilding";
 import ContractInfo from '../User Interface/ContractInfo';
+import ContractForm from '../User Interface/ContractForm';
 import jwtDecode from 'jwt-decode';
 import ForgotPass from '../ForgotPass/ForgotPass';
 import UserSettings from '../User Interface/UI';
@@ -65,12 +66,13 @@ const App = () => {
         <Route exact path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
         <Route exact path="/services" element={<ProtectedRoute><Services /></ProtectedRoute>} />
         <Route exact path="/NewDocumentation" element={<ProtectedRoute><NewDocumentation /></ProtectedRoute>} />
-        <Route exact path="/User-Settings/*" element={<ProtectedRoute><UserSettings /></ProtectedRoute>} />
+        <Route exact path="/UserSettings/*" element={<ProtectedRoute><UserSettings /></ProtectedRoute>} />
         <Route exact path="/buysellmachine" element={<ProtectedRoute><BuySellMachine /></ProtectedRoute>} />
         <Route exact path="/rentalmachine" element={<ProtectedRoute><RentalMachine /></ProtectedRoute>} />
         <Route exact path="/buysellbuilding" element={<ProtectedRoute><BuySellBuilding /></ProtectedRoute>} />
         <Route exact path="/rentalbuilding" element={<ProtectedRoute><RentalBuilding /></ProtectedRoute>} />
-        <Route exact path="/contract-info" element={<ProtectedRoute><ContractInfo /></ProtectedRoute>} />
+        <Route exact path="/contractInfo" element={<ProtectedRoute><ContractInfo /></ProtectedRoute>} />
+        <Route exact path="/contractForm" element={<ProtectedRoute><ContractForm /></ProtectedRoute>} />
         <Route exact path="/viewer" element={<ProtectedRoute><Viewer /></ProtectedRoute>} />
       </Routes>
       <Footer />
