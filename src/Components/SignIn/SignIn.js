@@ -35,7 +35,7 @@ const SignIn = (props) => {
   const [formValues, setFormValues] = useState(initialValues);
   const [formError, setFormError] = useState([]);
   const [isSubmit, setIsSubmit] = useState(false);
-  
+
   const handelChange = (e) => {
     const { name, value } = e.target;
     //i-need-to-uderstand-it
@@ -140,7 +140,7 @@ const SignIn = (props) => {
               <input type="checkbox" />
               <div className="state p-success">
                 <i className="icon mdi mdi-check"></i>
-                <FontAwesomeIcon icon={faCheck} className={styles.icon} class="icon mdi mdi-check" />
+                <FontAwesomeIcon icon={faCheck} className={styles.icon} classname="icon mdi mdi-check" />
                 <label>Remember me.</label>
               </div>
             </div>

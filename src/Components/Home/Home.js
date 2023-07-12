@@ -8,7 +8,7 @@ class Data extends React.Component {
 
 
             <section id="hero">
-                <div class="hero-container">
+                <div className="hero-container">
                     <h3>Welcome to <strong>Notary Office</strong> of Egypt</h3>
 
                     <h1>Easily Sign up Now in Notary Office</h1>

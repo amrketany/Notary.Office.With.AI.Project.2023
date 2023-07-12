@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import App from '../App/App';
 
 // import styles from "./../Services/Services.module.css";
 import styles from "./NewDocumentation.module.css";
@@ -104,24 +103,53 @@ const Services = (props) => {
   // };
   // fetch('http://eslammamdouh.pythonanywhere.com/upload', options);
 
+
   //Try with Axios 4/7/2023
   const [img, setImg] = useState('')
   const HandelChangeAxios = (e) => {
     console.log(e.target.files);
     setImg(e.target.files[0])
   }
+
+  // function to convert image to base64 to store it in local storage
+  function getBase64(file, callback) {
+
+    const reader = new FileReader();
+
+    reader.addEventListener('load', () => callback(reader.result));
+
+    reader.readAsDataURL(file);
+  }
+  // end function
+
+
   function handelSubmitAxios() {
+
     const formData = new FormData();
     formData.append("image", img);
-    axios
-      .post('http://eslammamdouh.pythonanywhere.com/scan', formData)
-      .then((res) => {
-        console.log(res.data.Lines);
-        setImg('');
-        return <App ContractData={res.data} />;
-      });
+    //axios
+    //   .post('http://eslammamdouh.pythonanywhere.com/scan', formData)
+    //  .then((res) => {
+    // console.log(res.data.Lines);
+    setImg('');
+    //  localStorage.setItem("AIData-number", Object.keys(res.data).length);
+    //   for (let x = 0; x < Object.keys(res.data).length; x++) {
+    //     localStorage.setItem(`AIData-${x}`, Object.values(res.data)[x]);
+    // }
 
-  }
+    // convert Image file to byte array to store in local storage
+
+    getBase64(img, function (base64Data) {
+      localStorage.setItem("contractImage", base64Data);
+    });
+
+
+    // });
+
+    navigate("/ContractForm");
+  };
+
+
 
 
 
@@ -135,6 +163,7 @@ const Services = (props) => {
       .then((data) => {
         setContract(data);
         console.log(data);
+
       });
   }
   //2
@@ -217,51 +246,6 @@ const Services = (props) => {
                       {
                         contract.map((e) => {
                           return (
-                            <div>
-                              <div key={e.id} className={styles.contractType}>
-                                <div className={styles.divOne}>
-                                  <FontAwesomeIcon icon={faCircleArrowRight} className={styles.iconContractType} />
-                                  <h2 className={styles.textDocContent}>Contract For {e.serviceNameEn}</h2>
-                                </div>
-                                <div className={styles.divTwo}>
-                                  <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Template</a>
-                                  {/* Start upload your file */}
-                                  <div key={e.id} className={styles.input_group} >
-                                    <input onChange={HandelChangeAxios} type="file" id="uploadFile0" className={styles.form_control} placeholder="Upload Contract" name="file" />
-                                    <button onClick={handelSubmitAxios} className={styles.uploadbtn} value="Scan" >Scan</button>
-                                  </div >
-                                </div>
-                              </div>
-                              <div className={styles.divTwo}>
-                                <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Template</a>
-                                {/* Start upload your file */}
-                                <form className={styles.input_group} >
-                                  <input type="file" id="uploadFile0" className={styles.form_control} placeholder="Upload Contract" name="file" />
-                                  <input type="submit" className={styles.uploadbtn} value="Scan" />
-                                </form >
-                              </div>
-                            </div>
-                          )
-                        })
-                      }
-                    </div>
-                  }
-                </div>
-                {/* // div 1 */}
-                <div className={styles.lastSection}>
-                  {/* // div 0 */}
-                  <div className={styles.buy}>
-                    <button onClick={() => setstateIconBuy(!stateIconBuy)} className={styles.iconNewDocumentationbtn}>
-                      <FontAwesomeIcon icon={iconBuy} className={styles.iconNewDocumentation} />
-                    </button>
-                    <h2 className={styles.textDocContent}>Documentation for Buy Contract</h2>
-                  </div>
-                  {/* // div 1 */}
-                  {stateIconBuy &&
-                    <div className={styles.anyContract}>
-                      {
-                        contract.map((e) => {
-                          return (
                             <div key={e.id} className={styles.contractType}>
                               <div className={styles.divOne}>
                                 <FontAwesomeIcon icon={faCircleArrowRight} className={styles.iconContractType} />
@@ -270,10 +254,10 @@ const Services = (props) => {
                               <div className={styles.divTwo}>
                                 <a className={styles.fileLink} href={link} target="_blank" rel="noreferrer">Download Template</a>
                                 {/* Start upload your file */}
-                                <form className={styles.input_group} >
-                                  <input type="file" id="uploadFile" className={styles.form_control} placeholder="Upload Contract" name="file" />
-                                  <input type="submit" className={styles.uploadbtn} value="Scan" />
-                                </form >
+                                <div key={e.id} className={styles.input_group} >
+                                  <input onChange={HandelChangeAxios} type="file" id="uploadFile0" className={styles.form_control} placeholder="Upload Contract" name="file" />
+                                  <button onClick={handelSubmitAxios} className={styles.uploadbtn} value="Scan" >Scan</button>
+                                </div >
                               </div>
                             </div>
                           )
@@ -290,9 +274,9 @@ const Services = (props) => {
         {/* // start Slider */}
         {/* Slider Work Only When Making Reload for all page  */}
         <div className={styles.sliderCountainer}>
-          <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner">
-              <div class="carousel-item active" >
+          <div id="carouselExampleSlidesOnly" classname="carousel slide" data-bs-ride="carousel">
+            <div classname="carousel-inner">
+              <div classname="carousel-item active" >
                 <div className={styles.forBackgroundImage0}>
                   <div className={styles.forBackgroundColor}>
                     <div className={styles.sliderContent}>
@@ -302,7 +286,7 @@ const Services = (props) => {
                   </div>
                 </div>
               </div>
-              <div class="carousel-item " >
+              <div classname="carousel-item " >
                 <div className={styles.forBackgroundImage1}>
                   <div className={styles.forBackgroundColor}>
                     <div className={styles.sliderContent}>
@@ -312,7 +296,7 @@ const Services = (props) => {
                   </div>
                 </div>
               </div>
-              <div class="carousel-item " >
+              <div classname="carousel-item " >
                 <div className={styles.forBackgroundImage2}>
                   <div className={styles.forBackgroundColor}>
                     <div className={styles.sliderContent}>
@@ -322,7 +306,7 @@ const Services = (props) => {
                   </div>
                 </div>
               </div>
-              <div class="carousel-item " >
+              <div classname="carousel-item " >
                 <div className={styles.forBackgroundImage3}>
                   <div className={styles.forBackgroundColor}>
                     <div className={styles.sliderContent}>
@@ -332,7 +316,7 @@ const Services = (props) => {
                   </div>
                 </div>
               </div>
-              <div class="carousel-item " >
+              <div classname="carousel-item " >
                 <div className={styles.forBackgroundImage4}>
                   <div className={styles.forBackgroundColor}>
                     <div className={styles.sliderContent}>

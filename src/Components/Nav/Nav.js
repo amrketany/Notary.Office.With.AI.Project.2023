@@ -2,7 +2,6 @@ import React from 'react';
 import styles from "./Nav.module.css";
 import logo from "../../imags/logo2.png"
 import { NavLink } from 'react-router-dom';
-import { name } from '../../Components/User Interface/UI';
 
 const Nav = (props) => {
   return (
@@ -27,7 +26,7 @@ const Nav = (props) => {
               {
                 props.userData ?
                   <><NavLink to="/UserSettings" ta rget="_self">User Settings</NavLink>
-                    <a className={styles.logOut} onClick={props.logOut}>Log Out</a>
+                    <NavLink to="/signIn" className={styles.logOut} onClick={props.logOut}>Log Out</NavLink>
                   </>
 
                   :
@@ -55,7 +54,7 @@ const Nav = (props) => {
                   {/* <li><NavLink to="/services" target="_self">Documentation</NavLink></li> */}
                   <li><NavLink to="/NewDocumentation" target="_self">Scan Contract With AI</NavLink></li>
                   <li><NavLink to="/User-Settings" target="_self">User Settings</NavLink></li>
-                  <li><a className={styles.logOut} onClick={props.logOut}>Log Out</a></li></div>
+                  <li><NavLink to="/signIn" className={styles.logOut} onClick={props.logOut}>Log Out</NavLink></li></div>
                 : <div className={styles.ShowLinks}>
                   <li><NavLink to="/signIn" target="_self">Sign in</NavLink></li>
                   <li><NavLink to="/signUp" target="_self">Sign up</NavLink></li>

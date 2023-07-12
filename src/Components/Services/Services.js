@@ -16,9 +16,9 @@ const Services = () => {
          </div>
          {/* // start Slider */}
          <div className={styles.sliderCountainer}>
-            <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
-               <div class="carousel-inner">
-                  <div class="carousel-item active" >
+            <div id="carouselExampleSlidesOnly" classname="carousel slide" data-bs-ride="carousel">
+               <div classname="carousel-inner">
+                  <div classname="carousel-item active" >
                      <div className={styles.forBackgroundImage0}>
                         <div className={styles.forBackgroundColor}>
                            <div className={styles.sliderContent}>
@@ -28,7 +28,7 @@ const Services = () => {
                         </div>
                      </div>
                   </div>
-                  <div class="carousel-item " >
+                  <div classname="carousel-item " >
                      <div className={styles.forBackgroundImage1}>
                         <div className={styles.forBackgroundColor}>
                            <div className={styles.sliderContent}>
@@ -38,7 +38,7 @@ const Services = () => {
                         </div>
                      </div>
                   </div>
-                  <div class="carousel-item " >
+                  <div classname="carousel-item " >
                      <div className={styles.forBackgroundImage2}>
                         <div className={styles.forBackgroundColor}>
                            <div className={styles.sliderContent}>
@@ -48,7 +48,7 @@ const Services = () => {
                         </div>
                      </div>
                   </div>
-                  <div class="carousel-item " >
+                  <div classname="carousel-item " >
                      <div className={styles.forBackgroundImage3}>
                         <div className={styles.forBackgroundColor}>
                            <div className={styles.sliderContent}>
@@ -58,7 +58,7 @@ const Services = () => {
                         </div>
                      </div>
                   </div>
-                  <div class="carousel-item " >
+                  <div classname="carousel-item " >
                      <div className={styles.forBackgroundImage4}>
                         <div className={styles.forBackgroundColor}>
                            <div className={styles.sliderContent}>

@@ -53,10 +53,10 @@ class UI extends React.Component {
             "authorization": `bearer ${TOKEN}`,
         }
 
-        let dataRequest = axios.get("http://notaryofficeproject.somee.com/Api/Visitors/GetCurrentlyUser", { headers });
-        let contractRequest = axios.get("http://NotaryOfficeProject.somee.com/api/Contract/GetForCurrentlyUser", { headers });
-        let propertyRequest = axios.get("http://notaryofficeproject.somee.com/api/Property/GetForCurrentlyUser", { headers });
-        let vehicleRequest = axios.get("http://notaryofficeproject.somee.com/api/Vehical/GetForCurrentlyUser", { headers });
+        let dataRequest = axios.get("http://notaryoffice-001-site1.ctempurl.com/Api/Visitors/GetCurrentlyUser", { headers });
+        let contractRequest = axios.get("http://notaryoffice-001-site1.ctempurl.com/api/Contract/GetForCurrentlyUser", { headers });
+        let propertyRequest = axios.get("http://notaryoffice-001-site1.ctempurl.com/api/Property/GetForCurrentlyUser", { headers });
+        let vehicleRequest = axios.get("http://notaryoffice-001-site1.ctempurl.com/api/Vehical/GetForCurrentlyUser", { headers });
 
         dataRequest.then((response) => {
             this.state.userData = response.data;
@@ -140,11 +140,11 @@ class UI extends React.Component {
 
             <div className='UI-container'>
                 <div className='menu'>
-                    <a className='nav-link active' data-order="0">
+                    <a href='/' className='nav-link active' data-order="0">
                         <i className="fa-solid fa-user"></i>
                         Profile
                     </a>
-                    <a className='nav-link' data-order="1">
+                    <a href='/' className='nav-link' data-order="1">
                         <i className="fa-solid fa-circle-check"></i>
                         Validated Contracts
                     </a>

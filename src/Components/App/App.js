@@ -22,6 +22,7 @@ import UserSettings from '../User Interface/UI';
 import Viewer from '../User Interface/Viewer';
 const App = (props) => {
 
+  let { contractImage } = useState();
   //Thia Is Props Name  ContractData
   //...Protected Route it is function component should start with capital liter like App
 
@@ -39,7 +40,6 @@ const App = (props) => {
     let encodedToken = localStorage.getItem("userToken");
     let decodedToken = jwtDecode(encodedToken);
     setUserData(decodedToken);
-    console.log(decodedToken);
   }
   //Handel log out
   const navigate = useNavigate();
@@ -63,7 +63,6 @@ const App = (props) => {
         <Route exact path="/signIn" element={<SignIn saveUserData={saveUserData} />} />
         <Route exact path="/forgotPass" element={<ForgotPass />} />
         <Route exact path="/signUp" element={<SignUp />} />
-        <Route exact path="/signIn" element={<ProtectedRoute> <LogOut /></ProtectedRoute>} />
         <Route exact path="/about" element={<ProtectedRoute><About /></ProtectedRoute>} />
         <Route exact path="/services" element={<ProtectedRoute><Services /></ProtectedRoute>} />
         <Route exact path="/NewDocumentation" element={<ProtectedRoute><NewDocumentation /></ProtectedRoute>} />
@@ -73,7 +72,7 @@ const App = (props) => {
         <Route exact path="/buysellbuilding" element={<ProtectedRoute><BuySellBuilding /></ProtectedRoute>} />
         <Route exact path="/rentalbuilding" element={<ProtectedRoute><RentalBuilding /></ProtectedRoute>} />
         <Route exact path="/contractInfo" element={<ProtectedRoute><ContractInfo /></ProtectedRoute>} />
-        <Route exact path="/contractForm" element={<ProtectedRoute><ContractForm /></ProtectedRoute>} />
+        <Route exact path="/contractForm" element={<ProtectedRoute>< ContractForm /></ProtectedRoute>} />
         <Route exact path="/viewer" element={<ProtectedRoute><Viewer /></ProtectedRoute>} />
       </Routes>
       <Footer />

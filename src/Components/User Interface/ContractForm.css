@@ -1,9 +1,9 @@
-.info-container {
+.form-container {
     background-color: #ECECEC;
     border: 1px solid black;
 }
 
-.info-container-inner {
+.form-container-inner {
     width: 95%;
     padding: 50px;
     border-radius: 10px;
@@ -12,31 +12,31 @@
 
 }
 
-.info-container ::selection {
+.form-container ::selection {
     background-color: #2C4755;
     color: #FFF;
 }
 
 
-.info-container .info-form {
+.form-container .form-form {
     width: 550px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     column-gap: 100px;
 }
 
-.info-container .info-form .form-group {
+.form-container .form-form .form-group {
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
 
 }
 
-.info-container .info-form * {
+.form-container .form-form * {
     font-weight: 900;
 }
 
-.info-container .info-form .contract-preview img {
+.form-container .form-form .contract-preview img {
     width: 120px;
     height: 90px;
     border: 1px solid black;
@@ -46,11 +46,11 @@
 
 }
 
-.info-container .info-form .contract-preview img:hover {
+.form-container .form-form .contract-preview img:hover {
     border-width: 2px;
 }
 
-.info-container .info-form label {
+.form-container .form-form label {
     font-size: 18px;
     text-align: left;
     font-weight: 500;
@@ -62,8 +62,8 @@
 
 
 
-.info-container .info-form .form-control,
-.info-container .info-form .form-control:focus {
+.form-container .form-form .form-control,
+.form-container .form-form .form-control:focus {
     border-color: transparent;
     border-bottom-color: #bebcc1;
     box-shadow: none;
@@ -71,7 +71,7 @@
 
 }
 
-.info-container .info-form input.form-control {
+.form-container .form-form input.form-control {
     margin-bottom: 25px;
     font-size: 21px;
     font-weight: 600;
@@ -84,71 +84,71 @@
 
 }
 
-.info-container .info-form .btn {
+.form-container .form-form .btn {
     border-radius: 0px;
     border-color: transparent;
     margin: 30px 15px;
 }
 
-.info-container .info-form .btn.btn-default {
+.form-container .form-form .btn.btn-default {
     background: #ebebeb;
     color: #8f9096;
 }
 
-.info-container .info-form .btn.btn-primary {
+.form-container .form-form .btn.btn-primary {
     background: #000000;
     color: white;
 }
 
 
-.info-container .info-form {
+.form-container .form-form {
     width: 100%;
     margin: auto;
 }
 
 @media (max-width: 750px) {
-    .info-container .info-form {
+    .form-container .form-form {
         grid-template-columns: 4fr 6fr;
     }
 }
 
 @media (max-width: 640px) {
-    .info-container .info-form {
+    .form-container .form-form {
         grid-template-columns: 1fr;
 
     }
 
-    .info-container .info-form input.form-control,
-    .info-container .info-form .contract-preview {
+    .form-container .form-form input.form-control,
+    .form-container .form-form .contract-preview {
         margin: 5px 0 30px 0;
 
 
     }
 
-    .info-container .info-form input.form-control {
+    .form-container .form-form input.form-control {
         font-size: 17px;
     }
 
-    .info-container .info-form label {
+    .form-container .form-form label {
         width: 50%;
         min-width: 200px;
     }
 }
 
 
-.info-container .info-form .form-group.property-field,
-.info-container .info-form .form-group.vehicle-field {
-    display: none;
+.form-container .form-form .form-group.property-field,
+.form-container .form-form .form-group.vehicle-field {
+    display: flex;
 }
 
-.info-container .info-form .form-group.property-field.show,
-.info-container .info-form .form-group.vehicle-field.show {
+.form-container .form-form .form-group.property-field.show,
+.form-container .form-form .form-group.vehicle-field.show {
     display: flex;
 }
 
 
-.info-container .info-form .form-group label[for="propertyId"]+input[value=""],
-.info-container .info-form .form-group label[for="vehicleId"]+input[value=""],
-.info-container .info-form .form-group label[for="endDate"]+input[value=""] {
+.form-container .form-form .form-group label[for="propertyId"]+input,
+.form-container .form-form .form-group label[for="id"]+input,
+.form-container .form-form .form-group label[for="createDate"]+input {
     background-color: #e2e0e0;
 }
