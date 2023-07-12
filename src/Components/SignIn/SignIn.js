@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from "./SignIn.module.css";
 import logo from "../../imags/logo.jpeg";
 import "../../../node_modules/pretty-checkbox/dist/pretty-checkbox.min.css";
@@ -48,7 +48,7 @@ const SignIn = (props) => {
     e.preventDefault();
     setFormError(validate(formValues));
     setIsSubmit(true);
-    if (formError.length === 0 || formError.length === undefined && isSubmit === true) {
+    if ((formError.length === 0 || formError.length === undefined) && isSubmit === true) {
       (handelApiSubmit())
     } else {
       console.log(formError.length);
@@ -88,7 +88,7 @@ const SignIn = (props) => {
   //Validate Function
   const validate = (value) => {
     const errors = {};
-    const regex = /^\w+([\.-]?\w+)@\w+([\.-]?\w+)(\.\w{2,3})+$/;
+    const regex = /^\w+([.-]?\w+)@\w+([.-]?\w+)(\.\w{2,3})+$/;
     if (!value.email) {
       errors.email = "Email Is Required";
     } else if (!regex.test(value.email)) {

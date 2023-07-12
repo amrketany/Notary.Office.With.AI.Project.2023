@@ -40,18 +40,14 @@ class ContractForm extends React.Component {
 
     }
 
-    dataURLtoFile(dataurl, filename = "I Love Javascript") {
-        var arr = dataurl.split(','),
-            mime = arr[0].match(/:(.*?);/)[1],
-            bstr = atob(arr[arr.length - 1]),
-            n = bstr.length,
-            u8arr = new Uint8Array(n);
+    dataURLtoFile(dataurl, filename) {
+        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
         while (n--) {
             u8arr[n] = bstr.charCodeAt(n);
         }
         return new File([u8arr], filename, { type: mime });
     }
-
 
 
 
@@ -76,8 +72,10 @@ class ContractForm extends React.Component {
                 "brand": htmlFields[25].value,
                 "engine": htmlFields[27].value,
                 "color": htmlFields[28].value,
-                "modle": htmlFields[26].value
+                "modle": htmlFields[26].value,
+
             };
+
 
             let addVehicle = axios.post('http://notaryoffice-001-site1.ctempurl.com/api/Vehical', body, config);
             addVehicle.then((R) => { console.log(R) });
@@ -101,19 +99,32 @@ class ContractForm extends React.Component {
 
 
 
+
             let addProperty = axios.post("http://notaryoffice-001-site1.ctempurl.com/api/Property", body, config);
             addProperty.then((R) => { console.log(R) });
 
         }
+        let typeValue;
+        if (htmlFields[8].value.toLowerCase() === "Rent".toLowerCase()) {
+            typeValue = true;
+        } else if (htmlFields[8].value.toLowerCase() === "Sell".toLowerCase()) {
+            typeValue = false;
+        }
+
+
+
         let body = {
-            contractImage: this.dataURLtoFile(this.state.contractImageSrc),
+            contractImage: this.state.contractImageSrc.split("base64,")[1],
             startDate: htmlFields[5].value,
             endDate: htmlFields[6].value,
             monyAmount: htmlFields[7].value,
-            type: htmlFields[8].value,
+            type: typeValue,
             firstPartyId: htmlFields[3].value,
             secondPartyId: htmlFields[4].value
         }
+
+        console.log(body);
+        console.log(config);
 
         let addContract = axios.post('http://notaryoffice-001-site1.ctempurl.com/api/Contract', body, config);
         addContract.then((res) => {
@@ -149,11 +160,8 @@ class ContractForm extends React.Component {
 
         for (let x = 0; x < localStorage.getItem("AIData-number"); x++) {
 
-            console.log(localStorage.getItem(`AIData-${x}`));
             AIData[`${Object.keys(AIData)[x]}`] = localStorage.getItem(`AIData-${x}`);
         }
-
-        console.log(AIData);
 
         let data = {
 
@@ -174,7 +182,7 @@ class ContractForm extends React.Component {
         }
 
         this.setState({
-            //contractImageSrc: 'data:image/png;base64,' + contractData.contractImage,
+            contractImageSrc: 'data:image/png;base64,' + localStorage.getItem("contractImage"),
             startDate: data['Sale Date: '],
             monyAmount: data['Money Amount: '],
             type: data['Contract Type: '],

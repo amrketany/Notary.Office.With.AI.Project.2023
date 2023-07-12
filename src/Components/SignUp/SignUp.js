@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { faEye } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function SignUp() {
   //Start Make Password Icons
@@ -70,7 +70,7 @@ function SignUp() {
     setFormError(validate(formValues));
     setIsSubmit(true);
     // Code to send data to apis only if all values is valid
-    if (formError.length === undefined || formError.length === null && isSubmit === true) {
+    if ((formError.length === undefined || formError.length === null) && isSubmit === true) {
       (handelApiSubmit())
     } else {
       console.log(formError);
@@ -120,7 +120,7 @@ function SignUp() {
   const validate = (value) => {
     const errors = {};
     //email regex
-    const regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    const regexEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
     //FactoryNumber regex
     const regexFactoryName = /[A-Z][A-Z][0-9]*/;
     if (!value.name) {
