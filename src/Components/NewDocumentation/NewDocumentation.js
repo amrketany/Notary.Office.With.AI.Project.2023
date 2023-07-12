@@ -116,7 +116,7 @@ const [img, setImg] = useState('')
       axios
         .post('http://eslammamdouh.pythonanywhere.com/scan', formData )
         .then((res) => {
-          console.log(res.data.Lines);
+          console.log(res.data);
           setImg('');
           return <App ContractData={res.data} />;
         });
