@@ -2,7 +2,6 @@ import styles from './App.module.css';
 import React, { useEffect, useState } from "react";
 import Nav from '../../Components/Nav/Nav';
 import SignIn from '../../Components/SignIn/SignIn';
-import LogOut from '../../Components/LogOut/LogOut';
 import Home from "../Home/Home";
 import SignUp from '../SignUp/SignUp';
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
@@ -20,6 +19,8 @@ import jwtDecode from 'jwt-decode';
 import ForgotPass from '../ForgotPass/ForgotPass';
 import UserSettings from '../User Interface/UI';
 import Viewer from '../User Interface/Viewer';
+import Test from '../Test/Test';
+
 const App = (props) => {
 
   let { contractImage } = useState();
@@ -57,6 +58,7 @@ const App = (props) => {
   return (
 
     <div className={styles.container}>
+      <Test />
       <Nav userData={userData} logOut={logOut} />
       <Routes>
         <Route exact path="/" element={<Home />} />
