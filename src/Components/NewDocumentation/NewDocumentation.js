@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import App from '../App/App';
 
 // import styles from "./../Services/Services.module.css";
 import styles from "./NewDocumentation.module.css";
@@ -103,13 +104,28 @@ const Services = (props) => {
   // };
   // fetch('http://eslammamdouh.pythonanywhere.com/upload', options);
 
-
   //Try with Axios 4/7/2023
   const [img, setImg] = useState('')
   const HandelChangeAxios = (e) => {
     console.log(e.target.files);
     setImg(e.target.files[0])
   }
+  function handelSubmitAxios() {
+    const formData = new FormData();
+    formData.append("image", img);
+    axios
+      .post('http://eslammamdouh.pythonanywhere.com/scan', formData)
+      .then((res) => {
+        console.log(res.data);
+        setImg('');
+        return <App ContractData={res.data} />;
+      });
+
+  }
+
+
+
+
 
   // function to convert image to base64 to store it in local storage
   function getBase64(file, callback) {

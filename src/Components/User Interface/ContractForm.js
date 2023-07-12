@@ -114,7 +114,7 @@ class ContractForm extends React.Component {
 
 
         let body = {
-            contractImage: this.state.contractImageSrc.split("base64,")[1],
+            contractImage: this.dataURLtoFile(this.state.contractImageSrc),
             startDate: htmlFields[5].value,
             endDate: htmlFields[6].value,
             monyAmount: htmlFields[7].value,
