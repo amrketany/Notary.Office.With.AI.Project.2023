@@ -4,23 +4,41 @@ import img1 from '../../imags/data1.jpg';
 
 class Test extends React.Component {
 
-    dataURLtoFile(dataurl, filename) {
-        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-        while (n--) {
-            u8arr[n] = bstr.charCodeAt(n);
+    convertBase64ToImageFile(base64Url) {
+        // Remove data:image/png;base64, from base64 URL
+        const base64Data = base64Url.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
+
+        // Convert base64 to byte array
+        const byteCharacters = atob(base64Data);
+        const byteArrays = [];
+
+        for (let offset = 0; offset < byteCharacters.length; offset += 1024) {
+            const slice = byteCharacters.slice(offset, offset + 1024);
+
+            const byteNumbers = new Array(slice.length);
+            for (let i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+
+            const byteArray = new Uint8Array(byteNumbers);
+            byteArrays.push(byteArray);
         }
-        return new File([u8arr], filename, { type: mime });
+
+        // Create Blob from byte arrays
+        const blob = new Blob(byteArrays, { type: 'image/png' });
+
+        // Create File object from Blob
+        const file = new File([blob], 'image.png', { type: 'image/png' });
+
+        return file;
     }
-
-
 
 
     render() {
 
         let url = localStorage.getItem('contractImage');
 
-        let file = this.dataURLtoFile(url, 'filename');
+        let file = this.convertBase64ToImageFile(url,);
         console.log(file);
 
 

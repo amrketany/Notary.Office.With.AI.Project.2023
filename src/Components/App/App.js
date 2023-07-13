@@ -58,7 +58,6 @@ const App = (props) => {
   return (
 
     <div className={styles.container}>
-      <Test />
       <Nav userData={userData} logOut={logOut} />
       <Routes>
         <Route exact path="/" element={<Home />} />

@@ -143,24 +143,27 @@ const Services = (props) => {
 
     const formData = new FormData();
     formData.append("image", img);
-    //axios
-    //   .post('http://eslammamdouh.pythonanywhere.com/scan', formData)
-    //  .then((res) => {
-    // console.log(res.data.Lines);
-    setImg('');
-    //  localStorage.setItem("AIData-number", Object.keys(res.data).length);
-    //   for (let x = 0; x < Object.keys(res.data).length; x++) {
-    //     localStorage.setItem(`AIData-${x}`, Object.values(res.data)[x]);
-    // }
-
-    // convert Image file to byte array to store in local storage
-
+    let tokenTmp = localStorage.getItem('userToken');
+    localStorage.clear();
+    localStorage.setItem('userToken', tokenTmp);
     getBase64(img, function (base64Data) {
       localStorage.setItem("contractImage", base64Data);
     });
+    axios
+      .post('http://eslammamdouh.pythonanywhere.com/scan', formData)
+      .then((res) => {
+        console.log(res.data);
+        setImg('');
+        localStorage.setItem("AIData-number", Object.keys(res.data).length);
+        for (let x = 0; x < Object.keys(res.data).length; x++) {
+          localStorage.setItem(`${Object.keys(res.data)[x]}`, Object.values(res.data)[x]);
+        }
+
+        // convert Image file to byte array to store in local storage
 
 
-    // });
+
+      });
 
     navigate("/ContractForm");
   };

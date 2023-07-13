@@ -6,6 +6,7 @@ import axios from 'axios';
 class ContractForm extends React.Component {
 
     state = {
+        local: "",
         id: "",
         contractImageSrc: localStorage.getItem("contractImage"),
         startDate: "",
@@ -40,96 +41,144 @@ class ContractForm extends React.Component {
 
     }
 
-    dataURLtoFile(dataurl, filename) {
-        var arr = dataurl.split(','), mime = arr[0].match(/:(.*?);/)[1],
-            bstr = atob(arr[1]), n = bstr.length, u8arr = new Uint8Array(n);
-        while (n--) {
-            u8arr[n] = bstr.charCodeAt(n);
+
+    convertBase64ToImageFile(base64Url) {
+        // Remove data:image/png;base64, from base64 URL
+        const base64Data = base64Url.replace(/^data:image\/(png|jpeg|jpg);base64,/, '');
+
+        // Convert base64 to byte array
+        const byteCharacters = atob(base64Data);
+        const byteArrays = [];
+
+        for (let offset = 0; offset < byteCharacters.length; offset += 1024) {
+            const slice = byteCharacters.slice(offset, offset + 1024);
+
+            const byteNumbers = new Array(slice.length);
+            for (let i = 0; i < slice.length; i++) {
+                byteNumbers[i] = slice.charCodeAt(i);
+            }
+
+            const byteArray = new Uint8Array(byteNumbers);
+            byteArrays.push(byteArray);
         }
-        return new File([u8arr], filename, { type: mime });
+
+        // Create Blob from byte arrays
+        const blob = new Blob(byteArrays, { type: 'image/png' });
+
+        // Create File object from Blob
+        const file = new File([blob], 'image.png', { type: 'image/png' });
+
+        return file;
     }
 
 
 
-    handleClick() {
-        let htmlFields = document.getElementsByClassName('form-control');
-        let TOKEN = localStorage.getItem("userToken");
-        let config = {
-            headers: {
-                "authorization": `bearer ${TOKEN}`,
-            },
-        }
 
-
-        if (htmlFields[12].value !== "") {
-
-            let body = {
-
-                "vin": htmlFields[12].value,
-                "ownerId": htmlFields[9].value,
-                "licenseNum": htmlFields[12].value,
-                "licenseEndDate": htmlFields[7].value,
-                "brand": htmlFields[25].value,
-                "engine": htmlFields[27].value,
-                "color": htmlFields[28].value,
-                "modle": htmlFields[26].value,
-
-            };
-
-
-            let addVehicle = axios.post('http://notaryoffice-001-site1.ctempurl.com/api/Vehical', body, config);
-            addVehicle.then((R) => { console.log(R) });
-
-        }
-        else if (htmlFields[14].value !== "") {
-
-            let body = {
-                "ownerId": htmlFields[9].value,
-                "governorate": htmlFields[13].value,
-                "city": htmlFields[14].value,
-                "district": htmlFields[15].value,
-                "buldingNum": htmlFields[16].value,
-                "apartmentNum": htmlFields[17].value,
-                "space": htmlFields[18].value,
-                "northernLimit": htmlFields[19].value,
-                "southernLimit": htmlFields[20].value,
-                "easternLimit": htmlFields[21].value,
-                "wasternLimit": htmlFields[22].value
-            };
+    handleClick(e) {
+        // e.preventDefault()
+        // let htmlFields = document.getElementsByClassName('form-control');
+        // let TOKEN = localStorage.getItem("userToken");
+        // let config = {
+        //     headers: {
+        //         "authorization": `bearer ${TOKEN}`,
+        //     },
+        // }
 
 
 
 
-            let addProperty = axios.post("http://notaryoffice-001-site1.ctempurl.com/api/Property", body, config);
-            addProperty.then((R) => { console.log(R) });
-
-        }
-        let typeValue;
-        if (htmlFields[8].value.toLowerCase() === "Rent".toLowerCase()) {
-            typeValue = true;
-        } else if (htmlFields[8].value.toLowerCase() === "Sell".toLowerCase()) {
-            typeValue = false;
-        }
 
 
+        // if (this.state.vehicleId !== "") {
 
-        let body = {
-            contractImage: this.dataURLtoFile(this.state.contractImageSrc),
-            startDate: htmlFields[5].value,
-            endDate: htmlFields[6].value,
-            monyAmount: htmlFields[7].value,
-            type: typeValue,
-            firstPartyId: htmlFields[3].value,
-            secondPartyId: htmlFields[4].value
-        }
+        //     let body = {
 
-        console.log(body);
-        console.log(config);
+        //         "vin": this.state.vehicleId,
+        //         "ownerId": null,
+        //         "licenseNum": this.state.licenseNum,
+        //         "licenseEndDate": this.state.licenseEndDate,
+        //         "brand": this.state.brand,
+        //         "engine": this.state.engine,
+        //         "color": this.state.color,
+        //         "modle": this.state.modle,
 
-        let addContract = axios.post('http://notaryoffice-001-site1.ctempurl.com/api/Contract', body, config);
-        addContract.then((res) => {
-            console.log(res.data);
-        });
+        //     };
+
+
+        //     let addVehicle = axios.post('http://notaryoffice-001-site1.ctempurl.com/api/Vehical', body, config);
+        //     addVehicle.then((R) => { console.log(R) });
+
+        // }
+        // else if (this.state.propertyCity !== "") {
+
+        //     let body = {
+        //         "ownerId": null,
+        //         "governorate": this.state.propertyGovernorate,
+        //         "city": this.state.propertyCity,
+        //         "district": this.state.propertyDistrict,
+        //         "buldingNum": this.state.propertyBuildingNumber,
+        //         "apartmentNum": this.state.propertyApartmentNumber,
+        //         "space": this.state.propertySpace,
+        //         "northernLimit": this.state.propertyNorth,
+        //         "southernLimit": this.state.propertySouth,
+        //         "easternLimit": this.state.propertyEast,
+        //         "wasternLimit": this.state.propertyWest
+        //     };
+
+
+
+
+        //     let addProperty = axios.post("http://notaryoffice-001-site1.ctempurl.com/api/Property", body, config);
+        //     addProperty.then((R) => { console.log(R) });
+
+        // }
+        // let typeValue;
+        // if (htmlFields[8].value.toLowerCase() === "Rent".toLowerCase()) {
+        //     typeValue = true;
+        // } else if (htmlFields[8].value.toLowerCase() === "Sell".toLowerCase()) {
+        //     typeValue = false;
+        // }
+
+
+
+        // let body = {
+        //     contractImage: this.state.local,
+        //     startDate: this.state.startDate,
+        //     endDate: this.state.endDate,
+        //     monyAmount: this.state.monyAmount,
+        //     type: typeValue ? true : false,
+        //     firstPartyId: this.state.firstPartyId,
+        //     secondPartyId: this.state.secondPartyId
+        // }
+
+        // console.log("body", body);
+        // console.log("config", config);
+        // console.log("state", this.state);
+
+        // // let addContract = fetch("http://notaryoffice-001-site1.ctempurl.com/api/Contract", {
+        // //     method: "POST",
+        // //     headers: {
+        // //         "authorization": config.headers.authorization,
+        // //     },
+        // //     body: body
+        // // });
+
+
+
+        // let addContract = axios({
+        //     url: 'http://notaryoffice-001-site1.ctempurl.com/api/Contract',
+        //     method: 'POST',
+        //     headers: {
+        //         authorization: `bearer ${TOKEN}`,
+        //     },
+        //     data: {
+        //         body
+        //     }
+        // });
+
+        // addContract.then((res) => {
+        //     console.log(res.data);
+        // });
 
 
 
@@ -137,100 +186,64 @@ class ContractForm extends React.Component {
     }
     componentDidMount() {
 
+        // this.setState({
+        //     startDate: localStorage.getItem('startDate'),
+        //     endDate: localStorage.getItem('endDate'),
+        //     monyAmount: localStorage.getItem('moneyAmout'),
+        //     type: localStorage.getItem('type'),
+        //     firstPartyId: localStorage.getItem('firstPartyId'),
+        //     secondPartyId: localStorage.getItem('secondPartyId'),
+        //     propertyId: localStorage.getItem('propertyId'),
+        //     vehicleId: localStorage.getItem('vehicleId'),
+        //     firstParty: localStorage.getItem('firstParty'),
+        //     secondParty: localStorage.getItem('secondParty'),
+        //     propertyGovernorate: localStorage.getItem('propertyGovernorate'),
+        //     propertyCity: localStorage.getItem('propertyCity'),
+        //     propertyDistrict: localStorage.getItem('propertyDistrict'),
+        //     propertyBuildingNumber: localStorage.getItem('propertyBuildingNumber'),
+        //     propertyApartmentNumber: localStorage.getItem('propertyApartmentNumbertmentNum'),
+        //     propertySpace: localStorage.getItem('propertySpace'),
+        //     propertyNorth: localStorage.getItem('propertyNorth'),
+        //     propertySouth: localStorage.getItem('propertySouth'),
+        //     propertyEast: localStorage.getItem('propertyEast'),
+        //     propertyWest: localStorage.getItem('propertyWest'),
+        //     vehicleLicence: localStorage.getItem('vehicleLicence'),
+        //     vehicleEndData: localStorage.getItem('vehicleEndData'),
+        //     vehicleBrand: localStorage.getItem('vehicleBrand'),
+        //     vehicleModel: localStorage.getItem('vehicleModel'),
+        //     vehicleColor: localStorage.getItem('vehicleColor'),
+        //     vehicleEngine: localStorage.getItem('vehicleEngine'),
+
+        // });
+
+
+
+        // this.setState({
+        //     creatorId: this.state.secondPartyId,
+        // });
+
+        this.forceUpdate();
+
+
+        document.getElementById('floc').addEventListener('change', (e) => {
+            this.setState({
+                local: e.target.files[0]
+            });
+        });
+
         document.getElementById('preview-img').onclick = () => {
             localStorage.setItem('cvs', this.state.contractImageSrc);
             window.open('/#/Viewer', "_blank");
         }
-        let AIData = {
-            "Brand: ": "",
-            "Buyer Id: ": "",
-            "Buyer Name: ": "",
-            "Color: ": "",
-            "Contract Type: ": "",
-            "Engine: ": "",
-            "License End Date: ": "",
-            "License Number: ": "",
-            "Model: ": "",
-            "Money Amount: ": "",
-            "Sale Date: ": "",
-            "Seller Id: ": "",
-            "Seller Name: ": "",
-            "VIN: ": ""
-        };
 
-        for (let x = 0; x < localStorage.getItem("AIData-number"); x++) {
-
-            AIData[`${Object.keys(AIData)[x]}`] = localStorage.getItem(`AIData-${x}`);
-        }
-
-        let data = {
-
-            "Brand: ": "",
-            "Buyer Id: ": "",
-            "Buyer Name: ": "",
-            "Color: ": "",
-            "Contract Type: ": "",
-            "Engine: ": "",
-            "License End Date: ": "",
-            "License Number: ": "",
-            "Model: ": "",
-            "Money Amount: ": "",
-            "Sale Date: ": "",
-            "Seller Id: ": "",
-            "Seller Name: ": "",
-            "VIN: ": ""
-        }
-
-        this.setState({
-            contractImageSrc: 'data:image/png;base64,' + localStorage.getItem("contractImage"),
-            startDate: data['Sale Date: '],
-            monyAmount: data['Money Amount: '],
-            type: data['Contract Type: '],
-            firstPartyId: data['Seller Id: '],
-            secondPartyId: data['Buyer Id: '],
-            firstParty: data['Seller Name: '],
-            secondParty: data['Buyer Name: '],
-            vehicleLicence: data['License Number: '],
-            vehicleEndData: data['License End Date: '],
-            vehicleBrand: data['Brand: '],
-            vehicleModel: data['Model: '],
-            vehicleColor: data['Color: '],
-            vehicleEngine: data['Engine: '],
-        });
 
         let token = localStorage.getItem("userToken");
         let headers = {
             "authorization": `bearer ${token}`,
         }
 
-
-
-
-        let gettingCurrentUser = axios.get("http://notaryoffice-001-site1.ctempurl.com/Api/Visitors/GetCurrentlyUser", { headers })
-        gettingCurrentUser.then((res) => {
-            this.setState({
-                creatorId: res.data.id,
-                creator: res.data.name,
-
-            });
-        })
-
-
-        if (data['VIN: '] === "") {
-
-            this.setState({
-                vehicleId: data['VIN: '],
-            });
-        }
-        else {
-            this.setState({
-                propertyId: data['property ID'],
-
-            })
-
-        }
-
-
+        console.log("state", this.state);
+        console.log("look in local storage");
 
     }
 
@@ -240,6 +253,8 @@ class ContractForm extends React.Component {
             <div className='form-container'>
                 <div className='form-container-inner'>
                     <div className='form-form'>
+
+                        <input type='file' id="floc" />
 
                         <div className='form-group'>
                             <label htmlFor="preview">Contract Preview:</label>
@@ -394,7 +409,7 @@ class ContractForm extends React.Component {
                         </div>
 
                         <div className='form-group'>
-                            <button type="button" className="btn btn-primary btn-block" onClick={() => (this.handleClick())} >Save Changes</button>
+                            <button type="button" className="btn btn-primary btn-block" onClick={(e) => (this.handleClick(e))} >Save Changes</button>
                         </div>
 
                         <div className='form-group'>
